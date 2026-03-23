@@ -564,44 +564,150 @@ footer{
 
 <!-- ══ ABOUT ══ -->
 <div class="page" id="page-about">
-  <div style="padding-top:76px">
-    <div class="about-strip" style="background:var(--bg)">
-      <div class="about-inner">
-        <div class="about-photo-wrap">
-          <img src="alastair.jpg" alt="Alastair Fisher">
-          <div class="about-photo-line-h"></div>
-          <div class="about-photo-line-v"></div>
-          <div class="about-photo-line-h2"></div>
-          <div class="about-photo-line-v2"></div>
-        </div>
-        <div class="about-text">
-          <div class="section-label" style="margin-bottom:2rem"><span>Alastair Fisher</span></div>
-          <h2>An <em>unusual</em> combination of disciplines</h2>
-          <p class="about-body">My academic background began in chemistry at the University of Edinburgh, where my studies moved deeply into chemical physics — a discipline requiring a rigorous command of mathematics and a strong grounding in the positive sciences.</p>
-          <p class="about-body">Some years later, I completed a Master's degree in linguistics at the University of Surrey. What emerged was something relatively rare: a tutor equally at home in the hard sciences and the precise analytical demands of language-based examinations.</p>
-          <p class="about-body">Over thirty years I have worked with more than five thousand students across different countries and academic systems, developing a method of thinking about how students learn — how misunderstandings arise, and how complex ideas can be made clear without being oversimplified.</p>
-          <div class="about-creds">
-            <div class="about-cred">BSc Chemical Physics — University of Edinburgh</div>
-            <div class="about-cred">MA Linguistics — University of Surrey</div>
-            <div class="about-cred">Pioneer of online tutoring since 2007</div>
-            <div class="about-cred">UK National Tutoring Programme</div>
-            <div class="about-cred">60,000+ hours of one-to-one teaching</div>
-            <div class="about-cred">AGF UK Limited · Reg. 12247821</div>
+  <section style="padding-top:calc(72px + clamp(4rem,8vw,7rem));padding-bottom:0;padding-left:clamp(1.5rem,5vw,4rem);padding-right:clamp(1.5rem,5vw,4rem)">
+    <div class="inner">
+
+      <!-- INTRO GRID -->
+      <div style="display:grid;grid-template-columns:340px 1fr;gap:5rem;align-items:start;margin-bottom:clamp(4rem,8vw,7rem)">
+        <div style="position:relative">
+          <img src="alastair.jpg" alt="Alastair Fisher" style="width:100%;display:block;filter:grayscale(100%) contrast(0.9) brightness(1.05)">
+          <div style="position:absolute;top:-12px;left:-12px;right:12px;height:1px;background:var(--green);opacity:.45"></div>
+          <div style="position:absolute;top:-12px;left:-12px;bottom:12px;width:1px;background:var(--green);opacity:.45"></div>
+          <div style="position:absolute;bottom:-12px;right:-12px;left:12px;height:1px;background:var(--green);opacity:.45"></div>
+          <div style="position:absolute;bottom:-12px;right:-12px;top:12px;width:1px;background:var(--green);opacity:.45"></div>
+          <!-- Credentials under photo -->
+          <div style="margin-top:2rem;display:flex;flex-direction:column;gap:.6rem">
+            <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>BSc Chemical Physics — University of Edinburgh</div>
+            <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>MA Linguistics — University of Surrey</div>
+            <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>Pioneer of online tutoring since 2007</div>
+            <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>UK National Tutoring Programme</div>
+            <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>60,000+ hours of one-to-one teaching</div>
+            <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>AGF UK Limited · Reg. 12247821</div>
           </div>
         </div>
+
+        <div>
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:2rem">
+            <div style="width:32px;height:1px;background:var(--green)"></div>
+            <span style="font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:500">Alastair Fisher</span>
+          </div>
+          <h1 style="font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.2rem);font-weight:400;line-height:1.15;color:var(--cream);margin-bottom:2rem">About</h1>
+
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.5rem">My work over the past thirty years has centred on one question: how students come to understand complex ideas clearly, and how that understanding translates into performance under examination conditions.</p>
+
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.5rem">My academic background began in chemistry at the University of Edinburgh, with a particular emphasis on chemical physics. This involved a significant amount of mathematics and a close engagement with the positive sciences more broadly.</p>
+
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.5rem">Some years later, I completed a Master's degree in linguistics at the University of Surrey, specialising in corpus linguistics. That experience provided a structured understanding of language — how it is acquired, how it is processed, and how meaning is constructed and communicated.</p>
+
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.5rem">What emerged over time was a combination that is, perhaps, relatively uncommon. On the one hand, a rigorous scientific training across mathematics, physics, and chemistry. On the other, a formal understanding of language, reasoning, and cognition.</p>
+
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.5rem">This combination has allowed me to work across a wide spectrum of subjects and examinations. In addition to the sciences, I have spent many years preparing students for assessments such as the SAT, ACT, GRE, GMAT, and LNAT — examinations which require not only technical ability, but also precision in language and clarity in reasoning.</p>
+        </div>
       </div>
+
+      <!-- DIAGNOSTIC METHOD -->
+      <div style="border-top:1px solid var(--line);padding-top:clamp(3rem,6vw,5rem);margin-bottom:clamp(3rem,6vw,5rem)">
+        <div style="max-width:760px;margin:0 auto">
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.5rem">Over the course of my career, I have worked with several thousand students across different systems and countries, accumulating in excess of sixty thousand hours of tutoring and mentoring. Through that experience, a consistent pattern has become clear.</p>
+
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.5rem">Most academic difficulty does not arise from a lack of ability, but from a lack of clarity. Small misunderstandings — often introduced early — tend to persist, and under examination pressure they become significant obstacles.</p>
+
+          <p style="font-family:var(--serif);font-size:1.25rem;line-height:1.75;color:var(--cream);margin-bottom:1.5rem;font-style:italic">The work, therefore, is diagnostic.</p>
+
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.5rem">The aim is first to identify precisely where a student's understanding begins to diverge from the underlying idea. From there, the concept is reconstructed in a way that is both rigorous and intuitive. Only once that clarity is established do we move to method, structure, and examination technique.</p>
+
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.5rem">The result is not simply improved grades, but a more stable and confident way of thinking.</p>
+
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.5rem">Alongside one-to-one tutoring, I have been involved in the development of online learning systems and educational tools, including work connected to large-scale tutoring programmes and AI-supported educational models. These experiences have reinforced the same underlying principle: that effective learning depends on clarity, structure, and careful sequencing, rather than volume of information.</p>
+
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2)">This platform is, in part, an attempt to make that accumulated experience more broadly accessible — not as a replacement for individual teaching, but as an extension of it.</p>
+        </div>
+      </div>
+
     </div>
-    <div class="unis-section">
-      <div class="unis-inner">
-        <div class="section-label"><span>Track Record</span></div>
-        <div class="unis-grid">
-          <div class="uni-col"><h4>United Kingdom</h4><ul class="uni-list"><li>University of Oxford</li><li>University of Cambridge</li><li>Imperial College London</li><li>UCL</li><li>LSE</li><li>University of Edinburgh</li><li>King's College London</li><li>Durham University</li><li>University of Warwick</li></ul></div>
-          <div class="uni-col"><h4>USA &amp; Canada</h4><ul class="uni-list"><li>MIT</li><li>Harvard University</li><li>Stanford University</li><li>Yale University</li><li>Princeton University</li><li>Columbia University</li><li>University of Chicago</li><li>Caltech</li><li>NYU</li><li>University of Toronto</li><li>McGill University</li></ul></div>
-          <div class="uni-col"><h4>Europe &amp; Global</h4><ul class="uni-list"><li>ETH Zurich</li><li>Sciences Po</li><li>LMU Munich</li><li>University of Amsterdam</li><li>Bocconi University</li><li>IE Business School</li><li>INSEAD</li><li>Sorbonne University</li></ul></div>
+  </section>
+
+  <!-- TRACK RECORD -->
+  <section style="background:var(--bg2);border-top:1px solid var(--line);padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem)">
+    <div class="inner">
+      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
+        <div style="width:32px;height:1px;background:var(--green)"></div>
+        <span style="font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:500">Track Record</span>
+      </div>
+      <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:400;color:var(--cream);margin-bottom:1rem">A record built across decades</h2>
+      <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;max-width:640px;margin-bottom:3rem">Students I have worked with have progressed to leading universities in the United Kingdom, North America, and Europe, often with substantial scholarship awards. This reflects not only examination success, but sustained academic performance beyond school.</p>
+
+      <!-- Stats -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:3rem">
+        <div style="background:var(--bg);padding:2rem;text-align:center">
+          <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--cream);line-height:1">60,000+</div>
+          <div style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream3);margin-top:.4rem">hours of tutoring</div>
+        </div>
+        <div style="background:var(--bg);padding:2rem;text-align:center;border-left:1px solid var(--line);border-right:1px solid var(--line)">
+          <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--cream);line-height:1">5,000+</div>
+          <div style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream3);margin-top:.4rem">students taught</div>
+        </div>
+        <div style="background:var(--bg);padding:2rem;text-align:center">
+          <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--cream);line-height:1">$20m+</div>
+          <div style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream3);margin-top:.4rem">scholarships secured</div>
+        </div>
+      </div>
+
+      <!-- Universities -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3rem">
+        <div>
+          <h4 style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);padding-bottom:.85rem;margin-bottom:1.25rem;border-bottom:1px solid var(--green-line)">United Kingdom</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:.55rem">
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem;position:relative">University of Oxford</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem;position:relative">University of Cambridge</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem;position:relative">Imperial College London</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem;position:relative">UCL</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem;position:relative">LSE</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem;position:relative">University of Edinburgh</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem;position:relative">King's College London</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem;position:relative">Durham University</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem;position:relative">University of Warwick</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);padding-bottom:.85rem;margin-bottom:1.25rem;border-bottom:1px solid var(--green-line)">USA &amp; Canada</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:.55rem">
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">MIT</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">Harvard University</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">Stanford University</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">Yale University</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">Princeton University</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">Columbia University</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">Caltech</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">University of Toronto</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">McGill University</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);padding-bottom:.85rem;margin-bottom:1.25rem;border-bottom:1px solid var(--green-line)">Europe &amp; Global</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:.55rem">
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">ETH Zurich</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">Sciences Po</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">LMU Munich</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">University of Amsterdam</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">Bocconi University</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">IE Business School</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">INSEAD</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">Sorbonne University</li>
+          </ul>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section style="padding:clamp(4rem,8vw,6rem) clamp(1.5rem,5vw,4rem);text-align:center">
+    <div style="max-width:560px;margin:0 auto">
+      <p style="font-family:var(--serif);font-size:1.2rem;line-height:1.8;color:var(--cream2);margin-bottom:2rem">I work with a limited number of students each year. If you would like to discuss tutoring or mentoring, please make contact.</p>
+      <button class="btn-primary" onclick="showPage('contact')">Enquire</button>
+    </div>
+  </section>
+
 </div>
 
 <!-- ══ METHOD ══ -->
