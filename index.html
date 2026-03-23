@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AGF Tutoring — Alastair Fisher</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --serif:'Californian FB','Cormorant Garamond',Georgia,serif;
+  --serif:'Playfair Display',Georgia,serif;
   --sans:'Outfit',system-ui,sans-serif;
   --bg:#484848;
   --bg2:#505050;
@@ -68,7 +68,7 @@ nav.scrolled{background:rgba(68,68,68,0.97);backdrop-filter:blur(12px);border-co
 }
 .hero-left{
   display:flex;flex-direction:column;justify-content:center;
-  padding:140px clamp(2rem,5vw,5rem) 80px clamp(1.5rem,6vw,6rem);
+  padding:140px clamp(2rem,5vw,5rem) 160px clamp(1.5rem,6vw,6rem);
   position:relative;z-index:2;
 }
 .hero-right{
@@ -79,7 +79,7 @@ nav.scrolled{background:rgba(68,68,68,0.97);backdrop-filter:blur(12px);border-co
   background:linear-gradient(to right, var(--bg), transparent);
   z-index:2;
 }
-.hero-right img{width:620px;height:620px;object-fit:cover;object-position:center 20%;border-radius:50%;display:block;opacity:0.92;-webkit-mask-image:radial-gradient(ellipse 65% 65% at 50% 50%, black 35%, transparent 68%);mask-image:radial-gradient(ellipse 65% 65% at 50% 50%, black 35%, transparent 68%);filter:grayscale(3%) contrast(0.86) brightness(1.1);}
+.hero-right img{width:620px;height:620px;object-fit:cover;object-position:center 20%;border-radius:50%;display:block;opacity:0.92;-webkit-mask-image:radial-gradient(ellipse 65% 65% at 50% 50%, black 35%, transparent 68%);mask-image:radial-gradient(ellipse 65% 65% at 50% 50%, black 35%, transparent 68%);filter:grayscale(100%) contrast(0.9) brightness(1.05);}
 
 /* Big watermark number */
 .hero-watermark{
@@ -257,7 +257,7 @@ nav.scrolled{background:rgba(68,68,68,0.97);backdrop-filter:blur(12px);border-co
 }
 .about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:380px 1fr;gap:5rem;align-items:center}
 .about-photo-wrap{position:relative}
-.about-photo-wrap img{width:100%;display:block;filter:grayscale(8%) contrast(0.94) brightness(1.03)}
+.about-photo-wrap img{width:100%;display:block;filter:grayscale(100%) contrast(0.9) brightness(1.05)}
 .about-photo-line-h{position:absolute;top:-16px;left:-16px;right:16px;height:1px;background:var(--green);opacity:.5}
 .about-photo-line-v{position:absolute;top:-16px;left:-16px;bottom:16px;width:1px;background:var(--green);opacity:.5}
 .about-photo-line-h2{position:absolute;bottom:-16px;right:-16px;left:16px;height:1px;background:var(--green);opacity:.5}
@@ -418,7 +418,7 @@ footer{
         <rect x="36" y="28" width="6" height="16" rx="3" fill="#3A8C65"/>
       </svg>
       <div style="line-height:1">
-        <div style="font-family:'Californian FB','Cormorant Garamond',Georgia,serif;font-size:1.85rem;font-weight:600;color:var(--cream);letter-spacing:.05em">AGF</div>
+        <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.85rem;font-weight:600;color:var(--cream);letter-spacing:.05em">AGF</div>
         <div style="font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(242,237,228,0.45);margin-top:5px;font-family:'Outfit',sans-serif">Tutoring</div>
       </div>
     </a>
@@ -451,18 +451,14 @@ footer{
   <!-- HERO -->
   <section id="hero">
     <div class="hero-left">
-      <div class="hero-eyebrow au">
-        <div class="hero-eyebrow-line"></div>
-        <span>Edinburgh · Surrey · 30 years</span>
-      </div>
       <h1 class="hero-h1 au2">
         Sixty thousand<br>hours of tutoring,<br><em>distilled.</em>
       </h1>
       <div class="hero-rule au3"></div>
       <p class="hero-lead au3">A premier boutique service providing exclusive, bespoke private tutoring and mentorship — helping students gain admission and scholarships to the world's most prestigious universities.</p>
       <div class="hero-actions au4">
-        <button class="btn-primary" onclick="showPage('contact')">Enquire about tutoring</button>
-        <button class="btn-secondary" onclick="showPage('pricing')">View pricing</button>
+        <button class="btn-primary" onclick="showPage('contact')">Enquire · mentoring · consulting</button>
+        
       </div>
     </div>
     <div class="hero-right" style="display:flex;align-items:center;justify-content:center;padding:100px 2rem 80px 0;position:relative;">
@@ -705,7 +701,7 @@ footer{
               <div><div style="font-family:var(--serif);font-size:1.1rem;color:var(--cream);margin-bottom:.4rem">Escalate to live sessions</div><p style="font-size:.88rem;color:var(--cream2);line-height:1.65">When a concept needs deeper work, book a live one-to-one session with Alastair seamlessly.</p></div>
             </div>
           </div>
-          <p style="margin-top:1.5rem;font-size:.8rem;color:var(--cream3)">Available on Companion and Premium plans. <button onclick="showPage('pricing')" style="background:none;border:none;color:var(--green);cursor:pointer;font-size:.8rem;padding:0">View pricing →</button></p>
+          <p style="margin-top:1.5rem;font-size:.8rem;color:var(--cream3)">Available on Companion and Premium plans. <button onclick="showPage('pricing')" style="background:none;border:none;color:var(--green);cursor:pointer;font-size:.8rem;padding:0">View Track Record →</button></p>
         </div>
         <div style="background:var(--bg2);border:1px solid var(--line);overflow:hidden">
           <div style="padding:1rem 1.25rem;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:.75rem">
@@ -841,7 +837,7 @@ footer{
         <rect x="29" y="18" width="5" height="18" rx="2.5" fill="#3A8C65" opacity="0.6"/>
       </svg>
       <div style="line-height:1">
-        <div style="font-family:'Californian FB','Cormorant Garamond',Georgia,serif;font-size:1.1rem;font-weight:500;color:var(--cream);letter-spacing:.04em">AGF</div>
+        <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;font-weight:500;color:var(--cream);letter-spacing:.04em">AGF</div>
         <div style="font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(242,237,228,0.55);margin-top:2px">Tutoring</div>
       </div>
     </div>
