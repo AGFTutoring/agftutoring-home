@@ -55,8 +55,8 @@ nav.scrolled{background:rgba(68,68,68,0.97);backdrop-filter:blur(12px);border-co
 .mobile-menu button:hover{color:var(--green)}
 
 /* ── PAGES ── */
-.page{display:none;min-height:100vh}
-.page.active{display:block}
+.page{min-height:100vh}
+
 
 /* ── HERO ── */
 #hero{
@@ -423,12 +423,12 @@ footer{
       </div>
     </a>
     <div class="nav-links">
-      <button onclick="showPage('home')" data-page="home">Home</button>
-      <button onclick="showPage('about')" data-page="about">About</button>
-      <button onclick="showPage('method')" data-page="method">Method</button>
-      <button onclick="showPage('courses')" data-page="courses">Subjects</button>
-      <button onclick="showPage('companion')" data-page="companion">AI Companion</button>
-      <button onclick="showPage('contact')" data-page="contact" class="nav-cta">Enquire</button>
+      <button onclick="showPage('home')">Home</button>
+      <button onclick="showPage('about')">About</button>
+      <button onclick="showPage('method')">Method</button>
+      <button onclick="showPage('courses')">Subjects</button>
+      <button onclick="showPage('companion')">AI Companion</button>
+      <button onclick="showPage('contact')" class="nav-cta">Enquire</button>
     </div>
     <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
   </div>
@@ -455,7 +455,7 @@ footer{
       <div class="hero-rule au3"></div>
       <p class="hero-lead au3">A premier boutique service providing exclusive, bespoke private tutoring and mentorship — helping students gain admission and scholarships to the world's most prestigious universities.</p>
       <div class="hero-actions au4">
-        <button class="btn-primary" onclick="showPage('contact')">Enquire · mentoring · consulting</button>
+        <button class="btn-primary" onclick="showPage('contact')">Enquire</button>
         
       </div>
     </div>
@@ -577,11 +577,11 @@ footer{
           <div style="position:absolute;bottom:-12px;right:-12px;top:12px;width:1px;background:var(--green);opacity:.45"></div>
           <!-- Credentials under photo -->
           <div style="margin-top:2rem;display:flex;flex-direction:column;gap:.6rem">
-            <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>BSc Chemical Physics — University of Edinburgh</div>
+            <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>BSc Chemistry — University of Edinburgh</div>
             <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>MA Linguistics — University of Surrey</div>
             <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>Pioneer of online tutoring since 2007</div>
             <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>UK National Tutoring Programme</div>
-            <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>60,000+ hours of one-to-one teaching</div>
+            <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>60,000+ hours of teaching</div>
             <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>AGF UK Limited · Reg. 12247821</div>
           </div>
         </div>
@@ -975,13 +975,20 @@ footer{
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+window.onload = function(){
+  var pages = document.querySelectorAll('.page');
+  for(var i=0;i<pages.length;i++){ pages[i].style.display='none'; }
+  document.getElementById('page-home').style.display='block';
+};
 var currentPage='home';
 function showPage(p){
-  document.querySelectorAll('.page').forEach(function(el){el.classList.remove('active')});
-  document.getElementById('page-'+p).classList.add('active');
-  document.querySelectorAll('[data-page]').forEach(function(b){b.classList.toggle('active',b.dataset.page===p)});
+  var pages = document.querySelectorAll('.page');
+  for(var i=0;i<pages.length;i++){ pages[i].style.display='none'; }
+  var target = document.getElementById('page-'+p);
+  if(target){ target.style.display='block'; }
   currentPage=p;
-  window.scrollTo({top:0,behavior:'smooth'});
+  window.scrollTo(0,0);
 }
 function toggleMenu(){document.getElementById('mobile-menu').classList.toggle('open')}
 window.addEventListener('scroll',function(){
@@ -1000,4 +1007,18 @@ function sendDemo(){
   var u=document.createElement('div');
   u.style.cssText='max-width:88%;font-size:.86rem;line-height:1.6;padding:.75rem 1rem;background:var(--green-dim);border:1px solid var(--green-line);color:var(--cream);align-self:flex-end;margin-left:auto';
   u.textContent=msg;c.appendChild(u);input.value='';
-  setTimeout(func
+  setTimeout(function(){ 
+    var a=document.createElement('div');
+    var replies=['That is an excellent question. Let me work through this carefully.',
+      'A common misconception here. Let us rebuild from first principles.',
+      'Good thinking. Now extend this further using the same approach.'];
+    a.style.cssText='max-width:88%;font-size:.86rem;line-height:1.6;padding:.75rem 1rem;background:var(--bg);border:1px solid var(--line);color:var(--cream2)';
+    a.textContent=replies[Math.floor(Math.random()*replies.length)];
+    c.appendChild(a);
+    c.scrollTop=c.scrollHeight;
+  },800);
+  c.scrollTop=c.scrollHeight;
+}
+</script>
+</body>
+</html>
