@@ -293,6 +293,117 @@ nav.scrolled{background:rgba(68,68,68,0.97);backdrop-filter:blur(12px);border-co
 }
 .uni-list li:hover{color:var(--cream)}
 
+/* ── COURSES ACCORDION ── */
+.subj-tile{
+  border:1px solid var(--line);margin-bottom:-1px;
+  transition:border-color .3s;
+}
+.subj-tile.open{border-color:var(--green-line)}
+.subj-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:2rem 2.5rem;cursor:pointer;background:var(--bg);
+  transition:background .2s;
+}
+.subj-header:hover{background:var(--bg2)}
+.subj-header-left{display:flex;align-items:center;gap:2rem}
+.subj-num{
+  font-family:var(--serif);font-size:2.5rem;font-weight:300;
+  color:rgba(58,140,101,0.2);line-height:1;min-width:50px;
+}
+.subj-header h3{
+  font-family:var(--serif);font-size:1.5rem;font-weight:400;color:var(--cream);
+}
+.subj-header h3 span{font-size:.78rem;color:var(--cream3);font-family:var(--sans);font-weight:300;display:block;margin-top:.3rem;letter-spacing:.02em}
+.subj-arrow{
+  width:32px;height:32px;border:1px solid var(--line);display:flex;
+  align-items:center;justify-content:center;transition:all .3s;flex-shrink:0;
+}
+.subj-tile.open .subj-arrow{border-color:var(--green-line);transform:rotate(180deg)}
+.subj-arrow svg{width:12px;height:12px;stroke:var(--cream3);transition:stroke .2s}
+.subj-tile.open .subj-arrow svg{stroke:var(--green)}
+
+.subj-body{
+  max-height:0;overflow:hidden;transition:max-height .5s ease;
+  background:var(--bg2);
+}
+.subj-tile.open .subj-body{max-height:1200px}
+
+.subj-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:1px;background:var(--line);border-top:1px solid var(--line);
+}
+.subj-item{
+  background:var(--bg2);padding:1.5rem 1.75rem;cursor:pointer;
+  transition:background .2s;position:relative;
+}
+.subj-item:hover{background:var(--bg3)}
+.subj-item::after{
+  content:'→';position:absolute;top:1.5rem;right:1.5rem;
+  color:var(--green);font-size:.8rem;opacity:0;transition:opacity .2s;
+}
+.subj-item:hover::after{opacity:1}
+.subj-item-tag{
+  font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--green);margin-bottom:.5rem;
+}
+.subj-item-name{
+  font-family:var(--serif);font-size:1.05rem;color:var(--cream);
+  margin-bottom:.25rem;line-height:1.3;
+}
+.subj-item-detail{font-size:.75rem;color:var(--cream3);line-height:1.5}
+
+/* Course detail overlay */
+.course-detail{
+  display:none;
+  padding-top:calc(76px + clamp(3rem,6vw,5rem));
+  padding-bottom:clamp(4rem,8vw,7rem);
+}
+.course-detail.active{display:block}
+.course-detail-inner{
+  max-width:900px;margin:0 auto;
+  padding:0 clamp(1.5rem,5vw,4rem);
+}
+.course-back{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--green);cursor:pointer;background:none;border:none;
+  font-family:var(--sans);margin-bottom:2.5rem;transition:color .2s;
+}
+.course-back:hover{color:var(--green-light)}
+.course-detail h2{
+  font-family:var(--serif);font-size:clamp(2rem,3.5vw,2.8rem);
+  font-weight:300;color:var(--cream);margin-bottom:1rem;line-height:1.2;
+}
+.course-detail h2 em{font-style:italic;color:var(--green)}
+.course-boards-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:1px;background:var(--line);border:1px solid var(--line);
+  margin:2.5rem 0;
+}
+.board-card{
+  background:var(--bg2);padding:1.5rem;cursor:pointer;
+  transition:background .2s;
+}
+.board-card:hover{background:var(--bg3)}
+.board-card-name{
+  font-family:var(--serif);font-size:1.05rem;color:var(--cream);margin-bottom:.3rem;
+}
+.board-card-desc{font-size:.78rem;color:var(--cream3);line-height:1.5}
+.course-ai-cta{
+  background:var(--bg2);border:1px solid var(--green-line);
+  padding:2rem 2.5rem;margin-top:2.5rem;
+  display:flex;align-items:center;justify-content:space-between;gap:2rem;
+}
+.course-ai-cta p{font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.7}
+.course-ai-cta p strong{color:var(--cream);font-weight:400}
+.course-video-placeholder{
+  background:var(--bg2);border:1px solid var(--line);
+  padding:3rem 2rem;text-align:center;margin:2.5rem 0;
+}
+.course-video-placeholder span{
+  font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream3);
+}
+
 /* ── RESOURCES ── */
 .resources-section{
   background:var(--bg2);border-top:1px solid var(--line);
@@ -582,7 +693,6 @@ footer{
             <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>Pioneer of online tutoring since 2007</div>
             <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>UK National Tutoring Programme</div>
             <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>60,000+ hours of teaching</div>
-            <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>AGF UK Limited · Reg. 12247821</div>
           </div>
         </div>
 
@@ -744,19 +854,202 @@ footer{
 
 <!-- ══ COURSES ══ -->
 <div class="page" id="page-courses">
+
+  <!-- Main subject listing -->
+  <div id="courses-listing">
   <section class="section" style="padding-top:calc(76px + clamp(5rem,10vw,9rem))">
     <div class="inner">
       <div class="section-label"><span>Subjects</span></div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:5rem">
-        <div style="background:var(--bg);padding:1.75rem 1.5rem"><div style="font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem">Mathematics</div><div style="font-family:var(--serif);font-size:1.05rem;color:var(--cream);margin-bottom:.3rem">A-Level Mathematics</div><div style="font-size:.78rem;color:var(--cream3)">Edexcel · AQA · OCR · IAL</div></div>
-        <div style="background:var(--bg);padding:1.75rem 1.5rem"><div style="font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem">Sciences</div><div style="font-family:var(--serif);font-size:1.05rem;color:var(--cream);margin-bottom:.3rem">A-Level Chemistry</div><div style="font-size:.78rem;color:var(--cream3)">Edexcel · AQA · OCR · IAL</div></div>
-        <div style="background:var(--bg);padding:1.75rem 1.5rem"><div style="font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem">Sciences</div><div style="font-family:var(--serif);font-size:1.05rem;color:var(--cream);margin-bottom:.3rem">A-Level Physics</div><div style="font-size:.78rem;color:var(--cream3)">Edexcel · AQA · OCR · IAL</div></div>
-        <div style="background:var(--bg);padding:1.75rem 1.5rem"><div style="font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem">IB</div><div style="font-family:var(--serif);font-size:1.05rem;color:var(--cream);margin-bottom:.3rem">IB Mathematics</div><div style="font-size:.78rem;color:var(--cream3)">AA · AI · HL · SL</div></div>
-        <div style="background:var(--bg);padding:1.75rem 1.5rem"><div style="font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem">IB</div><div style="font-family:var(--serif);font-size:1.05rem;color:var(--cream);margin-bottom:.3rem">IB Chemistry &amp; Physics</div><div style="font-size:.78rem;color:var(--cream3)">HL · SL</div></div>
-        <div style="background:var(--bg);padding:1.75rem 1.5rem"><div style="font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem">US Admissions</div><div style="font-family:var(--serif);font-size:1.05rem;color:var(--cream);margin-bottom:.3rem">SAT · ACT · AP</div><div style="font-size:.78rem;color:var(--cream3)">Mathematics · Sciences</div></div>
-        <div style="background:var(--bg);padding:1.75rem 1.5rem"><div style="font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem">Graduate</div><div style="font-family:var(--serif);font-size:1.05rem;color:var(--cream);margin-bottom:.3rem">GRE · GMAT</div><div style="font-size:.78rem;color:var(--cream3)">Quantitative · Verbal</div></div>
-        <div style="background:var(--bg);padding:1.75rem 1.5rem"><div style="font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem">Law &amp; Language</div><div style="font-family:var(--serif);font-size:1.05rem;color:var(--cream);margin-bottom:.3rem">LNAT · IELTS · TOEFL</div><div style="font-size:.78rem;color:var(--cream3)">Reasoning · Language</div></div>
+      <h2 style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--cream);margin-bottom:.75rem;line-height:1.2">Choose your <em style="font-style:italic;color:var(--green)">subject</em></h2>
+      <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);margin-bottom:3rem;max-width:600px;line-height:1.75">Select a subject to explore available qualifications, exam boards, and preparation pathways.</p>
+
+      <!-- Mathematics -->
+      <div class="subj-tile" onclick="toggleSubj(this)">
+        <div class="subj-header">
+          <div class="subj-header-left">
+            <div class="subj-num">01</div>
+            <h3>Mathematics<span>A-Level · IGCSE · IB · SAT · ACT · AP</span></h3>
+          </div>
+          <div class="subj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke-width="1.2"/></svg></div>
+        </div>
+        <div class="subj-body">
+          <div class="subj-grid">
+            <div class="subj-item" onclick="event.stopPropagation();showCourseDetail('maths-alevel')">
+              <div class="subj-item-tag">A-Level</div>
+              <div class="subj-item-name">Mathematics A-Level</div>
+              <div class="subj-item-detail">Edexcel · AQA · OCR · Pearson IAL · CIE</div>
+            </div>
+            <div class="subj-item" onclick="event.stopPropagation();showCourseDetail('maths-fm-alevel')">
+              <div class="subj-item-tag">A-Level</div>
+              <div class="subj-item-name">Further Mathematics</div>
+              <div class="subj-item-detail">Edexcel · AQA · OCR · IAL</div>
+            </div>
+            <div class="subj-item" onclick="event.stopPropagation();showCourseDetail('maths-igcse')">
+              <div class="subj-item-tag">IGCSE</div>
+              <div class="subj-item-name">Mathematics IGCSE</div>
+              <div class="subj-item-detail">Edexcel · Cambridge (CIE) · AQA</div>
+            </div>
+            <div class="subj-item" onclick="event.stopPropagation();showCourseDetail('maths-ib')">
+              <div class="subj-item-tag">IB Diploma</div>
+              <div class="subj-item-name">IB Mathematics</div>
+              <div class="subj-item-detail">Analysis &amp; Approaches · Applications &amp; Interpretation · HL &amp; SL</div>
+            </div>
+            <div class="subj-item" onclick="event.stopPropagation();showCourseDetail('maths-us')">
+              <div class="subj-item-tag">US Preparation</div>
+              <div class="subj-item-name">SAT · ACT · AP Mathematics</div>
+              <div class="subj-item-detail">SAT Math · ACT Math · AP Calculus AB/BC · AP Statistics</div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <!-- Physics -->
+      <div class="subj-tile" onclick="toggleSubj(this)">
+        <div class="subj-header">
+          <div class="subj-header-left">
+            <div class="subj-num">02</div>
+            <h3>Physics<span>A-Level · IGCSE · IB · SAT · ACT · AP</span></h3>
+          </div>
+          <div class="subj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke-width="1.2"/></svg></div>
+        </div>
+        <div class="subj-body">
+          <div class="subj-grid">
+            <div class="subj-item" onclick="event.stopPropagation();showCourseDetail('physics-alevel')">
+              <div class="subj-item-tag">A-Level</div>
+              <div class="subj-item-name">Physics A-Level</div>
+              <div class="subj-item-detail">Edexcel · AQA · OCR · Pearson IAL · CIE</div>
+            </div>
+            <div class="subj-item" onclick="event.stopPropagation();showCourseDetail('physics-igcse')">
+              <div class="subj-item-tag">IGCSE</div>
+              <div class="subj-item-name">Physics IGCSE</div>
+              <div class="subj-item-detail">Edexcel · Cambridge (CIE) · AQA</div>
+            </div>
+            <div class="subj-item" onclick="event.stopPropagation();showCourseDetail('physics-ib')">
+              <div class="subj-item-tag">IB Diploma</div>
+              <div class="subj-item-name">IB Physics</div>
+              <div class="subj-item-detail">Higher Level · Standard Level</div>
+            </div>
+            <div class="subj-item" onclick="event.stopPropagation();showCourseDetail('physics-us')">
+              <div class="subj-item-tag">US Preparation</div>
+              <div class="subj-item-name">SAT · ACT · AP Physics</div>
+              <div class="subj-item-detail">AP Physics 1 · AP Physics 2 · AP Physics C</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chemistry -->
+      <div class="subj-tile" onclick="toggleSubj(this)">
+        <div class="subj-header">
+          <div class="subj-header-left">
+            <div class="subj-num">03</div>
+            <h3>Chemistry<span>A-Level · IGCSE · IB · SAT · ACT · AP</span></h3>
+          </div>
+          <div class="subj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke-width="1.2"/></svg></div>
+        </div>
+        <div class="subj-body">
+          <div class="subj-grid">
+            <div class="subj-item" onclick="event.stopPropagation();showCourseDetail('chem-alevel')">
+              <div class="subj-item-tag">A-Level</div>
+              <div class="subj-item-name">Chemistry A-Level</div>
+              <div class="subj-item-detail">Edexcel · AQA · OCR · Pearson IAL · CIE</div>
+            </div>
+            <div class="subj-item" onclick="event.stopPropagation();showCourseDetail('chem-igcse')">
+              <div class="subj-item-tag">IGCSE</div>
+              <div class="subj-item-name">Chemistry IGCSE</div>
+              <div class="subj-item-detail">Edexcel · Cambridge (CIE) · AQA</div>
+            </div>
+            <div class="subj-item" onclick="event.stopPropagation();showCourseDetail('chem-ib')">
+              <div class="subj-item-tag">IB Diploma</div>
+              <div class="subj-item-name">IB Chemistry</div>
+              <div class="subj-item-detail">Higher Level · Standard Level</div>
+            </div>
+            <div class="subj-item" onclick="event.stopPropagation();showCourseDetail('chem-us')">
+              <div class="subj-item-tag">US Preparation</div>
+              <div class="subj-item-name">SAT · ACT · AP Chemistry</div>
+              <div class="subj-item-detail">AP Chemistry</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Postgraduate -->
+      <div class="subj-tile" onclick="toggleSubj(this)">
+        <div class="subj-header">
+          <div class="subj-header-left">
+            <div class="subj-num">04</div>
+            <h3>Postgraduate<span>GMAT · GRE</span></h3>
+          </div>
+          <div class="subj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke-width="1.2"/></svg></div>
+        </div>
+        <div class="subj-body">
+          <div class="subj-grid">
+            <div class="subj-item" onclick="event.stopPropagation();showCourseDetail('gmat')">
+              <div class="subj-item-tag">Graduate Admissions</div>
+              <div class="subj-item-name">GMAT</div>
+              <div class="subj-item-detail">Quantitative · Verbal · Integrated Reasoning · AWA</div>
+            </div>
+            <div class="subj-item" onclick="event.stopPropagation();showCourseDetail('gre')">
+              <div class="subj-item-tag">Graduate Admissions</div>
+              <div class="subj-item-name">GRE</div>
+              <div class="subj-item-detail">Quantitative · Verbal · Analytical Writing</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Medical & Law -->
+      <div class="subj-tile" onclick="toggleSubj(this)">
+        <div class="subj-header">
+          <div class="subj-header-left">
+            <div class="subj-num">05</div>
+            <h3>Medical &amp; Law<span>UCAT · LNAT</span></h3>
+          </div>
+          <div class="subj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke-width="1.2"/></svg></div>
+        </div>
+        <div class="subj-body">
+          <div class="subj-grid">
+            <div class="subj-item" onclick="event.stopPropagation();showCourseDetail('ucat')">
+              <div class="subj-item-tag">Medical Admissions</div>
+              <div class="subj-item-name">UCAT</div>
+              <div class="subj-item-detail">Verbal Reasoning · Decision Making · Quantitative · Abstract · Situational Judgement</div>
+            </div>
+            <div class="subj-item" onclick="event.stopPropagation();showCourseDetail('lnat')">
+              <div class="subj-item-tag">Law Admissions</div>
+              <div class="subj-item-name">LNAT</div>
+              <div class="subj-item-detail">Comprehension · Essay</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Language -->
+      <div class="subj-tile" onclick="toggleSubj(this)">
+        <div class="subj-header">
+          <div class="subj-header-left">
+            <div class="subj-num">06</div>
+            <h3>Language Proficiency<span>IELTS · TOEFL</span></h3>
+          </div>
+          <div class="subj-arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke-width="1.2"/></svg></div>
+        </div>
+        <div class="subj-body">
+          <div class="subj-grid">
+            <div class="subj-item" onclick="event.stopPropagation();showCourseDetail('ielts')">
+              <div class="subj-item-tag">English Proficiency</div>
+              <div class="subj-item-name">IELTS</div>
+              <div class="subj-item-detail">Academic · General Training · Listening · Reading · Writing · Speaking</div>
+            </div>
+            <div class="subj-item" onclick="event.stopPropagation();showCourseDetail('toefl')">
+              <div class="subj-item-tag">English Proficiency</div>
+              <div class="subj-item-name">TOEFL</div>
+              <div class="subj-item-detail">iBT · Reading · Listening · Speaking · Writing</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resources section -->
+      <div style="margin-top:clamp(4rem,8vw,7rem)">
       <div class="section-label"><span>Free Resources</span></div>
       <div class="resources-grid">
         <a class="resource-card" href="https://agftutoring.github.io/Chemistry-Unit-1" target="_blank">
@@ -778,8 +1071,383 @@ footer{
           <div class="resource-arrow">Coming soon</div>
         </div>
       </div>
+      </div>
     </div>
   </section>
+  </div>
+
+  <!-- Course detail views (shown when clicking a subject item) -->
+  <div id="courses-detail" style="display:none">
+
+    <!-- Maths A-Level detail -->
+    <div class="course-detail" id="detail-maths-alevel">
+      <div class="course-detail-inner">
+        <button class="course-back" onclick="backToCourses()">← Back to subjects</button>
+        <div class="section-label"><span>Mathematics</span></div>
+        <h2>A-Level <em>Mathematics</em></h2>
+        <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;margin-bottom:1rem;max-width:700px">Comprehensive preparation across all major examination boards. Diagnostic-led tutoring covering pure mathematics, statistics, mechanics, and decision mathematics — tailored to the specific requirements of each board.</p>
+        <h4 style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">Examination Boards</h4>
+        <div class="course-boards-grid">
+          <div class="board-card" onclick="window.open('https://qualifications.pearson.com/en/qualifications/edexcel-a-levels/mathematics-2017.html','_blank')"><div class="board-card-name">Edexcel</div><div class="board-card-desc">Pearson UK A-Level</div></div>
+          <div class="board-card" onclick="window.open('https://www.aqa.org.uk/subjects/mathematics/as-and-a-level/mathematics-7357','_blank')"><div class="board-card-name">AQA</div><div class="board-card-desc">AQA A-Level 7357</div></div>
+          <div class="board-card" onclick="window.open('https://www.ocr.org.uk/qualifications/as-and-a-level/mathematics-a-h230-h240-from-2017/','_blank')"><div class="board-card-name">OCR</div><div class="board-card-desc">OCR A-Level H240</div></div>
+          <div class="board-card" onclick="window.open('https://qualifications.pearson.com/en/qualifications/edexcel-international-advanced-levels/mathematics-2018.html','_blank')"><div class="board-card-name">Pearson IAL</div><div class="board-card-desc">International A-Level</div></div>
+          <div class="board-card" onclick="window.open('https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-mathematics-9709/','_blank')"><div class="board-card-name">Cambridge (CIE)</div><div class="board-card-desc">9709 International</div></div>
+        </div>
+        <div class="course-video-placeholder"><span>Video introduction — coming soon</span></div>
+        <div class="course-ai-cta">
+          <p><strong>Try the AGF AI Companion</strong><br>Practise A-Level Mathematics questions with instant diagnostic feedback — powered by 30 years of teaching insight.</p>
+          <button class="btn-primary" onclick="showPage('companion')">Try AI Companion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Maths Further detail -->
+    <div class="course-detail" id="detail-maths-fm-alevel">
+      <div class="course-detail-inner">
+        <button class="course-back" onclick="backToCourses()">← Back to subjects</button>
+        <div class="section-label"><span>Mathematics</span></div>
+        <h2>Further <em>Mathematics</em></h2>
+        <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;margin-bottom:1rem;max-width:700px">Advanced preparation for Further Mathematics covering complex numbers, matrices, further calculus, further mechanics, and further statistics.</p>
+        <h4 style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">Examination Boards</h4>
+        <div class="course-boards-grid">
+          <div class="board-card"><div class="board-card-name">Edexcel</div><div class="board-card-desc">Pearson UK A-Level</div></div>
+          <div class="board-card"><div class="board-card-name">AQA</div><div class="board-card-desc">AQA A-Level 7367</div></div>
+          <div class="board-card"><div class="board-card-name">OCR</div><div class="board-card-desc">OCR A-Level H245</div></div>
+          <div class="board-card"><div class="board-card-name">Pearson IAL</div><div class="board-card-desc">International A-Level</div></div>
+        </div>
+        <div class="course-video-placeholder"><span>Video introduction — coming soon</span></div>
+        <div class="course-ai-cta">
+          <p><strong>Try the AGF AI Companion</strong><br>Practise Further Mathematics questions with instant diagnostic feedback.</p>
+          <button class="btn-primary" onclick="showPage('companion')">Try AI Companion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Maths IGCSE -->
+    <div class="course-detail" id="detail-maths-igcse">
+      <div class="course-detail-inner">
+        <button class="course-back" onclick="backToCourses()">← Back to subjects</button>
+        <div class="section-label"><span>Mathematics</span></div>
+        <h2>IGCSE <em>Mathematics</em></h2>
+        <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;margin-bottom:1rem;max-width:700px">Structured preparation for IGCSE Mathematics across all tiers and examination boards — building the foundations for A-Level and IB success.</p>
+        <h4 style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">Examination Boards</h4>
+        <div class="course-boards-grid">
+          <div class="board-card"><div class="board-card-name">Edexcel</div><div class="board-card-desc">Pearson International GCSE</div></div>
+          <div class="board-card"><div class="board-card-name">Cambridge (CIE)</div><div class="board-card-desc">0580 / 0607</div></div>
+          <div class="board-card"><div class="board-card-name">AQA</div><div class="board-card-desc">International GCSE</div></div>
+        </div>
+        <div class="course-video-placeholder"><span>Video introduction — coming soon</span></div>
+        <div class="course-ai-cta">
+          <p><strong>Try the AGF AI Companion</strong><br>Practise IGCSE Mathematics with instant diagnostic feedback.</p>
+          <button class="btn-primary" onclick="showPage('companion')">Try AI Companion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Maths IB -->
+    <div class="course-detail" id="detail-maths-ib">
+      <div class="course-detail-inner">
+        <button class="course-back" onclick="backToCourses()">← Back to subjects</button>
+        <div class="section-label"><span>Mathematics</span></div>
+        <h2>IB <em>Mathematics</em></h2>
+        <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;margin-bottom:1rem;max-width:700px">Expert preparation for IB Mathematics — both Analysis &amp; Approaches and Applications &amp; Interpretation at Higher and Standard Level.</p>
+        <h4 style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">Pathways</h4>
+        <div class="course-boards-grid">
+          <div class="board-card"><div class="board-card-name">Analysis &amp; Approaches HL</div><div class="board-card-desc">For mathematics-intensive degrees</div></div>
+          <div class="board-card"><div class="board-card-name">Analysis &amp; Approaches SL</div><div class="board-card-desc">Standard Level</div></div>
+          <div class="board-card"><div class="board-card-name">Applications &amp; Interpretation HL</div><div class="board-card-desc">For applied &amp; data science</div></div>
+          <div class="board-card"><div class="board-card-name">Applications &amp; Interpretation SL</div><div class="board-card-desc">Standard Level</div></div>
+        </div>
+        <div class="course-video-placeholder"><span>Video introduction — coming soon</span></div>
+        <div class="course-ai-cta">
+          <p><strong>Try the AGF AI Companion</strong><br>Practise IB Mathematics questions with instant diagnostic feedback.</p>
+          <button class="btn-primary" onclick="showPage('companion')">Try AI Companion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Maths US -->
+    <div class="course-detail" id="detail-maths-us">
+      <div class="course-detail-inner">
+        <button class="course-back" onclick="backToCourses()">← Back to subjects</button>
+        <div class="section-label"><span>Mathematics</span></div>
+        <h2>US University <em>Preparation</em></h2>
+        <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;margin-bottom:1rem;max-width:700px">Targeted preparation for US standardised tests in mathematics — SAT Math, ACT Math, AP Calculus AB/BC, and AP Statistics.</p>
+        <h4 style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">Examinations</h4>
+        <div class="course-boards-grid">
+          <div class="board-card"><div class="board-card-name">SAT Mathematics</div><div class="board-card-desc">College Board Digital SAT</div></div>
+          <div class="board-card"><div class="board-card-name">ACT Mathematics</div><div class="board-card-desc">ACT Inc.</div></div>
+          <div class="board-card"><div class="board-card-name">AP Calculus AB / BC</div><div class="board-card-desc">College Board Advanced Placement</div></div>
+          <div class="board-card"><div class="board-card-name">AP Statistics</div><div class="board-card-desc">College Board Advanced Placement</div></div>
+        </div>
+        <div class="course-video-placeholder"><span>Video introduction — coming soon</span></div>
+        <div class="course-ai-cta">
+          <p><strong>Try the AGF AI Companion</strong><br>Practise SAT, ACT and AP Mathematics with instant diagnostic feedback.</p>
+          <button class="btn-primary" onclick="showPage('companion')">Try AI Companion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Physics A-Level -->
+    <div class="course-detail" id="detail-physics-alevel">
+      <div class="course-detail-inner">
+        <button class="course-back" onclick="backToCourses()">← Back to subjects</button>
+        <div class="section-label"><span>Physics</span></div>
+        <h2>A-Level <em>Physics</em></h2>
+        <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;margin-bottom:1rem;max-width:700px">Diagnostic-led preparation for Physics A-Level covering mechanics, materials, waves, electricity, fields, nuclear physics, and astrophysics.</p>
+        <h4 style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">Examination Boards</h4>
+        <div class="course-boards-grid">
+          <div class="board-card"><div class="board-card-name">Edexcel</div><div class="board-card-desc">Pearson UK A-Level</div></div>
+          <div class="board-card"><div class="board-card-name">AQA</div><div class="board-card-desc">AQA A-Level 7408</div></div>
+          <div class="board-card"><div class="board-card-name">OCR</div><div class="board-card-desc">OCR A-Level H556</div></div>
+          <div class="board-card"><div class="board-card-name">Pearson IAL</div><div class="board-card-desc">International A-Level</div></div>
+          <div class="board-card"><div class="board-card-name">Cambridge (CIE)</div><div class="board-card-desc">9702 International</div></div>
+        </div>
+        <div class="course-video-placeholder"><span>Video introduction — coming soon</span></div>
+        <div class="course-ai-cta">
+          <p><strong>Try the AGF AI Companion</strong><br>Practise A-Level Physics questions with instant diagnostic feedback.</p>
+          <button class="btn-primary" onclick="showPage('companion')">Try AI Companion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Physics IGCSE -->
+    <div class="course-detail" id="detail-physics-igcse">
+      <div class="course-detail-inner">
+        <button class="course-back" onclick="backToCourses()">← Back to subjects</button>
+        <div class="section-label"><span>Physics</span></div>
+        <h2>IGCSE <em>Physics</em></h2>
+        <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;margin-bottom:1rem;max-width:700px">Structured preparation for IGCSE Physics across all tiers and boards.</p>
+        <h4 style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">Examination Boards</h4>
+        <div class="course-boards-grid">
+          <div class="board-card"><div class="board-card-name">Edexcel</div><div class="board-card-desc">Pearson International GCSE</div></div>
+          <div class="board-card"><div class="board-card-name">Cambridge (CIE)</div><div class="board-card-desc">0625 / 0972</div></div>
+          <div class="board-card"><div class="board-card-name">AQA</div><div class="board-card-desc">International GCSE</div></div>
+        </div>
+        <div class="course-video-placeholder"><span>Video introduction — coming soon</span></div>
+        <div class="course-ai-cta">
+          <p><strong>Try the AGF AI Companion</strong><br>Practise IGCSE Physics with instant diagnostic feedback.</p>
+          <button class="btn-primary" onclick="showPage('companion')">Try AI Companion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Physics IB -->
+    <div class="course-detail" id="detail-physics-ib">
+      <div class="course-detail-inner">
+        <button class="course-back" onclick="backToCourses()">← Back to subjects</button>
+        <div class="section-label"><span>Physics</span></div>
+        <h2>IB <em>Physics</em></h2>
+        <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;margin-bottom:1rem;max-width:700px">Expert preparation for IB Physics at Higher and Standard Level.</p>
+        <h4 style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">Pathways</h4>
+        <div class="course-boards-grid">
+          <div class="board-card"><div class="board-card-name">IB Physics HL</div><div class="board-card-desc">Higher Level</div></div>
+          <div class="board-card"><div class="board-card-name">IB Physics SL</div><div class="board-card-desc">Standard Level</div></div>
+        </div>
+        <div class="course-video-placeholder"><span>Video introduction — coming soon</span></div>
+        <div class="course-ai-cta">
+          <p><strong>Try the AGF AI Companion</strong><br>Practise IB Physics with instant diagnostic feedback.</p>
+          <button class="btn-primary" onclick="showPage('companion')">Try AI Companion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Physics US -->
+    <div class="course-detail" id="detail-physics-us">
+      <div class="course-detail-inner">
+        <button class="course-back" onclick="backToCourses()">← Back to subjects</button>
+        <div class="section-label"><span>Physics</span></div>
+        <h2>US University <em>Preparation</em></h2>
+        <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;margin-bottom:1rem;max-width:700px">Targeted preparation for AP Physics — covering algebra-based and calculus-based pathways.</p>
+        <h4 style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">Examinations</h4>
+        <div class="course-boards-grid">
+          <div class="board-card"><div class="board-card-name">AP Physics 1</div><div class="board-card-desc">Algebra-based mechanics</div></div>
+          <div class="board-card"><div class="board-card-name">AP Physics 2</div><div class="board-card-desc">Algebra-based E&amp;M, optics, modern</div></div>
+          <div class="board-card"><div class="board-card-name">AP Physics C</div><div class="board-card-desc">Calculus-based mechanics &amp; E&amp;M</div></div>
+        </div>
+        <div class="course-video-placeholder"><span>Video introduction — coming soon</span></div>
+        <div class="course-ai-cta">
+          <p><strong>Try the AGF AI Companion</strong><br>Practise AP Physics with instant diagnostic feedback.</p>
+          <button class="btn-primary" onclick="showPage('companion')">Try AI Companion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chemistry A-Level -->
+    <div class="course-detail" id="detail-chem-alevel">
+      <div class="course-detail-inner">
+        <button class="course-back" onclick="backToCourses()">← Back to subjects</button>
+        <div class="section-label"><span>Chemistry</span></div>
+        <h2>A-Level <em>Chemistry</em></h2>
+        <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;margin-bottom:1rem;max-width:700px">In-depth preparation covering physical, inorganic, and organic chemistry — with Alastair's diagnostic approach to identifying and resolving conceptual gaps.</p>
+        <h4 style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">Examination Boards</h4>
+        <div class="course-boards-grid">
+          <div class="board-card"><div class="board-card-name">Edexcel</div><div class="board-card-desc">Pearson UK A-Level</div></div>
+          <div class="board-card"><div class="board-card-name">AQA</div><div class="board-card-desc">AQA A-Level 7405</div></div>
+          <div class="board-card"><div class="board-card-name">OCR</div><div class="board-card-desc">OCR A-Level H432</div></div>
+          <div class="board-card"><div class="board-card-name">Pearson IAL</div><div class="board-card-desc">International A-Level</div></div>
+          <div class="board-card"><div class="board-card-name">Cambridge (CIE)</div><div class="board-card-desc">9701 International</div></div>
+        </div>
+        <div class="course-video-placeholder"><span>Video introduction — coming soon</span></div>
+        <div class="course-ai-cta">
+          <p><strong>Try the AGF AI Companion</strong><br>Practise A-Level Chemistry questions with instant diagnostic feedback — powered by 30 years of teaching insight.</p>
+          <button class="btn-primary" onclick="showPage('companion')">Try AI Companion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chemistry IGCSE -->
+    <div class="course-detail" id="detail-chem-igcse">
+      <div class="course-detail-inner">
+        <button class="course-back" onclick="backToCourses()">← Back to subjects</button>
+        <div class="section-label"><span>Chemistry</span></div>
+        <h2>IGCSE <em>Chemistry</em></h2>
+        <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;margin-bottom:1rem;max-width:700px">Structured preparation for IGCSE Chemistry across all tiers and boards.</p>
+        <h4 style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">Examination Boards</h4>
+        <div class="course-boards-grid">
+          <div class="board-card"><div class="board-card-name">Edexcel</div><div class="board-card-desc">Pearson International GCSE</div></div>
+          <div class="board-card"><div class="board-card-name">Cambridge (CIE)</div><div class="board-card-desc">0620 / 0971</div></div>
+          <div class="board-card"><div class="board-card-name">AQA</div><div class="board-card-desc">International GCSE</div></div>
+        </div>
+        <div class="course-video-placeholder"><span>Video introduction — coming soon</span></div>
+        <div class="course-ai-cta">
+          <p><strong>Try the AGF AI Companion</strong><br>Practise IGCSE Chemistry with instant diagnostic feedback.</p>
+          <button class="btn-primary" onclick="showPage('companion')">Try AI Companion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chemistry IB -->
+    <div class="course-detail" id="detail-chem-ib">
+      <div class="course-detail-inner">
+        <button class="course-back" onclick="backToCourses()">← Back to subjects</button>
+        <div class="section-label"><span>Chemistry</span></div>
+        <h2>IB <em>Chemistry</em></h2>
+        <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;margin-bottom:1rem;max-width:700px">Expert preparation for IB Chemistry at Higher and Standard Level.</p>
+        <h4 style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">Pathways</h4>
+        <div class="course-boards-grid">
+          <div class="board-card"><div class="board-card-name">IB Chemistry HL</div><div class="board-card-desc">Higher Level</div></div>
+          <div class="board-card"><div class="board-card-name">IB Chemistry SL</div><div class="board-card-desc">Standard Level</div></div>
+        </div>
+        <div class="course-video-placeholder"><span>Video introduction — coming soon</span></div>
+        <div class="course-ai-cta">
+          <p><strong>Try the AGF AI Companion</strong><br>Practise IB Chemistry with instant diagnostic feedback.</p>
+          <button class="btn-primary" onclick="showPage('companion')">Try AI Companion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chemistry US -->
+    <div class="course-detail" id="detail-chem-us">
+      <div class="course-detail-inner">
+        <button class="course-back" onclick="backToCourses()">← Back to subjects</button>
+        <div class="section-label"><span>Chemistry</span></div>
+        <h2>US University <em>Preparation</em></h2>
+        <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;margin-bottom:1rem;max-width:700px">Targeted preparation for AP Chemistry.</p>
+        <h4 style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">Examinations</h4>
+        <div class="course-boards-grid">
+          <div class="board-card"><div class="board-card-name">AP Chemistry</div><div class="board-card-desc">College Board Advanced Placement</div></div>
+        </div>
+        <div class="course-video-placeholder"><span>Video introduction — coming soon</span></div>
+        <div class="course-ai-cta">
+          <p><strong>Try the AGF AI Companion</strong><br>Practise AP Chemistry with instant diagnostic feedback.</p>
+          <button class="btn-primary" onclick="showPage('companion')">Try AI Companion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- GMAT -->
+    <div class="course-detail" id="detail-gmat">
+      <div class="course-detail-inner">
+        <button class="course-back" onclick="backToCourses()">← Back to subjects</button>
+        <div class="section-label"><span>Postgraduate</span></div>
+        <h2><em>GMAT</em> Preparation</h2>
+        <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;margin-bottom:1rem;max-width:700px">Strategic preparation for the Graduate Management Admission Test — covering quantitative reasoning, verbal reasoning, integrated reasoning, and analytical writing.</p>
+        <div class="course-video-placeholder"><span>Video introduction — coming soon</span></div>
+        <div class="course-ai-cta">
+          <p><strong>Try the AGF AI Companion</strong><br>Practise GMAT questions with instant diagnostic feedback.</p>
+          <button class="btn-primary" onclick="showPage('companion')">Try AI Companion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRE -->
+    <div class="course-detail" id="detail-gre">
+      <div class="course-detail-inner">
+        <button class="course-back" onclick="backToCourses()">← Back to subjects</button>
+        <div class="section-label"><span>Postgraduate</span></div>
+        <h2><em>GRE</em> Preparation</h2>
+        <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;margin-bottom:1rem;max-width:700px">Comprehensive preparation for the Graduate Record Examination — quantitative reasoning, verbal reasoning, and analytical writing.</p>
+        <div class="course-video-placeholder"><span>Video introduction — coming soon</span></div>
+        <div class="course-ai-cta">
+          <p><strong>Try the AGF AI Companion</strong><br>Practise GRE questions with instant diagnostic feedback.</p>
+          <button class="btn-primary" onclick="showPage('companion')">Try AI Companion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- UCAT -->
+    <div class="course-detail" id="detail-ucat">
+      <div class="course-detail-inner">
+        <button class="course-back" onclick="backToCourses()">← Back to subjects</button>
+        <div class="section-label"><span>Medical Admissions</span></div>
+        <h2><em>UCAT</em> Preparation</h2>
+        <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;margin-bottom:1rem;max-width:700px">Targeted preparation across all five UCAT subtests — verbal reasoning, decision making, quantitative reasoning, abstract reasoning, and situational judgement.</p>
+        <div class="course-video-placeholder"><span>Video introduction — coming soon</span></div>
+        <div class="course-ai-cta">
+          <p><strong>Try the AGF AI Companion</strong><br>Practise UCAT questions with instant diagnostic feedback.</p>
+          <button class="btn-primary" onclick="showPage('companion')">Try AI Companion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LNAT -->
+    <div class="course-detail" id="detail-lnat">
+      <div class="course-detail-inner">
+        <button class="course-back" onclick="backToCourses()">← Back to subjects</button>
+        <div class="section-label"><span>Law Admissions</span></div>
+        <h2><em>LNAT</em> Preparation</h2>
+        <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;margin-bottom:1rem;max-width:700px">Preparation for the Law National Aptitude Test — comprehension and essay components.</p>
+        <div class="course-video-placeholder"><span>Video introduction — coming soon</span></div>
+        <div class="course-ai-cta">
+          <p><strong>Try the AGF AI Companion</strong><br>Practise LNAT questions with instant diagnostic feedback.</p>
+          <button class="btn-primary" onclick="showPage('companion')">Try AI Companion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- IELTS -->
+    <div class="course-detail" id="detail-ielts">
+      <div class="course-detail-inner">
+        <button class="course-back" onclick="backToCourses()">← Back to subjects</button>
+        <div class="section-label"><span>Language Proficiency</span></div>
+        <h2><em>IELTS</em> Preparation</h2>
+        <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;margin-bottom:1rem;max-width:700px">Preparation for IELTS Academic and General Training — listening, reading, writing, and speaking components.</p>
+        <div class="course-video-placeholder"><span>Video introduction — coming soon</span></div>
+        <div class="course-ai-cta">
+          <p><strong>Try the AGF AI Companion</strong><br>Practise IELTS with instant diagnostic feedback.</p>
+          <button class="btn-primary" onclick="showPage('companion')">Try AI Companion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOEFL -->
+    <div class="course-detail" id="detail-toefl">
+      <div class="course-detail-inner">
+        <button class="course-back" onclick="backToCourses()">← Back to subjects</button>
+        <div class="section-label"><span>Language Proficiency</span></div>
+        <h2><em>TOEFL</em> Preparation</h2>
+        <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;margin-bottom:1rem;max-width:700px">Preparation for the TOEFL iBT — reading, listening, speaking, and writing sections.</p>
+        <div class="course-video-placeholder"><span>Video introduction — coming soon</span></div>
+        <div class="course-ai-cta">
+          <p><strong>Try the AGF AI Companion</strong><br>Practise TOEFL with instant diagnostic feedback.</p>
+          <button class="btn-primary" onclick="showPage('companion')">Try AI Companion</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end courses-detail -->
 </div>
 
 <!-- ══ AI COMPANION ══ -->
@@ -969,7 +1637,7 @@ footer{
     </div>
   </div>
   <div class="footer-bottom">
-    <p>AGF UK Limited · Registered in England &amp; Wales · Company No. 12247821 · © 2026 Alastair Fisher</p>
+    <p>AGF Tutoring UK Limited · Registered in England &amp; Wales · Company No. 12247821 · © 2026 Alastair Fisher</p>
     <p style="color:var(--green)"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5f363139301f3e38392b2a2b302d363138713c30712a34">[email&#160;protected]</a></p>
   </div>
 </footer>
@@ -987,6 +1655,13 @@ function showPage(p){
   for(var i=0;i<pages.length;i++){ pages[i].style.display='none'; }
   var target = document.getElementById('page-'+p);
   if(target){ target.style.display='block'; }
+  // Reset courses to listing view
+  if(p==='courses'){
+    var cl=document.getElementById('courses-listing');
+    var cd=document.getElementById('courses-detail');
+    if(cl) cl.style.display='block';
+    if(cd) cd.style.display='none';
+  }
   currentPage=p;
   window.scrollTo(0,0);
 }
@@ -994,6 +1669,26 @@ function toggleMenu(){document.getElementById('mobile-menu').classList.toggle('o
 window.addEventListener('scroll',function(){
   document.getElementById('main-nav').classList.toggle('scrolled',window.scrollY>40);
 });
+function toggleSubj(el){
+  var wasOpen = el.classList.contains('open');
+  var tiles = document.querySelectorAll('.subj-tile');
+  for(var i=0;i<tiles.length;i++) tiles[i].classList.remove('open');
+  if(!wasOpen) el.classList.add('open');
+}
+function showCourseDetail(id){
+  document.getElementById('courses-listing').style.display='none';
+  document.getElementById('courses-detail').style.display='block';
+  var details = document.querySelectorAll('.course-detail');
+  for(var i=0;i<details.length;i++) details[i].classList.remove('active');
+  var target = document.getElementById('detail-'+id);
+  if(target) target.classList.add('active');
+  window.scrollTo(0,0);
+}
+function backToCourses(){
+  document.getElementById('courses-detail').style.display='none';
+  document.getElementById('courses-listing').style.display='block';
+  window.scrollTo(0,0);
+}
 var replies=[
   "A common misconception here — many students conflate the trend across a period with the trend down a group. Let's work through this from first principles.",
   "Exactly right. Now extend this: how would the answer change for a different pair? Apply the same diagnostic framework — forces present, relative strength, conclusion.",
