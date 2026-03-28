@@ -249,7 +249,7 @@
       align-items: center;
       padding-top: 64px;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .hero-inner {
@@ -275,13 +275,18 @@
     }
 
     @media (max-width: 768px) {
+      .hero {
+        min-height: auto;
+        padding-top: 100px;
+        padding-bottom: 40px;
+      }
       .hero-inner {
         grid-template-columns: 1fr;
         gap: 32px;
       }
       .hero-photo {
-        width: 180px;
-        height: 230px;
+        width: 160px;
+        height: 200px;
         justify-self: center;
         order: -1;
       }
@@ -1656,6 +1661,7 @@
           <a href="https://agftutoring.github.io/Chemistry-Unit-1" target="_blank">Chemistry Unit 1</a>
           <a href="https://agftutoring.github.io/Physics-UNIT-1" target="_blank">Physics Unit 1</a>
           <a href="https://agf-companion.vercel.app" target="_blank">AI Companion</a>
+          <a href="https://github.com/AGFTutoring/agf-companion" target="_blank">GitHub</a>
         </div>
         <div class="footer-col">
           <h4>Legal</h4>
