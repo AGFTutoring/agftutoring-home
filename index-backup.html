@@ -1,0 +1,2007 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AGF Tutoring ÔÇö Alastair Fisher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Outfit',system-ui,sans-serif;
+  --bg:#484848;
+  --bg2:#505050;
+  --bg3:#585858;
+  --cream:#F2EDE4;
+  --cream2:rgba(242,237,228,0.65);
+  --cream3:rgba(242,237,228,0.35);
+  --green:#3A8C65;
+  --green-light:#4DAA7D;
+  --green-dim:rgba(58,140,101,0.12);
+  --green-line:rgba(58,140,101,0.3);
+  --line:rgba(242,237,228,0.1);
+  --line2:rgba(242,237,228,0.18);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--cream);overflow-x:hidden}
+
+/* ÔöÇÔöÇ NAV ÔöÇÔöÇ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:0 clamp(1.5rem,5vw,4rem);
+  transition:background .5s,border-color .5s;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled{background:rgba(68,68,68,0.97);backdrop-filter:blur(12px);border-color:var(--line)}
+.nav-inner{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:76px}
+.nav-logo img{height:42px;width:auto;display:block}
+.nav-links{display:flex;gap:2.5rem;align-items:center}
+.nav-links button{background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:.75rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--cream3);transition:color .2s;padding:0}
+.nav-links button:hover,.nav-links button.active{color:var(--cream)}
+.nav-cta{
+  padding:9px 24px;border:1px solid var(--green-line)!important;
+  color:var(--green)!important;border-radius:1px;
+  transition:background .2s!important,color .2s!important;
+}
+.nav-cta:hover{background:var(--green-dim)!important;color:var(--green-light)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:22px;height:1px;background:var(--cream);transition:all .3s}
+.mobile-menu{display:none;position:fixed;top:76px;left:0;right:0;background:rgba(40,40,40,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);padding:1.5rem 2rem;z-index:190}
+.mobile-menu.open{display:block}
+.mobile-menu button{display:block;width:100%;text-align:left;background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--cream2);padding:.85rem 0;border-bottom:1px solid var(--line);transition:color .2s}
+.mobile-menu button:last-child{border-bottom:none}
+.mobile-menu button:hover{color:var(--green)}
+
+/* ÔöÇÔöÇ PAGES ÔöÇÔöÇ */
+.page{min-height:100vh}
+
+
+/* ÔöÇÔöÇ HERO ÔöÇÔöÇ */
+#hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  position:relative;
+  overflow:hidden;
+}
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:140px clamp(2rem,5vw,5rem) 160px clamp(1.5rem,6vw,6rem);
+  position:relative;z-index:2;
+} 
+.hero-right{
+  position:relative;overflow:hidden;
+}
+.hero-right::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:120px;
+  background:linear-gradient(to right, var(--bg), transparent);
+  z-index:2;
+}
+.hero-right img{width:620px;height:620px;object-fit:cover;object-position:center 20%;border-radius:50%;display:block;opacity:0.92;-webkit-mask-image:radial-gradient(ellipse 65% 65% at 50% 50%, black 35%, transparent 68%);mask-image:radial-gradient(ellipse 65% 65% at 50% 50%, black 35%, transparent 68%);filter:grayscale(100%) contrast(0.9) brightness(1.05);}
+
+/* Big watermark number */
+.hero-watermark{
+  position:absolute;
+  right:-20px;bottom:-40px;
+  font-family:var(--serif);
+  font-size:clamp(160px,20vw,280px);
+  font-weight:300;
+  color:rgba(58,140,101,0.04);
+  line-height:1;
+  pointer-events:none;
+  user-select:none;
+  z-index:1;
+}
+
+.hero-eyebrow{
+  display:flex;align-items:center;gap:1rem;margin-bottom:2rem;
+}
+.hero-eyebrow-line{width:40px;height:1px;background:var(--green)}
+.hero-eyebrow span{
+  font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--green);font-family:var(--sans);font-weight:500;
+}
+
+.hero-h1{
+  font-family:var(--serif);
+  font-size:clamp(3.2rem,6vw,5.5rem);
+  font-weight:300;
+  line-height:1.08;
+  letter-spacing:-.02em;
+  color:var(--cream);
+  margin-bottom:2rem;
+}
+.hero-h1 em{font-style:italic;color:var(--green)}
+.hero-h1 strong{font-weight:500}
+
+.hero-rule{width:48px;height:2px;background:var(--green);margin-bottom:2rem}
+
+.hero-lead{
+  font-family:var(--serif);
+  font-size:1.2rem;
+  line-height:1.8;
+  color:var(--cream2);
+  max-width:500px;
+  margin-bottom:3rem;
+}
+
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.btn-primary{
+  padding:14px 36px;
+  background:var(--green);
+  border:1px solid var(--green);
+  border-radius:1px;
+  font-family:var(--sans);font-size:.78rem;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:#fff;cursor:pointer;
+  transition:background .2s,transform .15s;
+  text-decoration:none;display:inline-block;
+}
+.btn-primary:hover{background:var(--green-light);transform:translateY(-1px)}
+.btn-secondary{
+  padding:14px 36px;
+  background:none;
+  border:1px solid var(--line2);
+  border-radius:1px;
+  font-family:var(--sans);font-size:.78rem;font-weight:400;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:var(--cream2);cursor:pointer;
+  transition:border-color .2s,color .2s,transform .15s;
+}
+.btn-secondary:hover{border-color:var(--green-line);color:var(--cream);transform:translateY(-1px)}
+
+/* Hero bottom credentials */
+.hero-credentials{
+  position:absolute;bottom:3rem;left:clamp(1.5rem,6vw,6rem);
+  display:flex;gap:3rem;z-index:2;
+}
+.hero-cred{border-left:2px solid var(--green);padding-left:1rem}
+.hero-cred-num{font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--cream);line-height:1}
+.hero-cred-label{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream3);margin-top:.3rem}
+
+/* ÔöÇÔöÇ TICKER ÔöÇÔöÇ */
+.ticker{
+  background:var(--bg2);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:.9rem 0;overflow:hidden;
+}
+.ticker-track{display:flex;gap:0;animation:ticker 40s linear infinite;white-space:nowrap}
+.ticker-item{
+  display:inline-flex;align-items:center;gap:2.5rem;
+  padding:0 2.5rem;
+  font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cream3);
+}
+.ticker-item::after{content:'';width:4px;height:4px;border-radius:50%;background:var(--green);opacity:.6;flex-shrink:0}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ÔöÇÔöÇ SECTION BASE ÔöÇÔöÇ */
+.section{padding:clamp(5rem,10vw,9rem) clamp(1.5rem,5vw,4rem)}
+.inner{max-width:1200px;margin:0 auto}
+.section-label{
+  display:flex;align-items:center;gap:1rem;margin-bottom:3rem;
+}
+.section-label::before{content:'';width:32px;height:1px;background:var(--green)}
+.section-label span{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:500}
+
+/* ÔöÇÔöÇ QUOTE SECTION ÔöÇÔöÇ */
+.quote-section{
+  background:var(--bg2);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem);
+}
+.quote-inner{max-width:900px;margin:0 auto;text-align:center}
+.quote-mark{font-family:var(--serif);font-size:6rem;color:var(--green);opacity:.3;line-height:.5;display:block;margin-bottom:1.5rem}
+.quote-text{
+  font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);
+  font-weight:300;font-style:italic;
+  color:var(--cream);line-height:1.5;margin-bottom:2rem;
+}
+.quote-text em{color:var(--green);font-style:normal}
+.quote-attr{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream3)}
+
+/* ÔöÇÔöÇ SERVICES ÔöÇÔöÇ */
+.services-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--line);border:1px solid var(--line);
+}
+.service-card{
+  background:var(--bg);padding:2.5rem 2rem;
+  transition:background .25s;position:relative;overflow:hidden;
+}
+.service-card::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--green);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s ease;
+}
+.service-card:hover{background:var(--bg2)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-num{
+  font-family:var(--serif);font-size:3.5rem;font-weight:400;
+  color:var(--green-light);line-height:1;
+  margin-bottom:1.25rem;
+  opacity:0.85;
+}
+.service-card h3{
+  font-family:var(--serif);font-size:1.35rem;font-weight:400;
+  color:var(--cream);margin-bottom:.75rem;line-height:1.3;
+}
+.service-card p{font-size:.88rem;color:var(--cream2);line-height:1.7}
+
+/* ÔöÇÔöÇ STATS ÔöÇÔöÇ */
+.stats-section{padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem)}
+.stats-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;border:1px solid var(--line);
+}
+.stat-item{
+  padding:3rem 2rem;text-align:center;
+  border-right:1px solid var(--line);
+  position:relative;
+}
+.stat-item:last-child{border-right:none}
+.stat-num{
+  font-family:var(--serif);font-size:clamp(2.8rem,4vw,4rem);
+  font-weight:300;color:var(--cream);line-height:1;
+  margin-bottom:.5rem;
+}
+.stat-num span{color:var(--green)}
+.stat-label{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream3)}
+
+/* ÔöÇÔöÇ ABOUT STRIP ÔöÇÔöÇ */
+.about-strip{
+  background:var(--bg2);
+  border-top:1px solid var(--line);
+  padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem);
+}
+.about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:380px 1fr;gap:5rem;align-items:center}
+.about-photo-wrap{position:relative}
+.about-photo-wrap img{width:100%;display:block;filter:grayscale(100%) contrast(0.9) brightness(1.05)}
+.about-photo-line-h{position:absolute;top:-16px;left:-16px;right:16px;height:1px;background:var(--green);opacity:.5}
+.about-photo-line-v{position:absolute;top:-16px;left:-16px;bottom:16px;width:1px;background:var(--green);opacity:.5}
+.about-photo-line-h2{position:absolute;bottom:-16px;right:-16px;left:16px;height:1px;background:var(--green);opacity:.5}
+.about-photo-line-v2{position:absolute;bottom:-16px;right:-16px;top:16px;width:1px;background:var(--green);opacity:.5}
+.about-text{}
+.about-text h2{
+  font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);
+  font-weight:300;line-height:1.2;color:var(--cream);margin-bottom:1.5rem;
+}
+.about-text h2 em{font-style:italic;color:var(--green)}
+.about-body{font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.25rem}
+.about-creds{margin-top:2.5rem;display:flex;flex-direction:column;gap:.6rem}
+.about-cred{display:flex;align-items:center;gap:.85rem;font-size:.85rem;color:var(--cream2)}
+.about-cred::before{content:'';width:16px;height:1px;background:var(--green);flex-shrink:0}
+
+/* ÔöÇÔöÇ UNIS ÔöÇÔöÇ */
+.unis-section{padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem)}
+.unis-inner{max-width:1200px;margin:0 auto}
+.unis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3rem;margin-top:3rem}
+.uni-col h4{
+  font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--green);padding-bottom:.85rem;margin-bottom:1.25rem;
+  border-bottom:1px solid var(--green-line);
+}
+.uni-list{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.uni-list li{
+  font-family:var(--serif);font-size:1rem;color:var(--cream2);
+  padding-left:1.1rem;position:relative;transition:color .2s;
+}
+.uni-list li::before{
+  content:'';position:absolute;left:0;top:.6em;
+  width:5px;height:1px;background:var(--green);
+}
+.uni-list li:hover{color:var(--cream)}
+
+/* ÔöÇÔöÇ RESOURCES ÔöÇÔöÇ */
+.resources-section{
+  background:var(--bg2);border-top:1px solid var(--line);
+  padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem);
+}
+.resources-inner{max-width:1200px;margin:0 auto}
+.resources-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:3rem}
+.resource-card{
+  background:var(--bg2);padding:2.5rem 2rem;
+  text-decoration:none;display:block;
+  transition:background .2s;position:relative;
+}
+.resource-card:hover{background:var(--bg3)}
+.resource-tag{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.85rem}
+.resource-card h3{font-family:var(--serif);font-size:1.3rem;font-weight:400;color:var(--cream);margin-bottom:.75rem;line-height:1.35}
+.resource-card p{font-size:.85rem;color:var(--cream2);line-height:1.65;margin-bottom:1.5rem}
+.resource-arrow{
+  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--green);display:flex;align-items:center;gap:.5rem;
+}
+.resource-arrow::after{content:'ÔåÆ';transition:transform .2s}
+.resource-card:hover .resource-arrow::after{transform:translateX(4px)}
+.resource-dim{opacity:.45;pointer-events:none}
+
+/* ÔöÇÔöÇ CONTACT ÔöÇÔöÇ */
+.contact-section{padding:clamp(5rem,10vw,9rem) clamp(1.5rem,5vw,4rem)}
+.contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.contact-left h2{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--cream);margin-bottom:1.5rem;line-height:1.2}
+.contact-left h2 em{font-style:italic;color:var(--green)}
+.contact-left p{font-family:var(--serif);font-size:1.05rem;line-height:1.8;color:var(--cream2);margin-bottom:1.25rem}
+.contact-detail{display:flex;align-items:center;gap:.85rem;font-size:.88rem;color:var(--cream2);margin-bottom:.75rem}
+.contact-detail a{color:var(--green);text-decoration:none;transition:color .2s}
+.contact-detail a:hover{color:var(--green-light)}
+.contact-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
+.contact-note{margin-top:2.5rem;padding:1.5rem 1.75rem;border-left:2px solid var(--green);background:var(--bg2)}
+.contact-note p{font-family:var(--serif);font-size:1rem;line-height:1.7;color:var(--cream2);font-style:italic}
+.form-label{display:block;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream3);margin-bottom:.5rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-field{margin-bottom:1rem}
+.form-field input,.form-field select,.form-field textarea{
+  width:100%;background:var(--bg2);border:1px solid var(--line);
+  border-radius:1px;padding:12px 14px;
+  font-family:var(--sans);font-size:.9rem;color:var(--cream);outline:none;
+  transition:border-color .2s;
+}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--green-line)}
+.form-field textarea{min-height:110px;resize:vertical}
+.form-field select option{background:var(--bg2)}
+
+/* ÔöÇÔöÇ FOOTER ÔöÇÔöÇ */
+footer{
+  background:var(--bg2);
+  border-top:1px solid var(--line);
+  padding:3.5rem clamp(1.5rem,5vw,4rem);
+}
+.footer-inner{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:4rem;
+  padding-bottom:3rem;margin-bottom:2rem;
+  border-bottom:1px solid var(--line);
+}
+.footer-logo img{height:36px;margin-bottom:1rem}
+.footer-desc{font-size:.85rem;color:var(--cream3);line-height:1.7}
+.footer-col h4{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:1.25rem}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.5rem}
+.footer-col button{background:none;border:none;cursor:pointer;font-size:.85rem;color:var(--cream3);padding:0;transition:color .2s;text-align:left}
+.footer-col button:hover{color:var(--cream)}
+.footer-bottom{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:.75rem;color:var(--cream3)}
+
+/* ÔöÇÔöÇ COURSES ACCORDION ÔöÇÔöÇ */
+.subj-accordion{background:var(--bg)}
+.subj-header{
+  width:100%;background:var(--bg);border:none;cursor:pointer;
+  padding:1.75rem 2rem;display:flex;align-items:center;justify-content:space-between;
+  transition:background .2s;
+}
+.subj-header:hover{background:var(--bg2)}
+.subj-arrow{
+  font-family:var(--sans);font-size:1.5rem;font-weight:300;
+  color:var(--green);transition:transform .3s;
+  width:32px;height:32px;display:flex;align-items:center;justify-content:center;
+}
+.subj-accordion.open .subj-arrow{transform:rotate(45deg)}
+.subj-body{
+  max-height:0;overflow:hidden;transition:max-height .4s ease;
+}
+.subj-accordion.open .subj-body{max-height:600px}
+.subj-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+  background:var(--line);margin:0 2rem 2rem;border:1px solid var(--line);
+}
+.subj-tile{
+  background:var(--bg2);padding:1.5rem 1.25rem;cursor:pointer;
+  transition:background .2s;position:relative;
+}
+.subj-tile:hover{background:var(--bg3)}
+.subj-tile::after{
+  content:'ÔåÆ';position:absolute;top:1.5rem;right:1.25rem;
+  color:var(--green);opacity:0;transition:opacity .2s;font-size:.85rem;
+}
+.subj-tile:hover::after{opacity:1}
+.subj-tile-tag{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem}
+.subj-tile-title{font-family:var(--serif);font-size:1.05rem;color:var(--cream);margin-bottom:.3rem}
+.subj-tile-boards{font-size:.78rem;color:var(--cream3);line-height:1.5}
+
+/* ÔöÇÔöÇ DETAIL VIEW ÔöÇÔöÇ */
+.detail-header{margin-bottom:3rem}
+.detail-header h1{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--cream);margin-bottom:.75rem}
+.detail-header p{font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;max-width:640px}
+.board-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:3rem}
+.board-card{
+  background:var(--bg2);padding:1.75rem 1.5rem;transition:background .2s;
+}
+.board-card:hover{background:var(--bg3)}
+.board-card h3{font-family:var(--serif);font-size:1.15rem;color:var(--cream);margin-bottom:.5rem}
+.board-card p{font-size:.85rem;color:var(--cream2);line-height:1.65;margin-bottom:1rem}
+.board-card-link{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--green);text-decoration:none;transition:color .2s}
+.board-card-link:hover{color:var(--green-light)}
+.detail-cta{
+  background:var(--bg2);border:1px solid var(--line);padding:2.5rem;
+  display:flex;align-items:center;justify-content:space-between;gap:2rem;
+  margin-top:3rem;
+}
+.detail-cta p{font-family:var(--serif);font-size:1.1rem;color:var(--cream2);line-height:1.7}
+.detail-cta p em{color:var(--green);font-style:italic}
+
+/* ÔöÇÔöÇ LEGAL PAGES ÔöÇÔöÇ */
+.legal-content{max-width:800px;margin:0 auto}
+.legal-content h1{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--cream);margin-bottom:1rem}
+.legal-content h2{font-family:var(--serif);font-size:1.35rem;font-weight:400;color:var(--cream);margin:2.5rem 0 1rem}
+.legal-content p{font-family:var(--serif);font-size:1rem;line-height:1.85;color:var(--cream2);margin-bottom:1rem}
+.legal-content ul{list-style:none;margin-bottom:1.5rem}
+.legal-content li{font-size:.95rem;color:var(--cream2);line-height:1.8;padding-left:1.2rem;position:relative;margin-bottom:.4rem}
+.legal-content li::before{content:'ÔÇö';position:absolute;left:0;color:var(--green)}
+.legal-updated{font-size:.78rem;color:var(--cream3);margin-bottom:2.5rem}
+
+/* ÔöÇÔöÇ ANIMATIONS ÔöÇÔöÇ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.au{animation:fadeUp .8s ease both}
+.au2{animation:fadeUp .8s .15s ease both}
+.au3{animation:fadeUp .8s .3s ease both}
+.au4{animation:fadeUp .8s .45s ease both}
+.au5{animation:fadeUp .8s .6s ease both}
+
+/* ÔöÇÔöÇ RESPONSIVE ÔöÇÔöÇ */
+@media(max-width:960px){
+  #hero{grid-template-columns:1fr;grid-template-rows:auto}
+  .hero-right{height:360px;order:-1}
+  .hero-right::before{display:none}
+  .hero-left{padding:2rem clamp(1.5rem,5vw,3rem) 6rem}
+  .hero-credentials{left:clamp(1.5rem,5vw,3rem);gap:2rem}
+  .hero-cred-num{font-size:1.6rem}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .stat-item:nth-child(2){border-right:none}
+  .stat-item:nth-child(3){border-top:1px solid var(--line)}
+  .about-inner{grid-template-columns:1fr}
+  .about-photo-wrap{max-width:320px}
+  .unis-grid{grid-template-columns:1fr 1fr}
+  .contact-inner{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .subj-grid{grid-template-columns:1fr}
+  .board-grid{grid-template-columns:1fr}
+ .detail-cta{flex-direction:column;text-align:center}
+  .companion-grid{grid-template-columns:1fr 1fr !important}
+}
+@media(max-width:560px){
+  .services-grid,.unis-grid,.resources-grid,.footer-inner{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+}
+/* ÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉ
+   COMPANION SECTION (new layout)
+   ÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉ */
+
+.companion-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 40px;
+  margin-top: 24px;
+  align-items: start;
+}
+
+.companion-features-col {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.companion-feature {
+  padding-left: 20px;
+  border-left: 2px solid rgba(77,148,96,0.3);
+}
+.companion-feature h3 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #e8e5de;
+  margin-bottom: 6px;
+}
+.companion-feature p {
+  font-size: 14px;
+  color: #9a9690;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.companion-preview {
+  background: #2a2a2a;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.preview-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.preview-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(77,148,96,0.12);
+  border: 1px solid rgba(77,148,96,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Serif Display', serif;
+  font-size: 14px;
+  color: #4d9460;
+}
+.preview-header-text h4 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #e8e5de;
+  margin: 0;
+}
+.preview-header-text span {
+  font-size: 11px;
+  color: #4d9460;
+}
+
+.preview-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.preview-msg {
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.7;
+  max-width: 88%;
+}
+.preview-msg.user {
+  background: rgba(77,148,96,0.12);
+  border: 1px solid rgba(77,148,96,0.3);
+  border-radius: 10px 10px 2px 10px;
+  align-self: flex-end;
+  color: #e8e5de;
+  max-width: 72%;
+}
+.preview-msg.assistant {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px 10px 10px 2px;
+  color: rgba(255,255,255,0.82);
+}
+.preview-msg strong { color: #e8e5de; font-weight: 600; }
+
+.preview-input-bar {
+  margin: 0 20px 20px;
+  padding: 10px 14px;
+  background: #222222;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.preview-input-bar span {
+  font-size: 13px;
+  color: #706b65;
+}
+.preview-send-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  background: #4d9460;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  border: none;
+}
+
+/* Fade overlay on preview */
+.companion-preview::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, #484848 100%);
+  pointer-events: none;
+}
+
+.companion-cta-overlay {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+
+/* ÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉ
+   PRICING SECTION (journey flow)
+   ÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉ */
+
+.pricing-companion-card {
+  background: #2a2a2a;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.pricing-companion-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #4d9460, #5ba86d, transparent);
+}
+
+.pricing-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.pricing-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.pricing-label.green { color: #4d9460; }
+.pricing-label.muted { color: #9a9690; }
+
+.pricing-price {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-weight: 400;
+  color: #e8e5de;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.pricing-price.large { font-size: 56px; }
+.pricing-price.medium { font-size: 42px; }
+
+.pricing-price-sub {
+  font-size: 14px;
+  color: #9a9690;
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.free-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(77,148,96,0.12);
+  border: 1px solid rgba(77,148,96,0.3);
+  border-radius: 6px;
+  font-size: 13px;
+  color: #4d9460;
+  font-weight: 500;
+  margin-bottom: 32px;
+}
+
+.pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.pricing-features li {
+  font-size: 14px;
+  color: #9a9690;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.5;
+}
+.pricing-features li::before {
+  content: 'ÔÇö';
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.pricing-features.green li::before { color: #4d9460; }
+.pricing-features.muted li::before { color: #706b65; }
+
+.btn-primary-new {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 36px;
+  background: #4d9460;
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s;
+}
+.btn-primary-new:hover {
+  background: #5ba86d;
+}
+
+.btn-secondary-new {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 36px;
+  background: transparent;
+  color: #9a9690;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.btn-secondary-new:hover {
+  border-color: #706b65;
+  color: #e8e5de;
+  transform: translateY(-1px);
+}
+
+.pricing-divider {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 48px 0;
+  color: #706b65;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+}
+.pricing-divider::before,
+.pricing-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+}
+
+.pricing-tutoring-card {
+  background: #2a2a2a;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 48px;
+}
+
+.bespoke-note {
+  font-size: 13px;
+  color: #706b65;
+  font-weight: 300;
+  font-style: italic;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.pricing-footnote-new {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 12px;
+  color: #706b65;
+  font-weight: 300;
+}
+
+
+/* ÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉ
+   RESPONSIVE ÔÇö new sections
+   ÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉ */
+
+@media (max-width: 768px) {
+  .companion-grid,
+  .pricing-card-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .pricing-companion-card,
+  .pricing-tutoring-card {
+    padding: 28px 24px;
+  }
+  .pricing-price.large { font-size: 44px; }
+  .pricing-price.medium { font-size: 36px; }
+  .companion-cta-overlay {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin-top: 16px;
+  }
+  .companion-preview::after {
+    display: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a onclick="showPage('home')" href="#" style="cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:14px">
+      <svg width="58" height="70" viewBox="0 0 46 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- bar 1: angled RIGHT, bottom at y=44 -->
+        <rect x="2" y="28" width="6" height="16" rx="3" fill="#3A8C65" transform="rotate(20 5 44)"/>
+        <!-- bar 2: medium upright, bottom at y=44 -->
+        <rect x="12" y="24" width="6" height="20" rx="3" fill="#3A8C65"/>
+        <!-- bar 3: TALLEST - extends down as trunk to y=52 -->
+        <rect x="20" y="4" width="6" height="48" rx="3" fill="#3A8C65"/>
+        <!-- bar 4: tall upright, bottom at y=44 -->
+        <rect x="28" y="12" width="6" height="32" rx="3" fill="#3A8C65"/>
+        <!-- bar 5: short upright, bottom at y=44 -->
+        <rect x="36" y="28" width="6" height="16" rx="3" fill="#3A8C65"/>
+      </svg>
+      <div style="line-height:1">
+        <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.85rem;font-weight:600;color:var(--cream);letter-spacing:.05em">AGF</div>
+        <div style="font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(242,237,228,0.45);margin-top:5px;font-family:'Outfit',sans-serif">Tutoring</div>
+      </div>
+    </a>
+    <div class="nav-links">
+      <button onclick="showPage('home')">Home</button>
+      <button onclick="showPage('about')">About</button>
+      <button onclick="showPage('method')">Method</button>
+      <button onclick="showPage('courses')">Subjects</button>
+      <button onclick="showPage('companion')">AI Companion</button>
+      <button onclick="showPage('contact')" class="nav-cta">Enquire</button>
+      <a href="https://agftutoring.co.uk" target="_blank" style="padding:9px 24px;background:var(--green);border:1px solid var(--green);border-radius:1px;font-family:var(--sans);font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#fff;text-decoration:none;transition:background .2s;cursor:pointer">Log in</a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <button onclick="showPage('home');toggleMenu()">Home</button>
+  <button onclick="showPage('about');toggleMenu()">About</button>
+  <button onclick="showPage('method');toggleMenu()">Method</button>
+  <button onclick="showPage('courses');toggleMenu()">Subjects</button>
+  <button onclick="showPage('companion');toggleMenu()">AI Companion</button>
+  <button onclick="showPage('contact');toggleMenu()">Enquire</button>
+  <button onclick="window.open('https://agftutoring.co.uk','_blank')" style="color:var(--green);font-weight:500">Log in ÔåÆ</button>
+</div>
+
+<!-- ÔòÉÔòÉ HOME ÔòÉÔòÉ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-left">
+      <h1 class="hero-h1 au2">
+        Sixty thousand<br>hours of tutoring,<br><em>distilled.</em>
+      </h1>
+      <div class="hero-rule au3"></div>
+      <p class="hero-lead au3">A premier boutique service providing exclusive, bespoke private tutoring and mentorship ÔÇö helping students gain admission and scholarships to the world's most prestigious universities.</p>
+      <div class="hero-actions au4">
+        <button class="btn-primary" onclick="showPage('contact')">Enquire</button>
+        
+      </div>
+    </div>
+    <div class="hero-right" style="display:flex;align-items:center;justify-content:center;padding:100px 2rem 80px 0;position:relative;">
+      <img src="alastair.jpg" alt="Alastair Fisher">
+    </div>
+    <div class="hero-watermark">60k</div>
+    <div class="hero-credentials au5">
+      <div class="hero-cred">
+        <div class="hero-cred-num">60k+</div>
+        <div class="hero-cred-label">Hours taught</div>
+      </div>
+      <div class="hero-cred">
+        <div class="hero-cred-num">5,000+</div>
+        <div class="hero-cred-label">Students</div>
+      </div>
+      <div class="hero-cred">
+        <div class="hero-cred-num">$20m+</div>
+        <div class="hero-cred-label">Scholarships</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <span class="ticker-item">University of Oxford</span>
+      <span class="ticker-item">Harvard University</span>
+      <span class="ticker-item">University of Cambridge</span>
+      <span class="ticker-item">MIT</span>
+      <span class="ticker-item">Imperial College London</span>
+      <span class="ticker-item">Stanford University</span>
+      <span class="ticker-item">ETH Zurich</span>
+      <span class="ticker-item">Yale University</span>
+      <span class="ticker-item">Princeton University</span>
+      <span class="ticker-item">INSEAD</span>
+      <span class="ticker-item">LSE</span>
+      <span class="ticker-item">Caltech</span>
+      <span class="ticker-item">University of Oxford</span>
+      <span class="ticker-item">Harvard University</span>
+      <span class="ticker-item">University of Cambridge</span>
+      <span class="ticker-item">MIT</span>
+      <span class="ticker-item">Imperial College London</span>
+      <span class="ticker-item">Stanford University</span>
+      <span class="ticker-item">ETH Zurich</span>
+      <span class="ticker-item">Yale University</span>
+      <span class="ticker-item">Princeton University</span>
+      <span class="ticker-item">INSEAD</span>
+      <span class="ticker-item">LSE</span>
+      <span class="ticker-item">Caltech</span>
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote-section">
+    <div class="quote-inner">
+      <span class="quote-mark">"</span>
+      <p class="quote-text">The real task of teaching is not to add more information ÔÇö<br>it is to <em>remove confusion.</em></p>
+      <p class="quote-attr">Alastair Fisher ┬À AGF Tutoring</p>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section">
+    <div class="inner">
+      <div class="section-label"><span>Services</span></div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-num">01</div>
+          <h3>Private Tutoring</h3>
+          <p>One-to-one online sessions in mathematics, physics, chemistry, and competitive admissions examinations. Diagnostic, structured, and deeply personalised.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">02</div>
+          <h3>University Applications</h3>
+          <p>End-to-end guidance for undergraduate and postgraduate applications to leading universities in the UK, USA, Europe, and beyond ÔÇö including Oxbridge and Ivy League.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">03</div>
+          <h3>Scholarship Preparation</h3>
+          <p>Strategic preparation for merit-based and need-based scholarships worldwide. Students supported by AGF Tutoring have secured in excess of $20 million in funding.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">04</div>
+          <h3>Test Preparation</h3>
+          <p>Comprehensive preparation for SAT, ACT, AP, GRE, GMAT, LNAT, IELTS, UCAT, BMAT, and all other competitive examinations.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">05</div>
+          <h3>Consultancy</h3>
+          <p>Strategic educational consultancy for families, schools, and institutions ÔÇö covering curriculum planning, academic development, and long-term university strategy.</p>
+        </div>
+        <div class="service-card" style="display:flex;flex-direction:column;justify-content:space-between">
+          <div>
+            <div class="service-num" style="color:rgba(58,140,101,0.3)">ÔåÆ</div>
+            <h3>Begin a conversation</h3>
+            <p>Availability is deliberately limited. The first step is simply a conversation about the student's situation and goals.</p>
+          </div>
+          <button class="btn-primary" style="margin-top:2rem;align-self:flex-start" onclick="showPage('contact')">Enquire now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ÔòÉÔòÉ ABOUT ÔòÉÔòÉ -->
+<div class="page" id="page-about">
+  <section style="padding-top:calc(72px + clamp(4rem,8vw,7rem));padding-bottom:0;padding-left:clamp(1.5rem,5vw,4rem);padding-right:clamp(1.5rem,5vw,4rem)">
+    <div class="inner">
+
+      <!-- INTRO GRID -->
+      <div style="display:grid;grid-template-columns:340px 1fr;gap:5rem;align-items:start;margin-bottom:clamp(4rem,8vw,7rem)">
+        <div style="position:relative">
+          <img src="alastair.jpg" alt="Alastair Fisher" style="width:100%;display:block;filter:grayscale(100%) contrast(0.9) brightness(1.05)">
+          <div style="position:absolute;top:-12px;left:-12px;right:12px;height:1px;background:var(--green);opacity:.45"></div>
+          <div style="position:absolute;top:-12px;left:-12px;bottom:12px;width:1px;background:var(--green);opacity:.45"></div>
+          <div style="position:absolute;bottom:-12px;right:-12px;left:12px;height:1px;background:var(--green);opacity:.45"></div>
+          <div style="position:absolute;bottom:-12px;right:-12px;top:12px;width:1px;background:var(--green);opacity:.45"></div>
+          <!-- Credentials under photo -->
+          <div style="margin-top:2rem;display:flex;flex-direction:column;gap:.6rem">
+            <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>BSc Chemistry ÔÇö University of Edinburgh</div>
+            <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>MA Linguistics ÔÇö University of Surrey</div>
+            <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>Pioneer of online tutoring since 2007</div>
+            <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>UK National Tutoring Programme</div>
+            <div style="display:flex;align-items:center;gap:.85rem;font-size:.82rem;color:var(--cream2)"><span style="width:16px;height:1px;background:var(--green);flex-shrink:0;display:block"></span>60,000+ hours of teaching</div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:2rem">
+            <div style="width:32px;height:1px;background:var(--green)"></div>
+            <span style="font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:500">Alastair Fisher</span>
+          </div>
+          <h1 style="font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.2rem);font-weight:400;line-height:1.15;color:var(--cream);margin-bottom:2rem">About</h1>
+
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.5rem">My work over the past thirty years has centred on one question: how students come to understand complex ideas clearly, and how that understanding translates into performance under examination conditions.</p>
+
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.5rem">My academic background began in chemistry at the University of Edinburgh, with a particular emphasis on chemical physics. This involved a significant amount of mathematics and a close engagement with the positive sciences more broadly.</p>
+
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.5rem">Some years later, I completed a Master's degree in linguistics at the University of Surrey, specialising in corpus linguistics. That experience provided a structured understanding of language ÔÇö how it is acquired, how it is processed, and how meaning is constructed and communicated.</p>
+
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.5rem">What emerged over time was a combination that is, perhaps, relatively uncommon. On the one hand, a rigorous scientific training across mathematics, physics, and chemistry. On the other, a formal understanding of language, reasoning, and cognition.</p>
+
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.5rem">This combination has allowed me to work across a wide spectrum of subjects and examinations. In addition to the sciences, I have spent many years preparing students for assessments such as the SAT, ACT, GRE, GMAT, and LNAT ÔÇö examinations which require not only technical ability, but also precision in language and clarity in reasoning.</p>
+        </div>
+      </div>
+
+      <!-- DIAGNOSTIC METHOD -->
+      <div style="border-top:1px solid var(--line);padding-top:clamp(3rem,6vw,5rem);margin-bottom:clamp(3rem,6vw,5rem)">
+        <div style="max-width:760px;margin:0 auto">
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.5rem">Over the course of my career, I have worked with several thousand students across different systems and countries, accumulating in excess of sixty thousand hours of tutoring and mentoring. Through that experience, a consistent pattern has become clear.</p>
+
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.5rem">Most academic difficulty does not arise from a lack of ability, but from a lack of clarity. Small misunderstandings ÔÇö often introduced early ÔÇö tend to persist, and under examination pressure they become significant obstacles.</p>
+
+          <p style="font-family:var(--serif);font-size:1.25rem;line-height:1.75;color:var(--cream);margin-bottom:1.5rem;font-style:italic">The work, therefore, is diagnostic.</p>
+
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.5rem">The aim is first to identify precisely where a student's understanding begins to diverge from the underlying idea. From there, the concept is reconstructed in a way that is both rigorous and intuitive. Only once that clarity is established do we move to method, structure, and examination technique.</p>
+
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.5rem">The result is not simply improved grades, but a more stable and confident way of thinking.</p>
+
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2);margin-bottom:1.5rem">Alongside one-to-one tutoring, I have been involved in the development of online learning systems and educational tools, including work connected to large-scale tutoring programmes and AI-supported educational models. These experiences have reinforced the same underlying principle: that effective learning depends on clarity, structure, and careful sequencing, rather than volume of information.</p>
+
+          <p style="font-family:var(--serif);font-size:1.1rem;line-height:1.85;color:var(--cream2)">This platform is, in part, an attempt to make that accumulated experience more broadly accessible ÔÇö not as a replacement for individual teaching, but as an extension of it.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TRACK RECORD -->
+  <section style="background:var(--bg2);border-top:1px solid var(--line);padding:clamp(4rem,8vw,7rem) clamp(1.5rem,5vw,4rem)">
+    <div class="inner">
+      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
+        <div style="width:32px;height:1px;background:var(--green)"></div>
+        <span style="font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:500">Track Record</span>
+      </div>
+      <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:400;color:var(--cream);margin-bottom:1rem">A record built across decades</h2>
+      <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);line-height:1.8;max-width:640px;margin-bottom:3rem">Students I have worked with have progressed to leading universities in the United Kingdom, North America, and Europe, often with substantial scholarship awards. This reflects not only examination success, but sustained academic performance beyond school.</p>
+
+      <!-- Stats -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:3rem">
+        <div style="background:var(--bg);padding:2rem;text-align:center">
+          <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--cream);line-height:1">60,000+</div>
+          <div style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream3);margin-top:.4rem">hours of tutoring</div>
+        </div>
+        <div style="background:var(--bg);padding:2rem;text-align:center;border-left:1px solid var(--line);border-right:1px solid var(--line)">
+          <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--cream);line-height:1">5,000+</div>
+          <div style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream3);margin-top:.4rem">students taught</div>
+        </div>
+        <div style="background:var(--bg);padding:2rem;text-align:center">
+          <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--cream);line-height:1">$20m+</div>
+          <div style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream3);margin-top:.4rem">scholarships secured</div>
+        </div>
+      </div>
+
+      <!-- Universities -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:3rem">
+        <div>
+          <h4 style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);padding-bottom:.85rem;margin-bottom:1.25rem;border-bottom:1px solid var(--green-line)">United Kingdom</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:.55rem">
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem;position:relative">University of Oxford</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem;position:relative">University of Cambridge</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem;position:relative">Imperial College London</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem;position:relative">UCL</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem;position:relative">LSE</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem;position:relative">University of Edinburgh</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem;position:relative">King's College London</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem;position:relative">Durham University</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem;position:relative">University of Warwick</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);padding-bottom:.85rem;margin-bottom:1.25rem;border-bottom:1px solid var(--green-line)">USA &amp; Canada</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:.55rem">
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">MIT</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">Harvard University</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">Stanford University</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">Yale University</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">Princeton University</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">Columbia University</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">Caltech</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">University of Toronto</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">McGill University</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);padding-bottom:.85rem;margin-bottom:1.25rem;border-bottom:1px solid var(--green-line)">Europe &amp; Global</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:.55rem">
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">ETH Zurich</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">Sciences Po</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">LMU Munich</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">University of Amsterdam</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">Bocconi University</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">IE Business School</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">INSEAD</li>
+            <li style="font-family:var(--serif);font-size:1rem;color:var(--cream2);padding-left:1.1rem">Sorbonne University</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section style="padding:clamp(4rem,8vw,6rem) clamp(1.5rem,5vw,4rem);text-align:center">
+    <div style="max-width:560px;margin:0 auto">
+      <p style="font-family:var(--serif);font-size:1.2rem;line-height:1.8;color:var(--cream2);margin-bottom:2rem">I work with a limited number of students each year. If you would like to discuss tutoring or mentoring, please make contact.</p>
+      <button class="btn-primary" onclick="showPage('contact')">Enquire</button>
+    </div>
+  </section>
+
+</div>
+
+<!-- ÔòÉÔòÉ METHOD ÔòÉÔòÉ -->
+<div class="page" id="page-method">
+  <section class="section" style="padding-top:calc(76px + clamp(5rem,10vw,9rem))">
+    <div class="inner" style="max-width:760px">
+      <div class="section-label"><span>The AGF Method</span></div>
+      <h2 style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--cream);margin-bottom:3rem;line-height:1.2">Teaching as a <em style="font-style:italic;color:var(--green)">diagnostic</em> process</h2>
+      <div style="display:flex;flex-direction:column;gap:0">
+        <div style="display:grid;grid-template-columns:72px 1fr;gap:2rem;padding:2.5rem 0;border-bottom:1px solid var(--line)">
+          <div style="font-family:var(--serif);font-size:3.5rem;font-weight:400;color:#4DAA7D;line-height:1;font-style:italic">01</div>
+          <div><h3 style="font-family:var(--serif);font-size:1.3rem;color:var(--cream);margin-bottom:.6rem">Diagnose</h3><p style="font-size:.92rem;color:var(--cream2);line-height:1.75">Identify the precise point at which understanding breaks down ÔÇö not the symptom, but the underlying misunderstanding, which often sits several steps earlier than it appears.</p></div>
+        </div>
+        <div style="display:grid;grid-template-columns:72px 1fr;gap:2rem;padding:2.5rem 0;border-bottom:1px solid var(--line)">
+          <div style="font-family:var(--serif);font-size:3.5rem;font-weight:400;color:#4DAA7D;line-height:1;font-style:italic">02</div>
+          <div><h3 style="font-family:var(--serif);font-size:1.3rem;color:var(--cream);margin-bottom:.6rem">Rebuild</h3><p style="font-size:.92rem;color:var(--cream2);line-height:1.75">Reconstruct the concept from first principles, beginning with intuition rather than formalism. What is actually happening here? What does this idea represent?</p></div>
+        </div>
+        <div style="display:grid;grid-template-columns:72px 1fr;gap:2rem;padding:2.5rem 0;border-bottom:1px solid var(--line)">
+          <div style="font-family:var(--serif);font-size:3.5rem;font-weight:400;color:#4DAA7D;line-height:1;font-style:italic">03</div>
+          <div><h3 style="font-family:var(--serif);font-size:1.3rem;color:var(--cream);margin-bottom:.6rem">Clarify</h3><p style="font-size:.92rem;color:var(--cream2);line-height:1.75">Introduce precise language and formal structure only once the intuition is secure. Understanding precedes technique ÔÇö never the reverse.</p></div>
+        </div>
+        <div style="display:grid;grid-template-columns:72px 1fr;gap:2rem;padding:2.5rem 0;border-bottom:1px solid var(--line)">
+          <div style="font-family:var(--serif);font-size:3.5rem;font-weight:400;color:#4DAA7D;line-height:1;font-style:italic">04</div>
+          <div><h3 style="font-family:var(--serif);font-size:1.3rem;color:var(--cream);margin-bottom:.6rem">Test</h3><p style="font-size:.92rem;color:var(--cream2);line-height:1.75">Confirm understanding through carefully chosen diagnostic questions. A student who can explain a concept clearly has genuinely understood it.</p></div>
+        </div>
+        <div style="display:grid;grid-template-columns:72px 1fr;gap:2rem;padding:2.5rem 0">
+          <div style="font-family:var(--serif);font-size:3.5rem;font-weight:400;color:#4DAA7D;line-height:1;font-style:italic">05</div>
+          <div><h3 style="font-family:var(--serif);font-size:1.3rem;color:var(--cream);margin-bottom:.6rem">Extend</h3><p style="font-size:.92rem;color:var(--cream2);line-height:1.75">Move from competence to mastery ÔÇö from being able to solve a problem to understanding why the solution works, and how to approach unfamiliar variations.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ÔòÉÔòÉ COURSES ÔòÉÔòÉ -->
+<div class="page" id="page-courses">
+  <section class="section" style="padding-top:calc(76px + clamp(5rem,10vw,9rem))">
+    <div class="inner" id="courses-listing">
+      <div class="section-label"><span>Subjects</span></div>
+      <h2 style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--cream);margin-bottom:.75rem">Explore by <em style="font-style:italic;color:var(--green)">subject</em></h2>
+      <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);margin-bottom:3rem;max-width:600px;line-height:1.75">Select a subject to explore qualification types and examination boards. Every course is available for one-to-one tutoring and through the AI Study Companion.</p>
+
+      <!-- THREE MAIN SUBJECTS -->
+      <div style="display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:3rem">
+
+        <!-- MATHEMATICS -->
+        <div class="subj-accordion">
+          <button class="subj-header" onclick="toggleSubject(this)">
+            <div style="display:flex;align-items:center;gap:1.5rem">
+              <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:#4DAA7D;line-height:1">01</div>
+              <div>
+                <div style="font-family:var(--serif);font-size:1.4rem;color:var(--cream)">Mathematics</div>
+                <div style="font-size:.78rem;color:var(--cream3);margin-top:.25rem">A-Level ┬À IGCSE ┬À IB ┬À US Prep</div>
+              </div>
+            </div>
+            <span class="subj-arrow">+</span>
+          </button>
+          <div class="subj-body">
+            <div class="subj-grid">
+              <div class="subj-tile" onclick="showDetail('maths-alevel')">
+                <div class="subj-tile-tag">A-Level</div>
+                <div class="subj-tile-title">A-Level Mathematics</div>
+                <div class="subj-tile-boards">Pearson Edexcel ┬À AQA ┬À OCR ┬À Cambridge IAL</div>
+              </div>
+              <div class="subj-tile" onclick="showDetail('maths-igcse')">
+                <div class="subj-tile-tag">IGCSE</div>
+                <div class="subj-tile-title">IGCSE Mathematics</div>
+                <div class="subj-tile-boards">Cambridge CIE ┬À Pearson Edexcel ┬À Oxford AQA</div>
+              </div>
+              <div class="subj-tile" onclick="showDetail('maths-ib')">
+                <div class="subj-tile-tag">IB Diploma</div>
+                <div class="subj-tile-title">IB Mathematics</div>
+                <div class="subj-tile-boards">Analysis &amp; Approaches ┬À Applications &amp; Interpretation ┬À HL ┬À SL</div>
+              </div>
+              <div class="subj-tile" onclick="showDetail('maths-us')">
+                <div class="subj-tile-tag">US University Prep</div>
+                <div class="subj-tile-title">SAT ┬À ACT ┬À AP Mathematics</div>
+                <div class="subj-tile-boards">SAT Math ┬À ACT Math ┬À AP Calculus AB/BC ┬À AP Statistics</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PHYSICS -->
+        <div class="subj-accordion">
+          <button class="subj-header" onclick="toggleSubject(this)">
+            <div style="display:flex;align-items:center;gap:1.5rem">
+              <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:#4DAA7D;line-height:1">02</div>
+              <div>
+                <div style="font-family:var(--serif);font-size:1.4rem;color:var(--cream)">Physics</div>
+                <div style="font-size:.78rem;color:var(--cream3);margin-top:.25rem">A-Level ┬À IGCSE ┬À IB ┬À US Prep</div>
+              </div>
+            </div>
+            <span class="subj-arrow">+</span>
+          </button>
+          <div class="subj-body">
+            <div class="subj-grid">
+              <div class="subj-tile" onclick="showDetail('physics-alevel')">
+                <div class="subj-tile-tag">A-Level</div>
+                <div class="subj-tile-title">A-Level Physics</div>
+                <div class="subj-tile-boards">Pearson Edexcel ┬À AQA ┬À OCR ┬À Cambridge IAL</div>
+              </div>
+              <div class="subj-tile" onclick="showDetail('physics-igcse')">
+                <div class="subj-tile-tag">IGCSE</div>
+                <div class="subj-tile-title">IGCSE Physics</div>
+                <div class="subj-tile-boards">Cambridge CIE ┬À Pearson Edexcel ┬À Oxford AQA</div>
+              </div>
+              <div class="subj-tile" onclick="showDetail('physics-ib')">
+                <div class="subj-tile-tag">IB Diploma</div>
+                <div class="subj-tile-title">IB Physics</div>
+                <div class="subj-tile-boards">HL ┬À SL</div>
+              </div>
+              <div class="subj-tile" onclick="showDetail('physics-us')">
+                <div class="subj-tile-tag">US University Prep</div>
+                <div class="subj-tile-title">AP Physics</div>
+                <div class="subj-tile-boards">AP Physics 1 ┬À AP Physics 2 ┬À AP Physics C</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CHEMISTRY -->
+        <div class="subj-accordion">
+          <button class="subj-header" onclick="toggleSubject(this)">
+            <div style="display:flex;align-items:center;gap:1.5rem">
+              <div style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:#4DAA7D;line-height:1">03</div>
+              <div>
+                <div style="font-family:var(--serif);font-size:1.4rem;color:var(--cream)">Chemistry</div>
+                <div style="font-size:.78rem;color:var(--cream3);margin-top:.25rem">A-Level ┬À IGCSE ┬À IB ┬À US Prep</div>
+              </div>
+            </div>
+            <span class="subj-arrow">+</span>
+          </button>
+          <div class="subj-body">
+            <div class="subj-grid">
+              <div class="subj-tile" onclick="showDetail('chem-alevel')">
+                <div class="subj-tile-tag">A-Level</div>
+                <div class="subj-tile-title">A-Level Chemistry</div>
+                <div class="subj-tile-boards">Pearson Edexcel ┬À AQA ┬À OCR ┬À Cambridge IAL</div>
+              </div>
+              <div class="subj-tile" onclick="showDetail('chem-igcse')">
+                <div class="subj-tile-tag">IGCSE</div>
+                <div class="subj-tile-title">IGCSE Chemistry</div>
+                <div class="subj-tile-boards">Cambridge CIE ┬À Pearson Edexcel ┬À Oxford AQA</div>
+              </div>
+              <div class="subj-tile" onclick="showDetail('chem-ib')">
+                <div class="subj-tile-tag">IB Diploma</div>
+                <div class="subj-tile-title">IB Chemistry</div>
+                <div class="subj-tile-boards">HL ┬À SL</div>
+              </div>
+              <div class="subj-tile" onclick="showDetail('chem-us')">
+                <div class="subj-tile-tag">US University Prep</div>
+                <div class="subj-tile-title">AP Chemistry</div>
+                <div class="subj-tile-boards">AP Chemistry</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OTHER QUALIFICATIONS -->
+      <div class="section-label"><span>Additional Qualifications</span></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:4rem">
+        <div class="subj-tile" onclick="showDetail('postgrad')" style="padding:2rem 1.75rem">
+          <div class="subj-tile-tag">Postgraduate</div>
+          <div class="subj-tile-title" style="font-size:1.2rem">GMAT ┬À GRE</div>
+          <div class="subj-tile-boards">Quantitative ┬À Verbal ┬À Analytical Writing</div>
+        </div>
+        <div class="subj-tile" onclick="showDetail('medical-law')" style="padding:2rem 1.75rem">
+          <div class="subj-tile-tag">Medical &amp; Law</div>
+          <div class="subj-tile-title" style="font-size:1.2rem">UCAT ┬À LNAT</div>
+          <div class="subj-tile-boards">Situational Judgement ┬À Verbal Reasoning ┬À Logic</div>
+        </div>
+        <div class="subj-tile" onclick="showDetail('language')" style="padding:2rem 1.75rem">
+          <div class="subj-tile-tag">Language</div>
+          <div class="subj-tile-title" style="font-size:1.2rem">IELTS ┬À TOEFL</div>
+          <div class="subj-tile-boards">Academic ┬À General Training ┬À iBT</div>
+        </div>
+      </div>
+
+      <!-- FREE RESOURCES -->
+      <div class="section-label"><span>Free Resources</span></div>
+      <div class="resources-grid">
+        <a class="resource-card" href="https://agftutoring.github.io/Chemistry-Unit-1" target="_blank">
+          <div class="resource-tag">WCH11 ┬À Edexcel IAL</div>
+          <h3>Chemistry Unit 1 ÔÇö Structure, Bonding &amp; Organic</h3>
+          <p>Formulae &amp; moles, atomic structure, bonding, alkanes, and alkenes ÔÇö with 4 embedded quizzes and full exam tips.</p>
+          <div class="resource-arrow">Open resource</div>
+        </a>
+        <a class="resource-card" href="https://agftutoring.github.io/Physics-UNIT-1" target="_blank">
+          <div class="resource-tag">WPH11 ┬À Edexcel IAL</div>
+          <h3>Physics Unit 1 ÔÇö Mechanics &amp; Materials</h3>
+          <p>Scalars, kinematics, forces, momentum, energy, power and materials ÔÇö with 4 embedded quizzes and core practical notes.</p>
+          <div class="resource-arrow">Open resource</div>
+        </a>
+        <div class="resource-card resource-dim">
+          <div class="resource-tag">Coming soon</div>
+          <h3>Mathematics Unit 1 ÔÇö Pure Mathematics</h3>
+          <p>Algebra, calculus, coordinate geometry, trigonometry ÔÇö with worked examples and diagnostics.</p>
+          <div class="resource-arrow">Coming soon</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ÔöÇÔöÇ DETAIL VIEW ÔöÇÔöÇ -->
+    <div class="inner" id="courses-detail" style="display:none">
+      <button onclick="backToCourses()" style="background:none;border:none;cursor:pointer;color:var(--green);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2rem;display:flex;align-items:center;gap:.5rem;padding:0">
+        <span>ÔåÉ</span> Back to subjects
+      </button>
+      <div id="detail-content"></div>
+    </div>
+
+  </section>
+</div>
+<!-- ÔòÉÔòÉ AI COMPANION ÔòÉÔòÉ -->
+<div class="page" id="page-companion">
+  <section class="section" style="padding-top:calc(76px + clamp(2rem,4vw,4rem))">
+    <div class="inner">
+      <div class="section-label"><span>AI Study Companion</span></div>
+
+      <div class="companion-grid" style="display:grid;grid-template-columns:1fr 440px;gap:40px;align-items:start">
+        <div class="companion-features-col">
+          <div style="margin-bottom:12px">
+            <h2 style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--cream);margin-bottom:1rem;line-height:1.2">The <em style="font-style:italic;color:var(--green)">digital tutor,</em><br>powered by AGF</h2>
+            <p style="font-family:var(--serif);font-size:1.05rem;line-height:1.85;color:var(--cream2)">An AI companion trained on Alastair's notes, method, and 60,000 hours of diagnostic insight. Ask questions, get explanations, and receive targeted clarification normally only available in a live session.</p>
+          </div>
+          <div class="companion-feature">
+            <h3 style="font-family:var(--serif)">Grounded in AGF's curriculum</h3>
+            <p>Answers drawn from curated notes ÔÇö not the open internet. Every response reflects Alastair's diagnostic approach.</p>
+          </div>
+          <div class="companion-feature">
+            <h3 style="font-family:var(--serif)">Available 24/7</h3>
+            <p>Revision at 11pm before an exam? The companion is always available for targeted questions and worked examples.</p>
+          </div>
+          <div class="companion-feature">
+            <h3 style="font-family:var(--serif)">Interactive quizzes &amp; diagnostics</h3>
+            <p>Exam-style questions with instant feedback, hints, and model answers. Identifies weak topics so you know exactly what to revise.</p>
+          </div>
+          <div class="companion-feature">
+            <h3 style="font-family:var(--serif)">Escalate to live sessions</h3>
+            <p>When a concept needs deeper work, book a live one-to-one session with Alastair seamlessly.</p>
+          </div>
+        </div>
+        <div class="companion-preview">
+          <div class="preview-header">
+            <div class="preview-avatar">A</div>
+            <div class="preview-header-text">
+              <h4>AGF Study Companion</h4>
+              <span>Powered by AGF Tutoring</span>
+            </div>
+          </div>
+          <div class="preview-body">
+            <div class="preview-msg user">Why does water have a higher boiling point than HÔééS?</div>
+            <div class="preview-msg assistant">Great question ÔÇö and a classic exam favourite. The key is <strong>hydrogen bonding</strong>. Each water molecule can form up to 4 hydrogen bonds because the OÔÇôH bond is highly polar. HÔééS forms only weak London forces ÔÇö sulfur's lower electronegativity means the SÔÇôH bond isn't polar enough for H-bonding.</div>
+            <div class="preview-msg user">Can you quiz me on intermolecular forces?</div>
+            <div class="preview-msg assistant">Of course! Here's your first question...<br><br><strong>Q1.</strong> Which intermolecular force is responsible for the relatively high viscosity of propan-1,2,3-triol (glycerol)?</div>
+          </div>
+          <div class="preview-input-bar">
+            <span>Ask a question...</span>
+            <div class="preview-send-btn">Ôåæ</div>
+          </div>
+          <a href="https://agf-companion.vercel.app" target="_blank" class="btn-primary-new companion-cta-overlay" style="box-shadow:0 4px 20px rgba(58,140,101,0.3)">Open the Companion ÔåÆ</a><a href="https://agf-companion.vercel.app" target="_blank" class="btn-primary-new companion-cta-overlay" style="box-shadow:0 4px 20px rgba(58,140,101,0.3)">Open the Companion ÔåÆ</a>
+          <div style="text-align:center;margin-top:16px;position:relative;z-index:2"><span style="font-family:var(--serif);font-size:13px;font-weight:400;color:var(--cream2);font-style:italic">3 free quizzes &mdash; no sign-up needed</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- ÔòÉÔòÉ PRICING ÔòÉÔòÉ -->
+<div class="page" id="page-pricing">
+  <section class="section" style="padding-top:calc(76px + clamp(5rem,10vw,9rem))">
+    <div class="inner">
+      <div class="section-label"><span>Pricing</span></div>
+      <h2 style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--cream);margin-bottom:.75rem">Start revising <em style="font-style:italic;color:var(--green)">today</em></h2>
+      <p style="font-family:var(--serif);font-size:1.05rem;color:var(--cream2);margin-bottom:3rem;max-width:600px;line-height:1.75">Begin with the AI Study Companion for instant revision support. When you need deeper, personalised guidance, escalate to one-to-one sessions with Alastair.</p>
+
+      <div class="pricing-companion-card">
+        <div class="pricing-card-grid">
+          <div>
+            <div class="pricing-label green">AI Study Companion</div>
+            <div class="pricing-price large">┬ú29</div>
+            <div class="pricing-price-sub">per month</div>
+            <div class="free-badge">Ô£ª Try free ÔÇö 3 quizzes before subscribing</div>
+            <br>
+            <a href="https://agf-companion.vercel.app" target="_blank" class="btn-primary-new">Try the Companion ÔåÆ</a>
+          </div>
+          <div>
+            <ul class="pricing-features green">
+              <li>24/7 AI-powered study companion</li>
+              <li>Chemistry, Physics &amp; Maths ÔÇö Edexcel IAL</li>
+              <li>Subject-specific question banks</li>
+              <li>Full AGF revision note library</li>
+              <li>Interactive quizzes with diagnostic feedback</li>
+              <li>Identifies weak topics and guides revision</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pricing-divider">Need more support?</div>
+
+      <div class="pricing-tutoring-card">
+        <div class="pricing-card-grid">
+          <div>
+            <div class="pricing-label muted">One-to-One Tutoring</div>
+            <div class="pricing-price medium">┬ú200</div>
+            <div class="pricing-price-sub">introductory session ┬À 1 hour</div>
+            <div class="bespoke-note">Ongoing rates agreed upon programme design.</div>
+            <button class="btn-secondary-new" onclick="showPage('contact')">Book Introductory Session</button>
+          </div>
+          <div>
+            <ul class="pricing-features muted">
+              <li>One-hour introductory session at fixed fee</li>
+              <li>Bespoke programme of study designed for the student</li>
+              <li>Diagnostic method ÔÇö 60,000+ hours of experience</li>
+              <li>University application &amp; scholarship guidance</li>
+              <li>WhatsApp access during term</li>
+              <li>Seamless escalation from the AI Companion</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p class="pricing-footnote-new">Tutoring rates are bespoke and depend on the programme of study. Enquire for school and institutional packages.</p>
+    </div>
+  </section>
+</div>
+<!-- ÔòÉÔòÉ CONTACT ÔòÉÔòÉ -->
+<div class="page" id="page-contact">
+  <section class="contact-section" style="padding-top:calc(76px + clamp(5rem,10vw,9rem))">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <div class="section-label" style="margin-bottom:2rem"><span>Contact</span></div>
+        <h2>Begin a <em>conversation</em></h2>
+        <p>Tutoring at this level is a collaborative process. The first step is simply a conversation ÔÇö about the student's situation, their goals, and whether there is a good fit.</p>
+        <p>Availability is deliberately limited. An introductory session is priced at a fixed fee of ┬ú200 for one hour. Ongoing rates are agreed upon programme design. Sessions are conducted online. Enquiries are welcome from families worldwide.</p>
+        <div style="margin-top:2rem">
+          <div class="contact-detail"><span class="contact-dot"></span><a href="mailto:info@agftutoring.co.uk">info@agftutoring.co.uk</a></div>
+          <div class="contact-detail"><span class="contact-dot"></span><a href="https://wa.me/message/agftutoring" target="_blank">Message on WhatsApp</a></div>
+          <div class="contact-detail"><span class="contact-dot"></span><a href="https://agftutoring.co.uk" target="_blank">agftutoring.co.uk</a></div>
+          <div class="contact-detail"><span class="contact-dot"></span><span>London, United Kingdom</span></div>
+        </div>
+        <div class="contact-note" style="margin-top:2.5rem">
+          <p>All enquiries receive a personal response within 48 hours. For urgent requirements, please mention this in your message.</p>
+        </div>
+      </div>
+      <div>
+        <div class="form-row">
+          <div class="form-field"><label class="form-label">First name</label><input type="text" placeholder="Alastair"></div>
+          <div class="form-field"><label class="form-label">Last name</label><input type="text" placeholder="Fisher"></div>
+        </div>
+        <div class="form-field"><label class="form-label">Email address</label><input type="email" placeholder="you@example.com"></div>
+        <div class="form-field">
+          <label class="form-label">Subject or examination</label>
+          <select>
+            <option value="">Select a subjectÔÇª</option>
+            <option>A-Level Mathematics</option><option>A-Level Chemistry</option><option>A-Level Physics</option>
+            <option>IB Mathematics</option><option>IB Chemistry</option><option>IB Physics</option>
+            <option>SAT / ACT / AP</option><option>GRE / GMAT</option><option>LNAT / IELTS / TOEFL</option>
+            <option>University Application Support</option><option>Scholarship Preparation</option><option>Other</option>
+          </select>
+        </div>
+        <div class="form-field"><label class="form-label">Tell me about the student</label><textarea placeholder="Year group, current level, goals, timelineÔÇª"></textarea></div>
+        <button class="btn-primary" style="width:100%">Send enquiry ÔåÆ</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ÔòÉÔòÉ TERMS ÔòÉÔòÉ -->
+<div class="page" id="page-terms">
+  <section class="section" style="padding-top:calc(76px + clamp(5rem,10vw,9rem))">
+    <div class="inner" style="max-width:800px">
+      <div class="section-label"><span>Legal</span></div>
+      <h1 style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:400;color:var(--cream);margin-bottom:2rem">Terms of Service</h1>
+      <p style="font-size:.82rem;color:var(--cream3);margin-bottom:3rem">Last updated: March 2026 ┬À AGF Tutoring UK Limited ┬À Company No. 12247821</p>
+
+      <div style="font-family:var(--serif);font-size:1rem;line-height:1.85;color:var(--cream2)">
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">1. Introduction</h3>
+        <p style="margin-bottom:1.25rem">These Terms of Service ("Terms") govern your use of the website, tutoring services, and AI Study Companion provided by AGF Tutoring UK Limited ("AGF Tutoring," "we," "our," or "us"), a company registered in England and Wales under Company No. 12247821.</p>
+        <p style="margin-bottom:1.25rem">By accessing our website or using any of our services, you agree to be bound by these Terms. If you do not agree with any part of these Terms, you should not use our services.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">2. Services</h3>
+        <p style="margin-bottom:1.25rem">AGF Tutoring provides private one-to-one tutoring, educational consultancy, university application guidance, and an AI-powered Study Companion. All tutoring sessions are conducted online. Services are available to students worldwide, subject to availability.</p>
+        <p style="margin-bottom:1.25rem">The AI Study Companion is a supplementary educational tool designed to support ÔÇö not replace ÔÇö professional tutoring. It draws upon curated educational materials developed by AGF Tutoring over 30 years of teaching experience.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">3. Pricing &amp; Payment</h3>
+        <p style="margin-bottom:1.25rem">An introductory one-to-one tutoring session is available at a fixed fee of ┬ú200 for one hour. All subsequent tutoring rates are bespoke and agreed upon the design of an individual programme of study. Rates depend on the subject, level, intensity, and duration of the programme.</p>
+        <p style="margin-bottom:1.25rem">The AI Study Companion is available on a monthly subscription basis at ┬ú29 per month. A limited number of free interactions are available before subscription is required. Payments are processed securely via Stripe. Subscriptions may be cancelled at any time; access will continue until the end of the current billing period.</p>
+        <p style="margin-bottom:1.25rem">All prices are stated in British Pounds Sterling (GBP) and are inclusive of VAT where applicable.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">4. Cancellation &amp; Refunds</h3>
+        <p style="margin-bottom:1.25rem">Tutoring sessions may be rescheduled or cancelled with a minimum of 24 hours' notice without charge. Sessions cancelled with less than 24 hours' notice will be charged in full. Introductory session fees are non-refundable once the session has taken place.</p>
+        <p style="margin-bottom:1.25rem">AI Companion subscriptions may be cancelled at any time. No pro-rata refunds are provided for partial months. Under the Consumer Contracts Regulations 2013, you have a 14-day cooling-off period from the date of subscription during which you may request a full refund, provided the service has not been substantially used.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">5. Intellectual Property</h3>
+        <p style="margin-bottom:1.25rem">All content on this website ÔÇö including text, educational materials, revision notes, quizzes, design, logos, and software ÔÇö is the intellectual property of AGF Tutoring UK Limited and is protected by copyright law. You may not reproduce, distribute, or create derivative works from any materials without our prior written consent.</p>
+        <p style="margin-bottom:1.25rem">Students may use materials provided through the AI Companion and tutoring sessions for their own personal educational purposes only.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">6. Limitation of Liability</h3>
+        <p style="margin-bottom:1.25rem">AGF Tutoring provides educational support to the best of its professional ability. However, we do not guarantee specific examination results, university admissions, or scholarship outcomes. Academic outcomes depend on many factors beyond tutoring, including student effort, prior preparation, and external circumstances.</p>
+        <p style="margin-bottom:1.25rem">The AI Study Companion is provided as-is. While every effort is made to ensure accuracy, AI-generated content may occasionally contain errors. Students are encouraged to verify critical information with their tutor or teacher.</p>
+        <p style="margin-bottom:1.25rem">To the fullest extent permitted by law, AGF Tutoring's total liability shall not exceed the total fees paid by you in the preceding 12 months.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">7. Acceptable Use</h3>
+        <p style="margin-bottom:1.25rem">You agree not to misuse our services, including but not limited to: sharing login credentials, attempting to circumvent usage limits, using the AI Companion to generate work for submission as your own (academic dishonesty), or engaging in any behaviour that disrupts the service for others.</p>
+        <p style="margin-bottom:1.25rem">We reserve the right to suspend or terminate access to any user who breaches these Terms.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">8. Governing Law</h3>
+        <p style="margin-bottom:1.25rem">These Terms are governed by the laws of England and Wales. Any disputes shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">9. Changes to These Terms</h3>
+        <p style="margin-bottom:1.25rem">We may update these Terms from time to time. Material changes will be communicated via the website. Continued use of our services following any changes constitutes acceptance of the revised Terms.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">10. Contact</h3>
+        <p>For any questions regarding these Terms, please contact us at <a href="mailto:info@agftutoring.co.uk" style="color:var(--green);text-decoration:none">info@agftutoring.co.uk</a>.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ÔòÉÔòÉ PRIVACY ÔòÉÔòÉ -->
+<div class="page" id="page-privacy">
+  <section class="section" style="padding-top:calc(76px + clamp(5rem,10vw,9rem))">
+    <div class="inner" style="max-width:800px">
+      <div class="section-label"><span>Legal</span></div>
+      <h1 style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:400;color:var(--cream);margin-bottom:2rem">Privacy Policy</h1>
+      <p style="font-size:.82rem;color:var(--cream3);margin-bottom:3rem">Last updated: March 2026 ┬À AGF Tutoring UK Limited ┬À Company No. 12247821</p>
+
+      <div style="font-family:var(--serif);font-size:1rem;line-height:1.85;color:var(--cream2)">
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">1. Data Controller</h3>
+        <p style="margin-bottom:1.25rem">AGF Tutoring UK Limited is the data controller responsible for your personal data. We are registered in England and Wales under Company No. 12247821. Our contact email for data matters is <a href="mailto:info@agftutoring.co.uk" style="color:var(--green);text-decoration:none">info@agftutoring.co.uk</a>.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">2. Information We Collect</h3>
+        <p style="margin-bottom:1.25rem"><strong style="color:var(--cream)">Information you provide directly:</strong> name, email address, phone number, student details (year group, school, subjects, goals), payment information (processed by Stripe ÔÇö we do not store card details), and any messages or enquiries you submit through our contact form or WhatsApp.</p>
+        <p style="margin-bottom:1.25rem"><strong style="color:var(--cream)">Information collected through the AI Companion:</strong> questions asked, quiz responses, usage frequency, and interaction data. This data is used to improve the service and personalise the learning experience.</p>
+        <p style="margin-bottom:1.25rem"><strong style="color:var(--cream)">Technical information:</strong> IP address, browser type, device information, and cookies (see Section 7 below).</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">3. Legal Basis for Processing</h3>
+        <p style="margin-bottom:1.25rem">Under the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018, we process your data on the following lawful bases:</p>
+        <p style="margin-bottom:.5rem"><strong style="color:var(--cream)">Contract:</strong> Processing necessary to provide the tutoring services and AI Companion you have requested.</p>
+        <p style="margin-bottom:.5rem"><strong style="color:var(--cream)">Legitimate interest:</strong> To improve our services, ensure security, and communicate with you about your programme of study.</p>
+        <p style="margin-bottom:1.25rem"><strong style="color:var(--cream)">Consent:</strong> Where you have opted in to receive marketing communications. You may withdraw consent at any time.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">4. How We Use Your Data</h3>
+        <p style="margin-bottom:1.25rem">We use your personal data to: provide and administer tutoring services, operate the AI Study Companion, process payments, communicate with you about sessions and your programme of study, improve our educational materials and services, comply with legal obligations, and ensure safeguarding (see our Safeguarding &amp; GDPR policy).</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">5. Data Sharing</h3>
+        <p style="margin-bottom:1.25rem">We do not sell your personal data. We may share data with: Stripe (payment processing), hosting providers (website and AI infrastructure), and where required by law or to protect the safety of a student (see Safeguarding policy).</p>
+        <p style="margin-bottom:1.25rem">Where data is transferred outside the UK, we ensure appropriate safeguards are in place in accordance with UK GDPR, including Standard Contractual Clauses or adequacy decisions.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">6. Data Retention</h3>
+        <p style="margin-bottom:1.25rem">We retain personal data for as long as necessary to provide services and fulfil our legal obligations. Tutoring records are retained for 6 years following the last session (in line with HMRC requirements). AI Companion interaction data is retained for 2 years. Contact form submissions are retained for 3 years. You may request earlier deletion at any time (see Section 8).</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">7. Cookies</h3>
+        <p style="margin-bottom:1.25rem">Our website uses essential cookies to ensure proper functionality. We do not use advertising or tracking cookies. Analytics cookies may be used with your consent to help us understand how the website is used. You may adjust cookie preferences through your browser settings at any time.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">8. Your Rights</h3>
+        <p style="margin-bottom:1.25rem">Under UK GDPR, you have the right to: access your personal data, rectify inaccurate data, request erasure ("right to be forgotten"), restrict or object to processing, data portability, and withdraw consent at any time. To exercise any of these rights, contact us at <a href="mailto:info@agftutoring.co.uk" style="color:var(--green);text-decoration:none">info@agftutoring.co.uk</a>. We will respond within 30 days.</p>
+        <p style="margin-bottom:1.25rem">You also have the right to lodge a complaint with the Information Commissioner's Office (ICO) at <a href="https://ico.org.uk" target="_blank" style="color:var(--green);text-decoration:none">ico.org.uk</a>.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">9. Children's Data</h3>
+        <p style="margin-bottom:1.25rem">Many of our students are under 18. Where a student is under 16, we require parental or guardian consent before collecting or processing their personal data. We take additional care to ensure that data relating to minors is handled securely and only for educational purposes. See our Safeguarding &amp; GDPR policy for further details.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">10. Changes to This Policy</h3>
+        <p>We may update this Privacy Policy from time to time. Any material changes will be communicated through our website. For questions, contact <a href="mailto:info@agftutoring.co.uk" style="color:var(--green);text-decoration:none">info@agftutoring.co.uk</a>.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ÔòÉÔòÉ SAFEGUARDING ÔòÉÔòÉ -->
+<div class="page" id="page-safeguarding">
+  <section class="section" style="padding-top:calc(76px + clamp(5rem,10vw,9rem))">
+    <div class="inner" style="max-width:800px">
+      <div class="section-label"><span>Legal</span></div>
+      <h1 style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:400;color:var(--cream);margin-bottom:2rem">Safeguarding &amp; GDPR</h1>
+      <p style="font-size:.82rem;color:var(--cream3);margin-bottom:3rem">Last updated: March 2026 ┬À AGF Tutoring UK Limited ┬À Company No. 12247821</p>
+
+      <div style="font-family:var(--serif);font-size:1rem;line-height:1.85;color:var(--cream2)">
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">1. Our Commitment</h3>
+        <p style="margin-bottom:1.25rem">AGF Tutoring UK Limited is committed to safeguarding and promoting the welfare of all students, including children and young people. We recognise our duty of care to ensure that all students are protected from harm, abuse, neglect, and exploitation while using our services.</p>
+        <p style="margin-bottom:1.25rem">This policy applies to all services provided by AGF Tutoring, including one-to-one online tutoring sessions and the AI Study Companion platform.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">2. Statutory Framework</h3>
+        <p style="margin-bottom:1.25rem">This policy has been developed in accordance with: the Children Act 1989 and 2004, Working Together to Safeguard Children (2023), Keeping Children Safe in Education (2023), the UK General Data Protection Regulation (UK GDPR), the Data Protection Act 2018, the Safeguarding Vulnerable Groups Act 2006, and the guidance issued by the Information Commissioner's Office (ICO) regarding children's data and the Children's Code (Age Appropriate Design Code).</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">3. Designated Safeguarding Lead</h3>
+        <p style="margin-bottom:1.25rem">The designated safeguarding lead for AGF Tutoring is Alastair Fisher, founder and director. All safeguarding concerns should be reported directly to <a href="mailto:info@agftutoring.co.uk" style="color:var(--green);text-decoration:none">info@agftutoring.co.uk</a>. In urgent cases, contact your local authority children's services or the police.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">4. Online Tutoring Safeguards</h3>
+        <p style="margin-bottom:1.25rem">All one-to-one tutoring sessions are conducted online via a secure virtual classroom. The following safeguards are in place:</p>
+        <p style="margin-bottom:.5rem"><strong style="color:var(--cream)">DBS Check:</strong> Alastair Fisher holds an enhanced Disclosure and Barring Service (DBS) certificate. Certificate reference available upon request.</p>
+        <p style="margin-bottom:.5rem"><strong style="color:var(--cream)">International Criminal Record Check:</strong> In addition to the UK DBS, Alastair Fisher holds a clear criminal record certificate (╬á╬┐╬╣╬¢╬╣╬║¤î ╬£╬À¤ä¤ü¤Ä╬┐) from the Hellenic Republic, in compliance with international safeguarding best practice for educators working with students across multiple jurisdictions.</p>
+        <p style="margin-bottom:.5rem"><strong style="color:var(--cream)">Session conduct:</strong> Sessions are professional and educational in nature. Parents and guardians are welcome to observe any session. Sessions are not recorded unless specifically requested and consented to by all parties.</p>
+        <p style="margin-bottom:.5rem"><strong style="color:var(--cream)">Communication boundaries:</strong> All communication with students under 18 is conducted through official channels (email, the virtual classroom, or WhatsApp where a parent has been included in the communication chain). Private social media contact with students is not permitted.</p>
+        <p style="margin-bottom:1.25rem"><strong style="color:var(--cream)">Parental involvement:</strong> For students under 16, a parent or guardian must be the primary point of contact. For students aged 16ÔÇô18, parents are kept informed of the programme of study and progress.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">5. AI Companion Safeguards</h3>
+        <p style="margin-bottom:1.25rem">The AI Study Companion is designed for educational use only. The following safeguards are built into the system:</p>
+        <p style="margin-bottom:.5rem"><strong style="color:var(--cream)">Content boundaries:</strong> The AI is restricted to educational topics within its curated knowledge base. It will not engage with personal, emotional, or non-educational queries.</p>
+        <p style="margin-bottom:.5rem"><strong style="color:var(--cream)">No personal data collection from minors without consent:</strong> Students under 16 must have parental consent to create an account. The AI does not request, store, or process personal information beyond what is necessary for account management and educational delivery.</p>
+        <p style="margin-bottom:.5rem"><strong style="color:var(--cream)">Age-appropriate design:</strong> In compliance with the ICO's Children's Code (Age Appropriate Design Code), the AI Companion is designed with the best interests of child users in mind. Privacy settings default to the highest level of protection. No profiling is conducted on users under 18 for commercial purposes.</p>
+        <p style="margin-bottom:1.25rem"><strong style="color:var(--cream)">Monitoring:</strong> AI interactions are subject to periodic review to ensure quality, accuracy, and appropriateness of content.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">6. Reporting Concerns</h3>
+        <p style="margin-bottom:1.25rem">If you have any safeguarding concern about a student, or if a student discloses information that suggests they may be at risk of harm, please contact us immediately at <a href="mailto:info@agftutoring.co.uk" style="color:var(--green);text-decoration:none">info@agftutoring.co.uk</a>.</p>
+        <p style="margin-bottom:1.25rem">Where AGF Tutoring has reasonable cause to believe that a child is at risk of significant harm, we are obliged to report this to the relevant authorities, including local authority children's services and/or the police. This obligation overrides data protection and confidentiality considerations in accordance with Section 29 of the Data Protection Act 2018.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">7. Data Protection &amp; Children</h3>
+        <p style="margin-bottom:1.25rem">In addition to our Privacy Policy, the following specific protections apply to children's data:</p>
+        <p style="margin-bottom:.5rem"><strong style="color:var(--cream)">Lawful basis:</strong> For students under 16, processing is based on parental consent or the legitimate interest of providing educational services.</p>
+        <p style="margin-bottom:.5rem"><strong style="color:var(--cream)">Data minimisation:</strong> We collect only the minimum data necessary to provide the service. For AI Companion users under 18, we do not collect data beyond account credentials and educational interaction data.</p>
+        <p style="margin-bottom:.5rem"><strong style="color:var(--cream)">Right to erasure:</strong> Parents or guardians may request the deletion of all data relating to their child at any time.</p>
+        <p style="margin-bottom:1.25rem"><strong style="color:var(--cream)">Data breach notification:</strong> In the event of a data breach affecting personal data, we will notify the ICO within 72 hours as required by UK GDPR Article 33, and will notify affected individuals without undue delay where the breach is likely to result in a high risk to their rights and freedoms.</p>
+
+        <h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin:2.5rem 0 1rem">8. Review</h3>
+        <p>This policy is reviewed annually and updated as necessary to reflect changes in legislation, guidance, or our services. For questions or concerns, contact <a href="mailto:info@agftutoring.co.uk" style="color:var(--green);text-decoration:none">info@agftutoring.co.uk</a>.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo" style="display:flex;align-items:center;gap:10px;margin-bottom:1rem">
+      <svg width="28" height="28" viewBox="0 0 38 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1"  y="22" width="5" height="14" rx="2.5" fill="#3A8C65" opacity="0.6"/>
+        <rect x="8"  y="14" width="5" height="22" rx="2.5" fill="#3A8C65" opacity="0.75"/>
+        <rect x="15" y="6"  width="5" height="30" rx="2.5" fill="#3A8C65"/>
+        <rect x="22" y="11" width="5" height="25" rx="2.5" fill="#3A8C65" opacity="0.75"/>
+        <rect x="29" y="18" width="5" height="18" rx="2.5" fill="#3A8C65" opacity="0.6"/>
+      </svg>
+      <div style="line-height:1">
+        <div style="font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;font-weight:500;color:var(--cream);letter-spacing:.04em">AGF</div>
+        <div style="font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(242,237,228,0.55);margin-top:2px">Tutoring</div>
+      </div>
+    </div>
+      <p class="footer-desc">A premier boutique tutoring service.<br>30 years ┬À 60,000+ hours ┬À London</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><button onclick="showPage('home')">Home</button></li>
+        <li><button onclick="showPage('about')">About</button></li>
+        <li><button onclick="showPage('method')">Method</button></li>
+        <li><button onclick="showPage('courses')">Courses</button></li>
+        <li><button onclick="showPage('companion')">AI Companion</button></li>
+        <li><button onclick="showPage('pricing')">Pricing</button></li>
+        <li><button onclick="showPage('contact')">Contact</button></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><button onclick="window.open('https://agftutoring.github.io/Chemistry-Unit-1','_blank')">Chemistry Unit 1</button></li>
+        <li><button onclick="window.open('https://agftutoring.github.io/Physics-UNIT-1','_blank')">Physics Unit 1</button></li>
+        <li><button onclick="window.open('https://agftutoring.co.uk','_blank')">agftutoring.co.uk</button></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><button onclick="showPage('terms')">Terms of Service</button></li>
+        <li><button onclick="showPage('privacy')">Privacy Policy</button></li>
+        <li><button onclick="showPage('safeguarding')">Safeguarding &amp; GDPR</button></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>AGF Tutoring UK Limited ┬À Registered in England &amp; Wales ┬À Company No. 12247821 ┬À ┬® 2026 Alastair Fisher</p>
+    <p style="color:var(--green)"><a href="mailto:info@agftutoring.co.uk" style="color:var(--green);text-decoration:none">info@agftutoring.co.uk</a></p>
+  </div>
+</footer>
+
+<script>
+
+window.onload = function(){
+  var pages = document.querySelectorAll('.page');
+  for(var i=0;i<pages.length;i++){ pages[i].style.display='none'; }
+  document.getElementById('page-home').style.display='block';
+};
+var currentPage='home';
+function showPage(p){
+  var pages = document.querySelectorAll('.page');
+  for(var i=0;i<pages.length;i++){ pages[i].style.display='none'; }
+  var target = document.getElementById('page-'+p);
+  if(target){ target.style.display='block'; }
+  currentPage=p;
+  window.scrollTo(0,0);
+  // Reset courses to listing view
+  if(p==='courses'){
+    var cl=document.getElementById('courses-listing');
+    var cd=document.getElementById('courses-detail');
+    if(cl) cl.style.display='block';
+    if(cd) cd.style.display='none';
+  }
+  // Close mobile menu
+  var mm=document.getElementById('mobile-menu');
+  if(mm) mm.classList.remove('open');
+}
+function toggleMenu(){document.getElementById('mobile-menu').classList.toggle('open')}
+window.addEventListener('scroll',function(){
+  document.getElementById('main-nav').classList.toggle('scrolled',window.scrollY>40);
+});
+
+// ÔöÇÔöÇ COURSES ACCORDION ÔöÇÔöÇ
+function toggleSubject(btn){
+  var acc=btn.parentElement;
+  acc.classList.toggle('open');
+}
+
+// ÔöÇÔöÇ DETAIL PAGES ÔöÇÔöÇ
+var detailData = {
+  'maths-alevel': {
+    title: 'A-Level Mathematics',
+    tag: 'Mathematics ┬À A-Level',
+    intro: 'Comprehensive preparation for A-Level Mathematics across all major UK and international examination boards. The diagnostic approach identifies gaps in foundational understanding ÔÇö algebra, calculus, trigonometry, and mechanics ÔÇö before building examination technique.',
+    boards: [
+      {name:'Pearson Edexcel', code:'9MA0', desc:'The most widely sat A-Level Mathematics in the UK. Pure Mathematics, Statistics, and Mechanics.'},
+      {name:'AQA', code:'7357', desc:'Strong emphasis on problem-solving and mathematical reasoning across pure, statistics, and mechanics.'},
+      {name:'OCR', code:'H240', desc:'Pure Mathematics and applied components with a focus on mathematical argument and proof.'},
+      {name:'OCR MEI', code:'H640', desc:'Emphasises comprehension and modelling. Includes a unique large data set component.'},
+      {name:'Cambridge International (IAL)', code:'9709', desc:'Popular with international schools worldwide. Pure Mathematics, Mechanics, Probability &amp; Statistics.'},
+      {name:'Pearson Edexcel International (IAL)', code:'YMA01', desc:'Modular international qualification. Pure Mathematics, Further Pure, Statistics, Mechanics, and Decision Mathematics.'}
+    ]
+  },
+  'maths-igcse': {
+    title: 'IGCSE Mathematics',
+    tag: 'Mathematics ┬À IGCSE',
+    intro: 'Structured preparation for IGCSE Mathematics, building fluency in number, algebra, geometry, and statistics ÔÇö with particular attention to the transition skills needed for A-Level and IB study.',
+    boards: [
+      {name:'Cambridge CIE', code:'0580 / 0980', desc:'The original and most widely recognised IGCSE. Core and Extended tiers. Available globally.'},
+      {name:'Pearson Edexcel International GCSE', code:'4MA1', desc:'Foundation and Higher tiers. Strong UK and international following with straightforward question styles.'},
+      {name:'Oxford AQA International GCSE', code:'9260', desc:'Clear, structured assessments. Growing adoption in international schools.'}
+    ]
+  },
+  'maths-ib': {
+    title: 'IB Mathematics',
+    tag: 'Mathematics ┬À IB Diploma',
+    intro: 'Preparation for both IB Mathematics courses, with a focus on conceptual understanding, mathematical exploration, and the internal assessment. The diagnostic approach is particularly effective for students finding the transition to IB-level rigour challenging.',
+    boards: [
+      {name:'Mathematics: Analysis &amp; Approaches (AA)', code:'HL &amp; SL', desc:'For students who enjoy mathematical argument and problem-solving. Emphasis on calculus, algebra, and proof.'},
+      {name:'Mathematics: Applications &amp; Interpretation (AI)', code:'HL &amp; SL', desc:'For students interested in real-world applications. Emphasis on statistics, modelling, and technology.'}
+    ]
+  },
+  'maths-us': {
+    title: 'US University Prep ÔÇö Mathematics',
+    tag: 'Mathematics ┬À US Prep',
+    intro: 'Targeted preparation for US university entrance and placement examinations in mathematics. Combines conceptual clarity with the strategic approach needed for standardised testing.',
+    boards: [
+      {name:'SAT Mathematics', code:'College Board', desc:'Problem-solving and data analysis, algebra, advanced maths, and geometry. Digital format since 2024.'},
+      {name:'ACT Mathematics', code:'ACT Inc.', desc:'60 questions in 60 minutes. Pre-algebra through trigonometry. Speed and accuracy are essential.'},
+      {name:'AP Calculus AB', code:'College Board', desc:'Equivalent to a first-semester university calculus course. Limits, derivatives, integrals, and the Fundamental Theorem.'},
+      {name:'AP Calculus BC', code:'College Board', desc:'Extends AB with series, parametric/polar functions, and advanced integration techniques.'},
+      {name:'AP Statistics', code:'College Board', desc:'Exploring data, sampling, probability, and statistical inference. Strong emphasis on interpretation.'}
+    ]
+  },
+  'physics-alevel': {
+    title: 'A-Level Physics',
+    tag: 'Physics ┬À A-Level',
+    intro: 'Rigorous preparation for A-Level Physics, building from mechanics and materials through to fields, nuclear physics, and astrophysics. The diagnostic method is especially effective for students who can follow derivations but struggle to apply principles independently.',
+    boards: [
+      {name:'Pearson Edexcel', code:'9PH0', desc:'Clear structure across mechanics, electric circuits, fields, and nuclear/particle physics.'},
+      {name:'AQA', code:'7408', desc:'Broad coverage with required practicals. Strong emphasis on mathematical application.'},
+      {name:'OCR Physics A', code:'H556', desc:'Modelling Physics approach with a focus on practical skills and mathematical fluency.'},
+      {name:'Cambridge International (IAL)', code:'9702', desc:'Popular globally. Strong mathematical component with practical assessment options.'},
+      {name:'Pearson Edexcel International (IAL)', code:'YPH01', desc:'Modular international qualification. Mechanics, Materials, Waves, Electricity, Fields, and Particle Physics.'}
+    ]
+  },
+  'physics-igcse': {
+    title: 'IGCSE Physics',
+    tag: 'Physics ┬À IGCSE',
+    intro: 'Preparation for IGCSE Physics with emphasis on understanding physical principles rather than memorising formulae. The diagnostic method identifies where conceptual understanding breaks down ÔÇö often in mechanics, energy, and electricity.',
+    boards: [
+      {name:'Cambridge CIE', code:'0625 / 0972', desc:'Core and Extended tiers. The most widely sat IGCSE Physics globally.'},
+      {name:'Pearson Edexcel International GCSE', code:'4PH1', desc:'Foundation and Higher. Straightforward structure with strong UK alignment.'},
+      {name:'Oxford AQA International GCSE', code:'9203', desc:'Clear question styles with growing international adoption.'}
+    ]
+  },
+  'physics-ib': {
+    title: 'IB Physics',
+    tag: 'Physics ┬À IB Diploma',
+    intro: 'Support for IB Physics at both Higher and Standard Level, including the internal assessment. Particular expertise in mechanics, waves, electromagnetism, and the options.',
+    boards: [
+      {name:'IB Physics HL', code:'International Baccalaureate', desc:'In-depth coverage including wave phenomena, fields, electromagnetic induction, and quantum physics.'},
+      {name:'IB Physics SL', code:'International Baccalaureate', desc:'Core topics: mechanics, thermal physics, waves, electricity, and circular motion.'}
+    ]
+  },
+  'physics-us': {
+    title: 'US University Prep ÔÇö Physics',
+    tag: 'Physics ┬À US Prep',
+    intro: 'Preparation for AP Physics examinations, combining conceptual understanding with the problem-solving speed required for the College Board format.',
+    boards: [
+      {name:'AP Physics 1', code:'College Board', desc:'Algebra-based. Kinematics, dynamics, energy, momentum, rotational motion, and simple harmonic motion.'},
+      {name:'AP Physics 2', code:'College Board', desc:'Algebra-based. Fluids, thermodynamics, electrostatics, circuits, magnetism, and modern physics.'},
+      {name:'AP Physics C: Mechanics', code:'College Board', desc:'Calculus-based mechanics. Kinematics, Newton\'s laws, work/energy, momentum, and rotation.'},
+      {name:'AP Physics C: Electricity &amp; Magnetism', code:'College Board', desc:'Calculus-based E&amp;M. Electrostatics, conductors, capacitors, circuits, magnetic fields, and Faraday\'s law.'}
+    ]
+  },
+  'chem-alevel': {
+    title: 'A-Level Chemistry',
+    tag: 'Chemistry ┬À A-Level',
+    intro: 'Thorough preparation for A-Level Chemistry, from atomic structure and bonding through to organic mechanisms, energetics, and equilibria. The diagnostic approach is particularly effective for students who have learned reactions by rote but lack a genuine understanding of why they occur.',
+    boards: [
+      {name:'Pearson Edexcel', code:'9CH0', desc:'Core inorganic, physical, and organic chemistry with practical endorsement.'},
+      {name:'AQA', code:'7405', desc:'Clear progression through physical, inorganic, and organic chemistry. Strong practical component.'},
+      {name:'OCR Chemistry A', code:'H432', desc:'Foundations in chemistry, periodic table, organic, physical, and synthesis &amp; analytical techniques.'},
+      {name:'Cambridge International (IAL)', code:'9701', desc:'Widely used internationally. Strong mathematical demands in physical chemistry.'},
+      {name:'Pearson Edexcel International (IAL)', code:'YCH01', desc:'Modular structure. Units covering structure, energetics, organic, kinetics, equilibria, and transition metals.'}
+    ]
+  },
+  'chem-igcse': {
+    title: 'IGCSE Chemistry',
+    tag: 'Chemistry ┬À IGCSE',
+    intro: 'Preparation for IGCSE Chemistry with a focus on building genuine understanding of chemical principles ÔÇö not just memorising reactions. The diagnostic method identifies conceptual gaps in atomic structure, bonding, and the mole concept early.',
+    boards: [
+      {name:'Cambridge CIE', code:'0620 / 0971', desc:'Core and Extended tiers. The most widely sat IGCSE Chemistry worldwide.'},
+      {name:'Pearson Edexcel International GCSE', code:'4CH1', desc:'Foundation and Higher. Clear structure aligned with UK qualifications.'},
+      {name:'Oxford AQA International GCSE', code:'9202', desc:'Structured assessments with growing international presence.'}
+    ]
+  },
+  'chem-ib': {
+    title: 'IB Chemistry',
+    tag: 'Chemistry ┬À IB Diploma',
+    intro: 'Support for IB Chemistry at Higher and Standard Level, including the internal assessment. Particular strength in physical chemistry, organic chemistry, and the mathematical demands of HL.',
+    boards: [
+      {name:'IB Chemistry HL', code:'International Baccalaureate', desc:'Extended topics including energetics, kinetics, equilibrium, acids/bases, redox, and organic chemistry.'},
+      {name:'IB Chemistry SL', code:'International Baccalaureate', desc:'Core topics: stoichiometry, atomic structure, periodicity, bonding, energetics, and kinetics.'}
+    ]
+  },
+  'chem-us': {
+    title: 'US University Prep ÔÇö Chemistry',
+    tag: 'Chemistry ┬À US Prep',
+    intro: 'Preparation for AP Chemistry, building deep understanding of chemical principles alongside the problem-solving fluency needed for the College Board examination format.',
+    boards: [
+      {name:'AP Chemistry', code:'College Board', desc:'Atomic structure, bonding, intermolecular forces, reactions, kinetics, thermodynamics, and equilibrium. Free-response and multiple-choice.'}
+    ]
+  },
+  'postgrad': {
+    title: 'Postgraduate Entrance Examinations',
+    tag: 'Postgraduate',
+    intro: 'Strategic preparation for postgraduate entrance examinations, combining quantitative skills with the verbal reasoning and analytical writing required for top business school and graduate programme admission.',
+    boards: [
+      {name:'GMAT', code:'GMAC', desc:'Quantitative Reasoning, Verbal Reasoning, Integrated Reasoning, and Analytical Writing. Required by leading MBA programmes worldwide.'},
+      {name:'GRE General', code:'ETS', desc:'Verbal Reasoning, Quantitative Reasoning, and Analytical Writing. Accepted by thousands of graduate and business programmes globally.'}
+    ]
+  },
+  'medical-law': {
+    title: 'Medical &amp; Law Entrance',
+    tag: 'Admissions Testing',
+    intro: 'Preparation for university admissions tests in medicine and law. These examinations require a distinct skill set ÔÇö rapid logical reasoning, situational judgement, and verbal precision under strict time pressure.',
+    boards: [
+      {name:'UCAT', code:'UCAT Consortium', desc:'Verbal Reasoning, Decision Making, Quantitative Reasoning, Abstract Reasoning, and Situational Judgement. Required for most UK medical and dental schools.'},
+      {name:'LNAT', code:'LNAT Consortium', desc:'Verbal reasoning and essay writing. Required for law admissions at leading UK universities including Oxford, UCL, King\'s College London, and Durham.'}
+    ]
+  },
+  'language': {
+    title: 'English Language Proficiency',
+    tag: 'Language',
+    intro: 'Preparation for internationally recognised English language proficiency examinations, required for university admission and professional certification worldwide.',
+    boards: [
+      {name:'IELTS Academic', code:'British Council / IDP', desc:'Listening, Reading, Writing, and Speaking. Required by UK, Australian, and Canadian universities. Band score 1ÔÇô9.'},
+      {name:'IELTS General Training', code:'British Council / IDP', desc:'For immigration and professional registration purposes. Different Reading and Writing tasks to Academic.'},
+      {name:'TOEFL iBT', code:'ETS', desc:'Internet-based test. Reading, Listening, Speaking, and Writing. Widely accepted by US and Canadian universities. Score 0ÔÇô120.'}
+    ]
+  }
+};
+
+function showDetail(id){
+  var d=detailData[id];
+  if(!d) return;
+  document.getElementById('courses-listing').style.display='none';
+  document.getElementById('courses-detail').style.display='block';
+  window.scrollTo(0,0);
+
+  var html='';
+  html+='<div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem">';
+  html+='<div style="width:32px;height:1px;background:var(--green)"></div>';
+  html+='<span style="font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:500">'+d.tag+'</span>';
+  html+='</div>';
+  html+='<h1 style="font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:400;color:var(--cream);margin-bottom:1.5rem">'+d.title+'</h1>';
+  html+='<p style="font-family:var(--serif);font-size:1.05rem;line-height:1.85;color:var(--cream2);max-width:700px;margin-bottom:3rem">'+d.intro+'</p>';
+
+  // Exam boards
+  html+='<h3 style="font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:1.5rem">Examination Boards</h3>';
+  html+='<div style="display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:3rem">';
+  for(var i=0;i<d.boards.length;i++){
+    var b=d.boards[i];
+    html+='<div style="background:var(--bg2);padding:1.75rem 2rem;display:grid;grid-template-columns:200px 1fr;gap:2rem;align-items:start;transition:background .2s" onmouseover="this.style.background=\'var(--bg3)\'" onmouseout="this.style.background=\'var(--bg2)\'">';
+    html+='<div><div style="font-family:var(--serif);font-size:1.1rem;color:var(--cream)">'+b.name+'</div>';
+    html+='<div style="font-size:.72rem;color:var(--green);margin-top:.3rem;letter-spacing:.06em">'+b.code+'</div></div>';
+    html+='<div style="font-size:.9rem;color:var(--cream2);line-height:1.7">'+b.desc+'</div>';
+    html+='</div>';
+  }
+  html+='</div>';
+
+  // AI Companion CTA
+  html+='<div style="background:var(--bg2);border:1px solid var(--line);padding:2.5rem;display:flex;gap:3rem;align-items:center;margin-bottom:2rem">';
+  html+='<div style="flex:1">';
+  html+='<div style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:.75rem">AI Study Companion</div>';
+  html+='<h3 style="font-family:var(--serif);font-size:1.3rem;color:var(--cream);margin-bottom:.75rem">Practise '+d.title+' with the AI Companion</h3>';
+  html+='<p style="font-size:.9rem;color:var(--cream2);line-height:1.7">Get instant, targeted explanations and diagnostic quizzes drawn from Alastair\'s 30 years of teaching. Try 3 quizzes free, then subscribe for ┬ú29/month for full access.</p>';
+  html+='</div>';
+  html+='<div style="display:flex;flex-direction:column;gap:.75rem">';
+  html+='<button class="btn-primary" onclick="showPage(\'companion\')">Try the Companion</button>';
+  html+='<button class="btn-secondary" onclick="showPage(\'contact\')" style="text-align:center">Book a session</button>';
+  html+='</div>';
+  html+='</div>';
+
+  // Video placeholder
+  html+='<div style="background:var(--bg2);border:1px solid var(--line);padding:3rem;text-align:center;margin-bottom:2rem">';
+  html+='<div style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:1rem">Coming Soon</div>';
+  html+='<p style="font-family:var(--serif);font-size:1.1rem;color:var(--cream2)">Video introduction to '+d.title+'</p>';
+  html+='<p style="font-size:.82rem;color:var(--cream3);margin-top:.5rem">A walkthrough of the AGF approach to this subject</p>';
+  html+='</div>';
+
+  document.getElementById('detail-content').innerHTML=html;
+}
+
+function backToCourses(){
+  document.getElementById('courses-detail').style.display='none';
+  document.getElementById('courses-listing').style.display='block';
+  window.scrollTo(0,0);
+}
+
+// ÔöÇÔöÇ CHAT DEMO ÔöÇÔöÇ
+var replies=[
+  "A common misconception here ÔÇö many students conflate the trend across a period with the trend down a group. Let's work through this from first principles.",
+  "Exactly right. Now extend this: how would the answer change for a different pair? Apply the same diagnostic framework ÔÇö forces present, relative strength, conclusion.",
+  "Good. The key to these questions is always: identify all intermolecular forces, rank by strength, then explain the physical property from there."
+];
+var idx=0;
+function sendDemo(){
+  var input=document.getElementById('chat-input');
+  var msg=input.value.trim();if(!msg)return;
+  var c=document.getElementById('chat-messages');
+  var u=document.createElement('div');
+  u.style.cssText='max-width:88%;font-size:.86rem;line-height:1.6;padding:.75rem 1rem;background:var(--green-dim);border:1px solid var(--green-line);color:var(--cream);align-self:flex-end;margin-left:auto';
+  u.textContent=msg;c.appendChild(u);input.value='';
+  setTimeout(function(){ 
+    var a=document.createElement('div');
+    var replies=['That is an excellent question. Let me work through this carefully.',
+      'A common misconception here. Let us rebuild from first principles.',
+      'Good thinking. Now extend this further using the same approach.'];
+    a.style.cssText='max-width:88%;font-size:.86rem;line-height:1.6;padding:.75rem 1rem;background:var(--bg);border:1px solid var(--line);color:var(--cream2)';
+    a.textContent=replies[Math.floor(Math.random()*replies.length)];
+    c.appendChild(a);
+    c.scrollTop=c.scrollHeight;
+  },800);
+  c.scrollTop=c.scrollHeight;
+}
+</script>
+</body>
+</html>
+
+
+
