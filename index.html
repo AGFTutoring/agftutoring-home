@@ -1,1841 +1,1411 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AGF Tutoring — Alastair Fisher</title>
-  <meta name="description" content="AI Study Companion and private tutoring from Alastair Fisher. 60,000+ hours of diagnostic teaching in Chemistry, Physics, and Mathematics.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    /* ═══════════════════════════════════════
-       RESET & BASE
-       ═══════════════════════════════════════ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #1a1a1a;
-      --bg-light: #222222;
-      --bg-card: #2a2a2a;
-      --bg-input: #242424;
-      --green: #4d9460;
-      --green-light: #5ba86d;
-      --green-dim: rgba(77,148,96,0.12);
-      --green-border: rgba(77,148,96,0.3);
-      --text: #e8e5de;
-      --text-muted: #9a9690;
-      --text-dim: #706b65;
-      --border: rgba(255,255,255,0.08);
-      --border-light: rgba(255,255,255,0.04);
-      --red: #e06060;
-      --amber: #d4a24c;
-      --serif: 'DM Serif Display', Georgia, serif;
-      --sans: 'Outfit', system-ui, sans-serif;
-      --mono: 'JetBrains Mono', monospace;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      font-weight: 300;
-      line-height: 1.7;
-      font-size: 15px;
-    }
-
-    a { color: var(--green); text-decoration: none; transition: color 0.2s; }
-    a:hover { color: var(--green-light); }
-
-    img { max-width: 100%; display: block; }
-
-    /* ═══════════════════════════════════════
-       LAYOUT
-       ═══════════════════════════════════════ */
-    .container {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 28px;
-    }
-
-    .section {
-      padding: 100px 0;
-      position: relative;
-    }
-
-    .section + .section {
-      border-top: 1px solid var(--border);
-    }
-
-    /* ═══════════════════════════════════════
-       TYPOGRAPHY
-       ═══════════════════════════════════════ */
-    .section-label {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .section-title {
-      font-family: var(--serif);
-      font-size: clamp(32px, 5vw, 48px);
-      font-weight: 400;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 20px;
-    }
-    .section-title em {
-      font-style: italic;
-      color: var(--green);
-    }
-
-    .section-subtitle {
-      font-size: 15px;
-      color: var(--text-muted);
-      font-weight: 300;
-      line-height: 1.8;
-      max-width: 560px;
-    }
-
-    /* ═══════════════════════════════════════
-       NAV
-       ═══════════════════════════════════════ */
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 0 28px;
-      background: rgba(26,26,26,0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-    }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: var(--text);
-    }
-    .nav-logo-bars {
-      display: flex;
-      align-items: flex-end;
-      gap: 3px;
-      height: 22px;
-    }
-    .nav-logo-bars span {
-      width: 3px;
-      background: var(--green);
-      border-radius: 1.5px;
-    }
-    .nav-logo-text {
-      font-family: var(--serif);
-      font-size: 18px;
-      letter-spacing: -0.02em;
-    }
-    .nav-logo-text span {
-      font-family: var(--sans);
-      font-size: 8px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      display: block;
-      margin-top: -2px;
-      color: var(--text-muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text); }
-
-    .nav-cta {
-      padding: 8px 20px;
-      background: var(--green);
-      color: #fff !important;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .nav-cta:hover {
-      background: var(--green-light);
-      color: #fff !important;
-      transform: translateY(-1px);
-    }
-
-    /* Mobile nav */
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 8px;
-    }
-    .nav-toggle span {
-      display: block;
-      width: 20px;
-      height: 1.5px;
-      background: var(--text-muted);
-      margin: 5px 0;
-      transition: 0.2s;
-    }
-
-    @media (max-width: 768px) {
-      .nav-toggle { display: block; }
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 64px;
-        left: 0;
-        right: 0;
-        background: rgba(26,26,26,0.98);
-        backdrop-filter: blur(16px);
-        flex-direction: column;
-        padding: 20px 28px;
-        gap: 16px;
-        border-bottom: 1px solid var(--border);
-      }
-      .nav-links.open { display: flex; }
-    }
-
-    /* ═══════════════════════════════════════
-       HERO
-       ═══════════════════════════════════════ */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 64px;
-      position: relative;
-      overflow: visible;
-    }
-
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .hero-content {
-      max-width: 640px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-photo {
-      width: 280px;
-      height: 350px;
-      object-fit: cover;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      flex-shrink: 0;
-    }
-
-    @media (max-width: 768px) {
-      .hero {
-        min-height: auto;
-        padding-top: 100px;
-        padding-bottom: 40px;
-      }
-      .hero-inner {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-      .hero-photo {
-        width: 160px;
-        height: 200px;
-        justify-self: center;
-        order: -1;
-      }
-    }
-
-    .hero-title {
-      font-family: var(--serif);
-      font-size: clamp(36px, 6vw, 60px);
-      font-weight: 400;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
-    }
-    .hero-title em {
-      font-style: italic;
-      color: var(--green);
-    }
-
-    .hero-sub {
-      font-size: 16px;
-      color: var(--text-muted);
-      font-weight: 300;
-      line-height: 1.8;
-      max-width: 480px;
-      margin-bottom: 40px;
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 48px;
-      margin-top: 56px;
-    }
-    .hero-stat-num {
-      font-family: var(--mono);
-      font-size: 28px;
-      font-weight: 500;
-      color: var(--green);
-    }
-    .hero-stat-label {
-      font-size: 11px;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-top: 4px;
-    }
-
-    /* University ticker */
-    .ticker-wrap {
-      overflow: hidden;
-      margin-top: 64px;
-      padding: 16px 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      position: relative;
-    }
-    .ticker-wrap::before,
-    .ticker-wrap::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 80px;
-      z-index: 2;
-      pointer-events: none;
-    }
-    .ticker-wrap::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
-    .ticker-wrap::after { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
-
-    .ticker {
-      display: flex;
-      gap: 48px;
-      animation: ticker 30s linear infinite;
-      width: max-content;
-    }
- .ticker span {
-  font-size: 14px;
-  color: #4d9460;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  font-weight: 400;
-  font-family: 'DM Serif Display', Georgia, serif;
-}
-    @keyframes ticker {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* Quote */
-    .hero-quote {
-      margin-top: 48px;
-      padding-left: 20px;
-      border-left: 2px solid var(--green-border);
-    }
-    .hero-quote p {
-      font-family: var(--serif);
-      font-size: 16px;
-      font-style: italic;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-    .hero-quote cite {
-      font-size: 11px;
-      color: var(--text-dim);
-      font-style: normal;
-      letter-spacing: 0.06em;
-      margin-top: 8px;
-      display: block;
-    }
-
-
-    /* ═══════════════════════════════════════
-       METHOD (condensed)
-       ═══════════════════════════════════════ */
-    .method-steps {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 2px;
-      margin-top: 48px;
-    }
-    .method-step {
-      padding: 28px 20px;
-      background: var(--bg-card);
-      position: relative;
-    }
-    .method-step:first-child { border-radius: 10px 0 0 10px; }
-    .method-step:last-child { border-radius: 0 10px 10px 0; }
-    .method-step-num {
-      font-size: 10px;
-      color: var(--green);
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .method-step h3 {
-      font-family: var(--serif);
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-    .method-step p {
-      font-size: 12px;
-      color: var(--text-dim);
-      line-height: 1.6;
-      font-weight: 300;
-    }
-
-    @media (max-width: 768px) {
-      .method-steps {
-        grid-template-columns: 1fr;
-        gap: 1px;
-      }
-      .method-step:first-child { border-radius: 10px 10px 0 0; }
-      .method-step:last-child { border-radius: 0 0 10px 10px; }
-    }
-
-
-    /* ═══════════════════════════════════════
-       COMPANION (PRIMARY PRODUCT)
-       ═══════════════════════════════════════ */
-    .companion-section {
-      background: linear-gradient(180deg, var(--bg) 0%, rgba(77,148,96,0.03) 50%, var(--bg) 100%);
-    }
-
-    .companion-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      margin-top: 48px;
-      align-items: center;
-    }
-
-    .companion-features {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-    .companion-feature {
-      padding-left: 20px;
-      border-left: 2px solid var(--green-border);
-    }
-    .companion-feature h3 {
-      font-family: var(--serif);
-      font-size: 17px;
-      font-weight: 400;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-    .companion-feature p {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.7;
-      font-weight: 300;
-    }
-
-    /* Chat preview */
-    .chat-preview {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      position: relative;
-    }
-    .chat-preview-header {
-      padding: 14px 18px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .chat-avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: var(--green-dim);
-      border: 1px solid var(--green-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--serif);
-      font-size: 13px;
-      color: var(--green);
-    }
-    .chat-preview-name {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text);
-    }
-    .chat-preview-sub {
-      font-size: 10px;
-      color: var(--green);
-    }
-    .chat-body {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .chat-msg {
-      padding: 11px 15px;
-      font-size: 13px;
-      line-height: 1.7;
-      border-radius: 10px;
-    }
-    .chat-msg.user {
-      background: var(--green-dim);
-      border: 1px solid var(--green-border);
-      border-radius: 10px 10px 2px 10px;
-      align-self: flex-end;
-      max-width: 75%;
-      color: var(--text);
-    }
-    .chat-msg.ai {
-      background: rgba(255,255,255,0.025);
-      border: 1px solid var(--border);
-      border-radius: 10px 10px 10px 2px;
-      max-width: 88%;
-      color: rgba(255,255,255,0.82);
-    }
-    .chat-msg strong { color: var(--text); font-weight: 600; }
-    .chat-input-bar {
-      margin: 0 18px 18px;
-      padding: 10px 14px;
-      background: var(--bg-light);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .chat-input-bar span {
-      font-size: 12px;
-      color: var(--text-dim);
-    }
-    .chat-send {
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-      background: var(--green);
-      color: var(--bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 13px;
-      border: none;
-    }
-
-    /* Fade overlay */
-    .chat-preview::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 50%;
-      background: linear-gradient(to bottom, transparent 0%, var(--bg) 90%);
-      pointer-events: none;
-      z-index: 1;
-    }
-    .chat-cta-overlay {
-      position: absolute;
-      bottom: 28px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-      text-align: center;
-    }
-
-    @media (max-width: 768px) {
-      .companion-grid {
-        grid-template-columns: 1fr;
-        gap: 36px;
-      }
-      .chat-preview::after { display: none; }
-      .chat-cta-overlay {
-        position: relative;
-        bottom: auto;
-        left: auto;
-        transform: none;
-        margin-top: 20px;
-      }
-    }
-
-
-    /* ═══════════════════════════════════════
-       SUBJECTS (simplified grid)
-       ═══════════════════════════════════════ */
-    .subjects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 48px;
-    }
-    .subject-card {
-      padding: 24px 22px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      transition: border-color 0.25s, transform 0.25s;
-    }
-    .subject-card:hover {
-      border-color: var(--green-border);
-      transform: translateY(-2px);
-    }
-    .subject-card-icon {
-      font-size: 22px;
-      margin-bottom: 12px;
-    }
-    .subject-card h3 {
-      font-family: var(--serif);
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
-    .subject-card p {
-      font-size: 12px;
-      color: var(--text-dim);
-      line-height: 1.6;
-    }
-    .subject-card .boards {
-      margin-top: 12px;
-      font-size: 10px;
-      color: var(--text-dim);
-      letter-spacing: 0.04em;
-    }
-
-    .subjects-also {
-      margin-top: 32px;
-      padding: 20px 24px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-    }
-    .subjects-also h4 {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-muted);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .subjects-also p {
-      font-size: 13px;
-      color: var(--text-dim);
-      line-height: 1.7;
-    }
-
-    @media (max-width: 768px) {
-      .subjects-grid { grid-template-columns: 1fr; }
-    }
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .subjects-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-
-    /* ═══════════════════════════════════════
-       FREE RESOURCES
-       ═══════════════════════════════════════ */
-    .resources-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-top: 40px;
-    }
-    .resource-card {
-      padding: 24px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      text-decoration: none;
-      color: var(--text);
-      transition: border-color 0.25s, transform 0.25s;
-      display: block;
-    }
-    .resource-card:hover {
-      border-color: var(--green-border);
-      transform: translateY(-2px);
-      color: var(--text);
-    }
-    .resource-card-code {
-      font-size: 10px;
-      color: var(--green);
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-    .resource-card h3 {
-      font-family: var(--serif);
-      font-size: 16px;
-      font-weight: 400;
-      margin-bottom: 8px;
-    }
-    .resource-card p {
-      font-size: 12px;
-      color: var(--text-dim);
-      line-height: 1.6;
-    }
-    .resource-coming {
-      padding: 24px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-light);
-      border-radius: 10px;
-      opacity: 0.5;
-    }
-    .resource-coming h3 {
-      font-family: var(--serif);
-      font-size: 16px;
-      font-weight: 400;
-      margin-bottom: 4px;
-      color: var(--text-dim);
-    }
-    .resource-coming p {
-      font-size: 11px;
-      color: var(--text-dim);
-    }
-
-    @media (max-width: 768px) {
-      .resources-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ═══════════════════════════════════════
-       PRICING
-       ═══════════════════════════════════════ */
-    .pricing-primary {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 48px;
-      margin-top: 48px;
-      position: relative;
-      overflow: hidden;
-    }
-    .pricing-primary::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--green), var(--green-light), transparent);
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: start;
-    }
-
-    .pricing-label {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-    .pricing-label.green { color: var(--green); }
-    .pricing-label.muted { color: var(--text-muted); }
-
-    .pricing-amount {
-      font-family: var(--serif);
-      font-weight: 400;
-      color: var(--text);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .pricing-amount.large { font-size: 52px; }
-    .pricing-amount.medium { font-size: 40px; }
-
-    .pricing-period {
-      font-size: 14px;
-      color: var(--text-muted);
-      font-weight: 300;
-      margin-bottom: 24px;
-    }
-
-    .free-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      background: var(--green-dim);
-      border: 1px solid var(--green-border);
-      border-radius: 6px;
-      font-size: 13px;
-      color: var(--green);
-      font-weight: 500;
-      margin-bottom: 28px;
-    }
-
-    .pricing-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .pricing-features li {
-      font-size: 14px;
-      color: var(--text-muted);
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      line-height: 1.5;
-    }
-    .pricing-features li::before {
-      content: '—';
-      font-weight: 500;
-      flex-shrink: 0;
-    }
-    .pricing-features.green li::before { color: var(--green); }
-    .pricing-features.muted li::before { color: var(--text-dim); }
-
-    .pricing-divider {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin: 48px 0;
-      color: var(--text-dim);
-      font-size: 13px;
-      font-weight: 300;
-      letter-spacing: 0.06em;
-    }
-    .pricing-divider::before,
-    .pricing-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .pricing-secondary {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 48px;
-    }
-    .pricing-bespoke {
-      font-size: 13px;
-      color: var(--text-dim);
-      font-weight: 300;
-      font-style: italic;
-      margin-bottom: 24px;
-      line-height: 1.6;
-    }
-    .pricing-footnote {
-      text-align: center;
-      margin-top: 36px;
-      font-size: 12px;
-      color: var(--text-dim);
-      font-weight: 300;
-    }
-
-    @media (max-width: 768px) {
-      .pricing-grid { grid-template-columns: 1fr; gap: 32px; }
-      .pricing-primary, .pricing-secondary { padding: 28px 24px; }
-      .pricing-amount.large { font-size: 42px; }
-      .pricing-amount.medium { font-size: 34px; }
-    }
-
-    /* ═══════════════════════════════════════
-       ABOUT (condensed)
-       ═══════════════════════════════════════ */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 48px;
-      margin-top: 48px;
-      align-items: start;
-    }
-    .about-photo {
-      width: 260px;
-      height: 320px;
-      object-fit: cover;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-    }
-    .about-text p {
-      font-size: 15px;
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 18px;
-      font-weight: 300;
-    }
-    .about-credentials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 24px;
-    }
-    .about-cred {
-      padding: 6px 14px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      font-size: 11px;
-      color: var(--text-dim);
-      letter-spacing: 0.02em;
-    }
-
-    @media (max-width: 768px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 28px;
-      }
-      .about-photo {
-        width: 140px;
-        height: 180px;
-      }
-    }
-
-    /* ═══════════════════════════════════════
-       CONTACT
-       ═══════════════════════════════════════ */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      margin-top: 48px;
-      align-items: start;
-    }
-    .contact-info p {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.8;
-      font-weight: 300;
-      margin-bottom: 24px;
-    }
-    .contact-detail {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      color: var(--text-dim);
-      margin-bottom: 12px;
-    }
-    .contact-detail a { color: var(--green); }
-
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-    .form-field {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .form-field label {
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--text-dim);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-    .form-field input,
-    .form-field select,
-    .form-field textarea {
-      padding: 12px 14px;
-      background: var(--bg-input);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--text);
-      font-family: var(--sans);
-      font-size: 14px;
-      font-weight: 300;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .form-field input:focus,
-    .form-field select:focus,
-    .form-field textarea:focus {
-      border-color: var(--green-border);
-    }
-    .form-field textarea { resize: vertical; min-height: 100px; }
-    .form-field select { cursor: pointer; }
-    .form-field select option { background: var(--bg-card); }
-
-    @media (max-width: 768px) {
-      .contact-grid { grid-template-columns: 1fr; gap: 36px; }
-      .form-row { grid-template-columns: 1fr; }
-    }
-
-
-    /* ═══════════════════════════════════════
-       BUTTONS
-       ═══════════════════════════════════════ */
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px 36px;
-      background: var(--green);
-      color: #fff;
-      font-family: var(--sans);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.25s, transform 0.2s;
-    }
-    .btn-primary:hover {
-      background: var(--green-light);
-      color: #fff;
-      transform: translateY(-1px);
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px 36px;
-      background: transparent;
-      color: var(--text-muted);
-      font-family: var(--sans);
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.25s;
-    }
-    .btn-secondary:hover {
-      border-color: var(--text-dim);
-      color: var(--text);
-      transform: translateY(-1px);
-    }
-
-
-    /* ═══════════════════════════════════════
-       FOOTER
-       ═══════════════════════════════════════ */
-    .footer {
-      border-top: 1px solid var(--border);
-      padding: 60px 0 40px;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 40px;
-    }
-    .footer-brand p {
-      font-size: 12px;
-      color: var(--text-dim);
-      line-height: 1.7;
-      margin-top: 12px;
-    }
-    .footer-col h4 {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      margin-bottom: 14px;
-    }
-    .footer-col a {
-      display: block;
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-      transition: color 0.2s;
-    }
-    .footer-col a:hover { color: var(--text); }
-    .footer-bottom {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-      font-size: 11px;
-      color: var(--text-dim);
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    @media (max-width: 768px) {
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    /* ═══════════════════════════════════════
-       LEGAL MODALS
-       ═══════════════════════════════════════ */
-    .legal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.7);
-      z-index: 200;
-      overflow-y: auto;
-      padding: 40px 20px;
-    }
-    .legal-overlay:target { display: block; }
-    .legal-content {
-      max-width: 720px;
-      margin: 0 auto;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 48px;
-    }
-    .legal-content h1 {
-      font-family: var(--serif);
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
-    .legal-content h3 {
-      font-size: 16px;
-      font-weight: 600;
-      margin-top: 28px;
-      margin-bottom: 10px;
-      color: var(--text);
-    }
-    .legal-content p, .legal-content li {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 12px;
-    }
-    .legal-close {
-      display: inline-block;
-      margin-top: 24px;
-      padding: 10px 24px;
-      background: var(--bg-light);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--text-muted);
-      font-size: 13px;
-      text-decoration: none;
-    }
-
-    /* ═══════════════════════════════════════
-       ANIMATIONS
-       ═══════════════════════════════════════ */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGF Tutoring — Expert Tutoring & University Admissions with Alastair Fisher</title>
+<meta name="description" content="Expert one-to-one tutoring in Chemistry, Physics and Mathematics by Alastair Fisher. University admissions consulting, test preparation (GMAT, GRE, LNAT, UCAT, SAT, ACT) and the AGF AI Study Companion.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --charcoal: #1c1c1c;
+    --charcoal-2: #242424;
+    --charcoal-3: #2e2e2e;
+    --green: #4d9460;
+    --green-light: rgba(77,148,96,0.12);
+    --green-border: rgba(77,148,96,0.3);
+    --cream: #e8e5de;
+    --cream-2: #b8b5ae;
+    --muted: #706b65;
+    --border: rgba(255,255,255,0.07);
+    --border-hover: rgba(255,255,255,0.14);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', system-ui, sans-serif;
+    background: var(--charcoal);
+    color: var(--cream);
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  h1, h2, h3, h4 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.15;
+  }
+  em { font-style: italic; color: var(--green); }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+  .section { padding: 100px 0; }
+  .section + .section { border-top: 1px solid var(--border); }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 40px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(28,28,28,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 2.5px;
+    height: 22px;
+  }
+  .nav-logo-bars span {
+    display: block;
+    width: 3px;
+    border-radius: 2px;
+    background: var(--green);
+  }
+  .nav-logo-bars span:nth-child(1) { height: 10px; }
+  .nav-logo-bars span:nth-child(2) { height: 16px; }
+  .nav-logo-bars span:nth-child(3) { height: 22px; }
+  .nav-logo-bars span:nth-child(4) { height: 14px; }
+  .nav-logo-bars span:nth-child(5) { height: 8px; }
+  .nav-logo-text {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 18px;
+    color: var(--cream);
+    letter-spacing: 0.01em;
+  }
+  .nav-logo-sub {
+    font-family: 'Outfit', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-top: -2px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--cream-2);
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--cream); }
+
+  .nav-client-login {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: var(--muted) !important;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition: border-color 0.2s, color 0.2s !important;
+  }
+  .nav-client-login:hover {
+    border-color: var(--border-hover) !important;
+    color: var(--cream-2) !important;
+  }
+
+  .nav-companion-btn {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: var(--green) !important;
+    padding: 6px 14px;
+    border: 1px solid var(--green-border);
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s !important;
+  }
+  .nav-companion-btn:hover {
+    background: var(--green-light);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding-top: 140px;
+    padding-bottom: 100px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 55%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(77,148,96,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .hero-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-label::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--green);
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 5vw, 58px);
+    color: var(--cream);
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-argument {
+    font-size: 16px;
+    color: var(--cream-2);
+    max-width: 520px;
+    margin-bottom: 16px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .hero-argument strong {
+    color: var(--cream);
+    font-weight: 500;
+  }
+
+  .hero-sigma {
+    font-size: 13px;
+    color: var(--muted);
+    padding: 14px 18px;
+    border-left: 2px solid var(--green-border);
+    margin: 24px 0 36px;
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    background: var(--green);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: #3d7a4f; transform: translateY(-1px); }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: transparent;
+    color: var(--cream-2);
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid var(--border-hover);
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.25); color: var(--cream); transform: translateY(-1px); }
+
+  /* Hero portrait */
+  .hero-portrait {
+    position: relative;
+  }
+  .hero-portrait-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+  }
+  .hero-portrait-badge {
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    background: var(--charcoal-2);
+    border: 1px solid var(--border-hover);
+    border-radius: 12px;
+    padding: 16px 20px;
+    min-width: 200px;
+  }
+  .hero-portrait-badge .badge-num {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 36px;
+    color: var(--cream);
+    line-height: 1;
+  }
+  .hero-portrait-badge .badge-label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+    font-weight: 300;
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-label-line {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .section-label-line span {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--green);
+  }
+  .section-label-line::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-title {
+    font-size: clamp(30px, 4vw, 44px);
+    color: var(--cream);
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+    color: var(--cream-2);
+    font-weight: 300;
+    line-height: 1.8;
+    max-width: 580px;
+    margin-bottom: 60px;
+  }
+
+  /* ── TWO PATHS ── */
+  .paths-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .path-card {
+    background: var(--charcoal-2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 44px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .path-card:hover { border-color: var(--border-hover); }
+
+  .path-card.featured {
+    border-color: var(--green-border);
+  }
+  .path-card.featured::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--green), transparent);
+  }
+
+  .path-tag {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .path-card h3 {
+    font-size: 26px;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+
+  .path-card p {
+    font-size: 14px;
+    color: var(--cream-2);
+    line-height: 1.8;
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+
+  .path-features {
+    list-style: none;
+    margin-bottom: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .path-features li {
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+  .path-features li::before {
+    content: '—';
+    color: var(--green);
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+
+  .path-price {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 42px;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .path-price-sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+
+  /* ── SERVICES ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+
+  .service-card {
+    background: var(--charcoal-2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: default;
+  }
+  .service-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+  }
+
+  .service-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--green-light);
+    border: 1px solid var(--green-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 16px;
+  }
+
+  .service-card h4 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 18px;
+    color: var(--cream);
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+
+  .service-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 14px;
+  }
+  .service-tag {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 80px;
+    align-items: start;
+    margin-top: 48px;
+  }
+
+  .about-photo {
+    position: sticky;
+    top: 88px;
+  }
+  .about-photo img {
+    width: 100%;
+    border-radius: 16px;
+    display: block;
+  }
+
+  .about-content h3 {
+    font-size: 28px;
+    color: var(--cream);
+    margin-bottom: 20px;
+    margin-top: 40px;
+  }
+  .about-content h3:first-child { margin-top: 0; }
+
+  .about-content p {
+    font-size: 15px;
+    color: var(--cream-2);
+    line-height: 1.85;
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+
+  .credentials-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0 32px;
+  }
+  .credentials-list li {
+    font-size: 14px;
+    color: var(--cream-2);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .credentials-list li::before {
+    content: '✦';
+    color: var(--green);
+    font-size: 10px;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .stat-row {
+    display: flex;
+    gap: 32px;
+    margin: 32px 0;
+    padding: 28px;
+    background: var(--charcoal-2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .stat-item { flex: 1; }
+  .stat-num {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 40px;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  /* ── COMPANION ── */
+  .companion-grid {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 80px;
+    align-items: center;
+    margin-top: 48px;
+  }
+
+  .companion-features {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .companion-feature {
+    padding-left: 20px;
+    border-left: 2px solid var(--green-border);
+  }
+  .companion-feature h4 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 18px;
+    color: var(--cream);
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+  .companion-feature p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* Chat preview */
+  .chat-preview {
+    background: var(--charcoal-3);
+    border: 1px solid var(--border-hover);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .chat-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .chat-avatar {
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    background: var(--green-light);
+    border: 1px solid var(--green-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 14px;
+    color: var(--green);
+    flex-shrink: 0;
+  }
+  .chat-header-text { flex: 1; }
+  .chat-header-text h5 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--cream);
+    margin-bottom: 1px;
+  }
+  .chat-header-text span { font-size: 11px; color: var(--green); }
+
+  .chat-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .msg {
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.7;
+    max-width: 90%;
+    font-weight: 300;
+  }
+  .msg.user {
+    background: var(--green-light);
+    border: 1px solid var(--green-border);
+    border-radius: 10px 10px 2px 10px;
+    align-self: flex-end;
+    color: var(--cream);
+    max-width: 80%;
+  }
+  .msg.ai {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 10px 10px 10px 2px;
+    color: var(--cream-2);
+  }
+  .msg.ai strong { color: var(--cream); font-weight: 500; }
+
+  .chat-input {
+    margin: 0 20px 20px;
+    padding: 10px 14px;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .chat-input span { font-size: 12px; color: var(--muted); }
+  .chat-send {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: #fff;
+    border: none;
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    margin-top: 48px;
+  }
+
+  .contact-info h3 {
+    font-size: 22px;
+    color: var(--cream);
+    margin-bottom: 16px;
+  }
+
+  .contact-info p {
+    font-size: 14px;
+    color: var(--cream-2);
+    line-height: 1.8;
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+
+  .contact-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .contact-detail a {
+    font-size: 14px;
+    color: var(--cream-2);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.2s;
+    font-weight: 300;
+  }
+  .contact-detail a:hover { color: var(--cream); }
+  .contact-detail a span { color: var(--green); font-size: 16px; }
+
+  .whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: rgba(37,211,102,0.1);
+    border: 1px solid rgba(37,211,102,0.25);
+    border-radius: 8px;
+    color: #25d366;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .whatsapp-btn:hover { background: rgba(37,211,102,0.16); }
+
+  /* Form */
+  form { display: flex; flex-direction: column; gap: 16px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .form-group label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--charcoal-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--green-border);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: var(--muted); }
+
+  .form-group select { appearance: none; cursor: pointer; }
+
+  .form-group select option {
+    background: var(--charcoal-2);
+    color: var(--cream);
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  textarea { resize: vertical; min-height: 100px; }
+
+  .form-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 36px;
+    background: var(--green);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 8px;
+  }
+  .form-submit:hover { background: #3d7a4f; }
+
+  .form-note {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 300;
+    text-align: center;
+    margin-top: -8px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 48px 0 40px;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .footer-brand { max-width: 280px; }
+
+  .footer-brand p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-top: 12px;
+    font-weight: 300;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-links a {
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-weight: 300;
+  }
+  .footer-links a:hover { color: var(--cream-2); }
+
+  .footer-bottom {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-bottom span, .footer-bottom a {
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 300;
+  }
+  .footer-bottom a:hover { color: var(--cream-2); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    padding: 0;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-grid,
+    .about-grid,
+    .companion-grid,
+    .contact-grid,
+    .paths-grid { grid-template-columns: 1fr; gap: 48px; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .hero-portrait { display: none; }
+    nav { padding: 0 20px; }
+    .nav-links { gap: 16px; }
+    .container { padding: 0 20px; }
+    .section { padding: 64px 0; }
+    .about-photo { position: relative; top: 0; max-width: 300px; }
+  }
+
+  @media (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .stat-row { flex-direction: column; gap: 20px; }
+    .nav-links li:not(:last-child):not(:nth-last-child(2)) { display: none; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- ═══ NAV ═══ -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">
-        <div class="nav-logo-bars">
-          <span style="height:8px"></span>
-          <span style="height:16px"></span>
-          <span style="height:12px"></span>
-          <span style="height:20px"></span>
-        </div>
-        <div class="nav-logo-text">
-          AGF
-          <span>Tutoring</span>
-        </div>
-      </a>
-
-      <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-
-      <ul class="nav-links">
-        <li><a href="#method">Method</a></li>
-        <li><a href="#companion">Companion</a></li>
-        <li><a href="#subjects">Subjects</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="https://agf-companion.vercel.app" target="_blank" class="nav-cta">Try Free</a></li>
-      </ul>
+<!-- ══════════ NAV ══════════ -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-bars">
+      <span></span><span></span><span></span><span></span><span></span>
     </div>
-  </nav>
+    <div>
+      <span class="nav-logo-text">AGF Tutoring</span>
+      <span class="nav-logo-sub">Test Prep &amp; Consulting</span>
+    </div>
+  </a>
 
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#companion">AI Companion</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://companion.agftutoring.co.uk" target="_blank" class="nav-companion-btn">Try Free</a></li>
+    <li><a href="https://agftutoring.co.uk/login" class="nav-client-login">Client Login</a></li>
+  </ul>
+</nav>
 
-  <!-- ═══ HERO ═══ -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-inner">
-        <div class="hero-content">
-        <h1 class="hero-title">
-          Sixty thousand hours<br>of tutoring, <em>distilled.</em>
-        </h1>
-        <p class="hero-sub">
-          An AI study companion built on three decades of diagnostic teaching — giving every student access to the expertise behind some of the world's strongest academic outcomes.
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-label">Alastair Fisher · AGF Tutoring</div>
+
+        <h1>Expert tutoring.<br><em>Extraordinary</em><br>outcomes.</h1>
+
+        <p class="hero-argument">
+          Research shows that <strong>one-to-one tutoring produces results two standard deviations above classroom teaching</strong> — the equivalent of moving an average student to the 98th percentile. For three decades, I have delivered exactly that.
         </p>
-        <a href="https://agf-companion.vercel.app" target="_blank" class="btn-primary">
-          Try the Study Companion →
-        </a>
-        <span style="display:block; margin-top:10px; font-size:12px; color:var(--text-dim);">3 free quizzes · No account needed</span>
 
-        <div class="hero-stats">
-          <div>
-            <div class="hero-stat-num">60k+</div>
-            <div class="hero-stat-label">Hours taught</div>
-          </div>
-          <div>
-            <div class="hero-stat-num">5,000+</div>
-            <div class="hero-stat-label">Students</div>
-          </div>
-          <div>
-            <div class="hero-stat-num">$20m+</div>
-            <div class="hero-stat-label">Scholarships</div>
-          </div>
+        <div class="hero-sigma">
+          "The most effective known intervention in education is personal tutoring. The challenge has always been scale."
+          <br>— Bloom's 2 Sigma Problem, 1984
+        </div>
+
+        <div class="hero-ctas">
+          <a href="#contact" class="btn-primary">Book an introductory session</a>
+          <a href="https://companion.agftutoring.co.uk" target="_blank" class="btn-secondary">Try AI Companion free →</a>
         </div>
       </div>
 
-      <img src="alastair.jpg" alt="Alastair Fisher" class="hero-photo">
-      </div>
-
-      <div class="hero-quote">
-        <p>The real task of teaching is not to add more information — it is to remove confusion.</p>
-        <cite>Alastair Fisher · AGF Tutoring</cite>
-      </div>
-
-      <div class="ticker-wrap">
-        <div class="ticker">
-          <span>University of Oxford</span>
-          <span>Harvard University</span>
-          <span>University of Cambridge</span>
-          <span>MIT</span>
-          <span>Imperial College London</span>
-          <span>Stanford University</span>
-          <span>ETH Zurich</span>
-          <span>Yale University</span>
-          <span>Princeton University</span>
-          <span>INSEAD</span>
-          <span>LSE</span>
-          <span>Caltech</span>
-          <!-- duplicate for seamless loop -->
-          <span>University of Oxford</span>
-          <span>Harvard University</span>
-          <span>University of Cambridge</span>
-          <span>MIT</span>
-          <span>Imperial College London</span>
-          <span>Stanford University</span>
-          <span>ETH Zurich</span>
-          <span>Yale University</span>
-          <span>Princeton University</span>
-          <span>INSEAD</span>
-          <span>LSE</span>
-          <span>Caltech</span>
+      <div class="hero-portrait">
+        <img
+          src="assets/alastair-fisher.jpg"
+          alt="Alastair Fisher — AGF Tutoring"
+          class="hero-portrait-img"
+          onerror="this.style.display='none'"
+        >
+        <div class="hero-portrait-badge">
+          <div class="badge-num">30+</div>
+          <div class="badge-label">Years teaching Chemistry,<br>Physics &amp; Mathematics</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
+<!-- ══════════ TWO PATHS ══════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label-line"><span>Two ways to work with AGF</span></div>
+    <h2 class="section-title">Choose your<br><em>level of support</em></h2>
 
-  <!-- ═══ METHOD (condensed) ═══ -->
-  <section class="section" id="method">
-    <div class="container">
-      <div class="section-label"><span>The AGF Method</span></div>
-      <h2 class="section-title">Teaching as a <em>diagnostic</em> process</h2>
-      <p class="section-subtitle">Most academic difficulty arises not from a lack of ability, but from a lack of clarity. The AGF method identifies precisely where understanding breaks down — and rebuilds from there.</p>
+    <div class="paths-grid">
 
-      <div class="method-steps fade-up">
-        <div class="method-step">
-          <div class="method-step-num">01</div>
-          <h3>Diagnose</h3>
-          <p>Identify the precise point where understanding breaks down.</p>
-        </div>
-        <div class="method-step">
-          <div class="method-step-num">02</div>
-          <h3>Rebuild</h3>
-          <p>Reconstruct from first principles — intuition before formalism.</p>
-        </div>
-        <div class="method-step">
-          <div class="method-step-num">03</div>
-          <h3>Clarify</h3>
-          <p>Introduce precise language once intuition is secure.</p>
-        </div>
-        <div class="method-step">
-          <div class="method-step-num">04</div>
-          <h3>Test</h3>
-          <p>Confirm understanding through targeted diagnostic questions.</p>
-        </div>
-        <div class="method-step">
-          <div class="method-step-num">05</div>
-          <h3>Extend</h3>
-          <p>Move from competence to mastery — and beyond the syllabus.</p>
-        </div>
+      <!-- One-to-one -->
+      <div class="path-card">
+        <span class="path-tag">One-to-one tutoring</span>
+        <h3>Direct work with Alastair</h3>
+        <p>Live sessions via BigBlueButton. Diagnostic teaching method refined over 30 years — identifies precisely where understanding breaks down and rebuilds it.</p>
+        <ul class="path-features">
+          <li>Edexcel IAL Chemistry, Physics &amp; Mathematics</li>
+          <li>University application &amp; personal statement coaching</li>
+          <li>GMAT, GRE, LNAT, UCAT, SAT &amp; ACT preparation</li>
+          <li>Scholarship strategy &amp; application support</li>
+          <li>WhatsApp access during term</li>
+        </ul>
+        <div class="path-price-sub">Contact for rates</div>
+        <a href="#contact" class="btn-secondary">Enquire now</a>
       </div>
+
+      <!-- Companion -->
+      <div class="path-card featured">
+        <span class="path-tag">AI Study Companion</span>
+        <h3>AGF teaching, available 24/7</h3>
+        <p>An AI study companion trained on AGF's curriculum and diagnostic approach. Instant explanations, exam-style quizzes, and targeted revision — at a fraction of the cost.</p>
+        <ul class="path-features">
+          <li>Chemistry, Physics &amp; Maths — Edexcel IAL complete</li>
+          <li>SAT, ACT, GMAT, GRE, LNAT, UCAT, IELTS, TOEFL</li>
+          <li>Unlimited Ask mode · exam-style quizzes</li>
+          <li>Diagnostic feedback on every quiz answer</li>
+          <li>Escalate to live sessions when needed</li>
+        </ul>
+        <div class="path-price">£29</div>
+        <div class="path-price-sub">per month · 3 free quizzes to start</div>
+        <a href="https://companion.agftutoring.co.uk" target="_blank" class="btn-primary">Try free →</a>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
+<!-- ══════════ SERVICES ══════════ -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-label-line"><span>Services</span></div>
+    <h2 class="section-title">Every stage of<br>the <em>academic journey</em></h2>
+    <p class="section-subtitle">From A-Level revision to MBA admissions, AGF Tutoring provides expert guidance across the full spectrum of academic preparation.</p>
 
-  <!-- ═══ AI COMPANION (PRIMARY PRODUCT) ═══ -->
-  <section class="section companion-section" id="companion">
-    <div class="container">
-      <div class="section-label"><span>AI Study Companion</span></div>
-      <h2 class="section-title">The <em>digital tutor,</em><br>powered by AGF</h2>
-      <p class="section-subtitle">An AI companion trained on Alastair's notes, method, and 60,000 hours of diagnostic insight. Ask questions, get explanations, and take exam-style quizzes — available 24/7.</p>
+    <div class="services-grid">
 
-      <div class="companion-grid">
-
-        <!-- Left: features -->
-        <div class="companion-features fade-up">
-          <div class="companion-feature">
-            <h3>Grounded in curated notes</h3>
-            <p>Answers drawn from AGF's own curriculum — not the open internet. Every response reflects the diagnostic approach.</p>
-          </div>
-          <div class="companion-feature">
-            <h3>Available around the clock</h3>
-            <p>Revision at 11pm the night before an exam? The companion is always available for targeted questions and worked examples.</p>
-          </div>
-          <div class="companion-feature">
-            <h3>Interactive quizzes with feedback</h3>
-            <p>Exam-style questions with instant marking, hints, and model answers. Identifies weak topics so students know exactly what to revise.</p>
-          </div>
-          <div class="companion-feature">
-            <h3>Escalate to live sessions</h3>
-            <p>When a concept needs deeper work, book a one-to-one session with Alastair.</p>
-          </div>
-
-          <div style="margin-top:8px;">
-            <a href="https://agf-companion.vercel.app" target="_blank" class="btn-primary">Try the Companion →</a>
-            <span style="display:block; margin-top:10px; font-size:12px; color:var(--text-dim);">3 free quizzes · No account needed</span>
-          </div>
+      <div class="service-card">
+        <div class="service-icon">⚗</div>
+        <h4>A-Level &amp; IAL Sciences</h4>
+        <p>Expert teaching in Edexcel IAL Chemistry, Physics and Mathematics. Diagnostic method that identifies gaps and rebuilds understanding from the ground up.</p>
+        <div class="service-tags">
+          <span class="service-tag">WCH11–16</span>
+          <span class="service-tag">WPH11–16</span>
+          <span class="service-tag">P1–P4 · S1 · S2 · M1 · M2</span>
+          <span class="service-tag">FP1 · FP2 · FP3</span>
         </div>
-
-        <!-- Right: static chat preview -->
-        <div class="chat-preview fade-up">
-          <div class="chat-preview-header">
-            <div class="chat-avatar">A</div>
-            <div>
-              <div class="chat-preview-name">AGF Study Companion</div>
-              <div class="chat-preview-sub">Chemistry Unit 1 · WCH11</div>
-            </div>
-          </div>
-          <div class="chat-body">
-            <div class="chat-msg user">Why does water have a higher boiling point than H₂S?</div>
-            <div class="chat-msg ai">Great question — and a classic exam favourite. The key is <strong>hydrogen bonding</strong>. Each water molecule can form up to 4 hydrogen bonds because the O–H bond is highly polar. H₂S forms only weak London forces — sulfur's lower electronegativity means the S–H bond isn't polar enough for H-bonding.</div>
-            <div class="chat-msg user">Can you quiz me on intermolecular forces?</div>
-            <div class="chat-msg ai">Of course! Here's your first question...<br><br><strong>Q1.</strong> Which intermolecular force is responsible for the relatively high viscosity of propan-1,2,3-triol (glycerol)?</div>
-          </div>
-          <div class="chat-input-bar">
-            <span>Ask a question...</span>
-            <div class="chat-send">↑</div>
-          </div>
-
-          <div class="chat-cta-overlay">
-            <a href="https://agf-companion.vercel.app" target="_blank" class="btn-primary" style="box-shadow:0 4px 20px rgba(77,148,96,0.3);">Open the Companion →</a>
-          </div>
-        </div>
-
       </div>
+
+      <div class="service-card">
+        <div class="service-icon">🎓</div>
+        <h4>Undergraduate Admissions</h4>
+        <p>End-to-end guidance for UK, US and European university applications. UCAS, Common App, personal statements, and interview preparation.</p>
+        <div class="service-tags">
+          <span class="service-tag">UCAS</span>
+          <span class="service-tag">Common App</span>
+          <span class="service-tag">Personal statement</span>
+          <span class="service-tag">Interviews</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h4>Postgraduate Admissions</h4>
+        <p>MBA, LLM, and Masters applications at top global institutions. Strategy, essays, and test preparation for the most competitive programmes.</p>
+        <div class="service-tags">
+          <span class="service-tag">MBA</span>
+          <span class="service-tag">LLM</span>
+          <span class="service-tag">Masters</span>
+          <span class="service-tag">LBS · Stanford · INSEAD</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">⚖</div>
+        <h4>LNAT &amp; UCAT</h4>
+        <p>Specialist preparation for Law and Medicine entry examinations. Structured approach to critical reasoning, argument analysis and time pressure.</p>
+        <div class="service-tags">
+          <span class="service-tag">LNAT Section A &amp; B</span>
+          <span class="service-tag">UCAT all 5 subtests</span>
+          <span class="service-tag">BMAT</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h4>GMAT &amp; GRE</h4>
+        <p>Comprehensive preparation for graduate admissions tests. Quant, Verbal, Data Insights and AWA — from fundamentals to test-day strategy.</p>
+        <div class="service-tags">
+          <span class="service-tag">GMAT Focus</span>
+          <span class="service-tag">GRE General</span>
+          <span class="service-tag">Data Insights</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🌍</div>
+        <h4>SAT, ACT &amp; Language Tests</h4>
+        <p>Preparation for US university admissions tests and English language proficiency examinations for international applicants.</p>
+        <div class="service-tags">
+          <span class="service-tag">SAT</span>
+          <span class="service-tag">ACT</span>
+          <span class="service-tag">IELTS</span>
+          <span class="service-tag">TOEFL</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🏆</div>
+        <h4>Scholarship Applications</h4>
+        <p>Strategy and application support for academic, athletic and music scholarships at UK, US and international universities.</p>
+        <div class="service-tags">
+          <span class="service-tag">Academic</span>
+          <span class="service-tag">Athletic</span>
+          <span class="service-tag">Music</span>
+          <span class="service-tag">Need-based</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">✉</div>
+        <h4>English for Universities</h4>
+        <p>Academic English preparation for students whose first language is not English. Writing, comprehension and language proficiency support.</p>
+        <div class="service-tags">
+          <span class="service-tag">Academic writing</span>
+          <span class="service-tag">Comprehension</span>
+          <span class="service-tag">IELTS · TOEFL</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">💡</div>
+        <h4>Education Consultancy</h4>
+        <p>Strategic advice on school selection, curriculum choice, examination board decisions, and long-term academic planning for families.</p>
+        <div class="service-tags">
+          <span class="service-tag">School selection</span>
+          <span class="service-tag">Curriculum planning</span>
+          <span class="service-tag">Homeschooling</span>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
+<!-- ══════════ ABOUT ══════════ -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-label-line"><span>About Alastair Fisher</span></div>
+    <h2 class="section-title">The tutor behind<br><em>AGF Tutoring</em></h2>
 
-  <!-- ═══ SUBJECTS ═══ -->
-  <section class="section" id="subjects">
-    <div class="container">
-      <div class="section-label"><span>Subjects</span></div>
-      <h2 class="section-title">Explore by <em>subject</em></h2>
-      <p class="section-subtitle">Every subject is available through the AI Study Companion and for one-to-one tutoring.</p>
+    <div class="about-grid">
 
-      <div class="subjects-grid fade-up">
-        <div class="subject-card">
-          <div class="subject-card-icon">⚗</div>
-          <h3>Chemistry</h3>
-          <p>Structure, bonding, organic chemistry, energetics, redox, and group chemistry.</p>
-          <div class="boards">Edexcel IAL · AQA · OCR · Cambridge CIE · IB · AP</div>
-        </div>
-        <div class="subject-card">
-          <div class="subject-card-icon">⚡</div>
-          <h3>Physics</h3>
-          <p>Mechanics, materials, waves, electricity, and further physics.</p>
-          <div class="boards">Edexcel IAL · AQA · OCR · Cambridge CIE · IB · AP</div>
-        </div>
-        <div class="subject-card">
-          <div class="subject-card-icon">📐</div>
-          <h3>Mathematics</h3>
-          <p>Pure mathematics, calculus, algebra, statistics, and mechanics.</p>
-          <div class="boards">Edexcel · AQA · OCR · IB AA/AI · SAT · ACT · AP · GRE · GMAT</div>
-        </div>
+      <div class="about-photo">
+        <img
+          src="assets/alastair-fisher.jpg"
+          alt="Alastair Fisher — AGF Tutoring"
+          onerror="this.style.background='#2a2a2a';this.style.aspectRatio='3/4'"
+        >
       </div>
 
-      <div class="subjects-also fade-up">
-        <h4>Also available for one-to-one tutoring</h4>
-        <p>University applications (Oxbridge, Ivy League, Europe) · Scholarship preparation · SAT / ACT / AP · GRE / GMAT · LNAT · IELTS / TOEFL · UCAT / BMAT · IGCSE · IB Diploma</p>
+      <div class="about-content">
+        <p>
+          AGF Tutoring was founded on a simple conviction: that every student, regardless of background, deserves access to the kind of expert, diagnostic teaching that transforms academic outcomes. For over three decades, I have put that conviction into practice.
+        </p>
+
+        <div class="stat-row">
+          <div class="stat-item">
+            <div class="stat-num">30+</div>
+            <div class="stat-label">Years teaching</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">60k+</div>
+            <div class="stat-label">Hours of tutoring</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">UK & Int'l</div>
+            <div class="stat-label">Students worldwide</div>
+          </div>
+        </div>
+
+        <h3>Teaching philosophy</h3>
+        <p>
+          My approach is diagnostic first. Before teaching anything new, I identify precisely where a student's understanding breaks down — which misconception is generating errors downstream. This is not guesswork; it requires deep subject knowledge and the pattern recognition that only comes from thousands of hours of practice.
+        </p>
+
+        <p>
+          Every student receives a bespoke programme of study. There is no standard curriculum, no one-size-fits-all approach. The plan changes as the student changes — I diagnose continuously, not just at the start.
+        </p>
+
+        <h3>Why I built the AI Companion</h3>
+        <p>
+          Geoffrey Bloom's 1984 research — confirmed by Geoffrey Hinton and others — shows that personal tutoring produces results two standard deviations above classroom teaching. The problem is access: high-quality tutoring is expensive and time-limited. I built the AGF Study Companion to make the diagnostic, targeted approach available to every student, at any hour, at a fraction of the cost of live sessions.
+        </p>
+
+        <h3>Specialist expertise</h3>
+        <ul class="credentials-list">
+          <li>Edexcel IAL Chemistry, Physics and Mathematics — all units from WCH11 through to WCH16, WPH11–WPH16, P1–P4, S1–S2, M1–M2, FP1–FP3</li>
+          <li>University admissions consulting — UK (UCAS), US (Common App), European universities</li>
+          <li>Graduate admissions — GMAT Focus Edition, GRE General Test, LSAT</li>
+          <li>Professional test preparation — LNAT, UCAT, SAT, ACT, IELTS, TOEFL</li>
+          <li>Scholarship strategy — academic, athletic and music awards at global institutions</li>
+          <li>Postgraduate applications — MBA (LBS, Harvard, INSEAD), LLM, specialist Masters</li>
+        </ul>
+
+        <a href="#contact" class="btn-primary">Book an introductory session</a>
       </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
+<!-- ══════════ COMPANION ══════════ -->
+<section class="section" id="companion">
+  <div class="container">
+    <div class="section-label-line"><span>AI Study Companion</span></div>
+    <h2 class="section-title">The <em>digital tutor,</em><br>powered by AGF</h2>
+    <p class="section-subtitle">An AI companion built on Alastair's curriculum, diagnostic method, and 30 years of subject knowledge. Available 24/7. Starts free.</p>
 
-  <!-- ═══ FREE RESOURCES ═══ -->
-  <section class="section" id="resources">
-    <div class="container">
-      <div class="section-label"><span>Free Resources</span></div>
-      <h2 class="section-title">Sample the <em>knowledge base</em></h2>
-      <p class="section-subtitle">Full revision guides with embedded quizzes, built from AGF's teaching notes. Free and open to all students.</p>
+    <div class="companion-grid">
 
-      <div class="resources-grid fade-up">
-        <a href="https://agftutoring.github.io/Chemistry-Unit-1" target="_blank" class="resource-card">
-          <div class="resource-card-code">WCH11 · Edexcel IAL</div>
-          <h3>Chemistry Unit 1</h3>
-          <p>Formulae & moles, atomic structure, bonding, alkanes, and alkenes — with 4 embedded quizzes and full exam tips.</p>
-        </a>
-        <a href="https://agftutoring.github.io/Physics-UNIT-1" target="_blank" class="resource-card">
-          <div class="resource-card-code">WPH11 · Edexcel IAL</div>
-          <h3>Physics Unit 1</h3>
-          <p>Scalars, kinematics, forces, momentum, energy, power and materials — with embedded quizzes and core practical notes.</p>
-        </a>
-      </div>
-      <div class="resources-grid" style="margin-top:16px;">
-        <div class="resource-coming">
-          <h3>Mathematics Unit 1</h3>
-          <p>Coming soon</p>
+      <div class="companion-features">
+        <div class="companion-feature">
+          <h4>Grounded in AGF's curriculum</h4>
+          <p>Answers drawn from curated subject notes — not the open internet. Chemistry, Physics, Maths (Edexcel IAL complete), plus SAT, ACT, GMAT, GRE, LNAT, UCAT, IELTS and TOEFL.</p>
+        </div>
+        <div class="companion-feature">
+          <h4>Diagnostic quizzes &amp; exam practice</h4>
+          <p>Exam-style questions with instant feedback, model answers and worked explanations. Identifies weak topics so you know exactly what to revise.</p>
+        </div>
+        <div class="companion-feature">
+          <h4>Available at 11pm before an exam</h4>
+          <p>No waiting for a session. Ask a question, get a thorough explanation in seconds. The companion uses the same diagnostic approach as a live session with Alastair.</p>
+        </div>
+        <div class="companion-feature">
+          <h4>Escalate to live sessions</h4>
+          <p>When a concept needs deeper work, book directly with Alastair. The companion and live tutoring are designed to work together.</p>
+        </div>
+
+        <div>
+          <a href="https://companion.agftutoring.co.uk" target="_blank" class="btn-primary">Try free — 3 quizzes, no account needed →</a>
+          <div style="margin-top: 10px; font-size: 12px; color: var(--muted);">£29/month after your free quizzes</div>
         </div>
       </div>
+
+      <!-- Chat preview -->
+      <div class="chat-preview">
+        <div class="chat-header">
+          <div class="chat-avatar">A</div>
+          <div class="chat-header-text">
+            <h5>AGF Study Companion</h5>
+            <span>Chemistry · WCH11</span>
+          </div>
+        </div>
+        <div class="chat-body">
+          <div class="msg user">Why does water have a higher boiling point than H₂S?</div>
+          <div class="msg ai">Great question — and a classic exam favourite. The key is <strong>hydrogen bonding</strong>. Water's O–H bonds are highly polar, so each molecule can form up to four hydrogen bonds with neighbours. H₂S only forms weak London dispersion forces — sulfur's lower electronegativity means S–H bonds aren't polar enough for H-bonding. More energy is needed to overcome water's network of H-bonds, hence the much higher boiling point (+100°C vs −60°C).</div>
+          <div class="msg user">Can you quiz me on intermolecular forces?</div>
+          <div class="msg ai"><strong>Q1.</strong> Which type of intermolecular force is responsible for the relatively high viscosity of propan-1,2,3-triol (glycerol)? Explain your answer.</div>
+        </div>
+        <div class="chat-input">
+          <span>Ask a chemistry question...</span>
+          <div class="chat-send">↑</div>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
+<!-- ══════════ CONTACT ══════════ -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-label-line"><span>Get in touch</span></div>
+    <h2 class="section-title">Start your<br><em>introductory session</em></h2>
 
-  <!-- ═══ PRICING ═══ -->
-  <section class="section" id="pricing">
-    <div class="container">
-      <div class="section-label"><span>Pricing</span></div>
-      <h2 class="section-title">Start revising <em>today</em></h2>
-      <p class="section-subtitle">Begin with the AI Study Companion for instant revision support. When you need deeper, personalised guidance, escalate to one-to-one sessions with Alastair.</p>
+    <div class="contact-grid">
 
-      <!-- Primary: Companion -->
-      <div class="pricing-primary fade-up">
-        <div class="pricing-grid">
-          <div>
-            <div class="pricing-label green">AI Study Companion</div>
-            <div class="pricing-amount large">£29</div>
-            <div class="pricing-period">per month</div>
-            <div class="free-badge">✦ Try free — 3 quizzes before subscribing</div>
-            <br>
-            <a href="https://agf-companion.vercel.app" target="_blank" class="btn-primary">Try the Companion →</a>
-          </div>
-          <div>
-            <ul class="pricing-features green">
-              <li>24/7 AI-powered study companion</li>
-              <li>Chemistry, Physics & Maths — Edexcel IAL</li>
-              <li>Subject-specific question banks</li>
-              <li>Full AGF revision note library</li>
-              <li>Interactive quizzes with diagnostic feedback</li>
-              <li>Identifies weak topics and guides revision</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <div class="contact-info">
+        <h3>Book with Alastair directly</h3>
+        <p>
+          Every engagement begins with a one-hour introductory session. We discuss your goals, assess where you are, and design a bespoke programme of study. There is no commitment beyond that first session.
+        </p>
 
-      <!-- Divider -->
-      <div class="pricing-divider">Need more support?</div>
-
-      <!-- Secondary: Tutoring -->
-      <div class="pricing-secondary fade-up">
-        <div class="pricing-grid">
-          <div>
-            <div class="pricing-label muted">One-to-One Tutoring</div>
-            <div class="pricing-amount medium">£200</div>
-            <div class="pricing-period">introductory session · 1 hour</div>
-            <div class="pricing-bespoke">Ongoing rates agreed upon programme design.</div>
-            <a href="#contact" class="btn-secondary">Book Introductory Session</a>
-          </div>
-          <div>
-            <ul class="pricing-features muted">
-              <li>One-hour introductory session at fixed fee</li>
-              <li>Bespoke programme designed for the student</li>
-              <li>Diagnostic method — 60,000+ hours of experience</li>
-              <li>University application & scholarship guidance</li>
-              <li>WhatsApp access during term</li>
-              <li>Seamless escalation from the AI Companion</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <p class="pricing-footnote">Tutoring rates are bespoke and depend on the programme of study. Enquire for school and institutional packages.</p>
-    </div>
-  </section>
-
-
-  <!-- ═══ ABOUT (condensed) ═══ -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="section-label"><span>About</span></div>
-      <h2 class="section-title">Alastair <em>Fisher</em></h2>
-
-      <div class="about-grid fade-up">
-        <img src="alastair.jpg" alt="Alastair Fisher" class="about-photo">
-
-        <div class="about-text">
-          <p>My work over thirty years has centred on one question: how students come to understand complex ideas clearly, and how that understanding translates into performance under examination conditions.</p>
-
-          <p>My academic background began in chemistry at the University of Edinburgh, with emphasis on chemical physics and mathematics. A later Master's degree in linguistics at the University of Surrey gave me a formal understanding of how meaning is constructed and communicated — a combination that allows me to work across the sciences, mathematics, and reasoning-intensive examinations such as the SAT, GRE, GMAT, and LNAT.</p>
-
-          <p>Over 60,000 hours of teaching, a consistent pattern has become clear: most academic difficulty arises not from a lack of ability, but from a lack of clarity. The AGF Study Companion is an attempt to make that accumulated diagnostic experience accessible to every student, not as a replacement for individual teaching, but as an extension of it.</p>
-
-          <div class="about-credentials">
-            <span class="about-cred">BSc Chemistry — Edinburgh</span>
-            <span class="about-cred">MA Linguistics — Surrey</span>
-            <span class="about-cred">60,000+ hours tutoring</span>
-            <span class="about-cred">Pioneer of online tutoring since 2007</span>
-            <span class="about-cred">Enhanced DBS checked</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══ CONTACT ═══ -->
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="section-label"><span>Contact</span></div>
-      <h2 class="section-title">Begin a <em>conversation</em></h2>
-
-      <div class="contact-grid">
-        <div class="contact-info">
-          <p>Tutoring at this level is a collaborative process. The first step is simply a conversation — about the student's situation, their goals, and whether there is a good fit.</p>
-          <p>An introductory session is priced at £200 for one hour. Sessions are conducted online. Enquiries are welcome from families worldwide.</p>
-
-          <div class="contact-detail">
-            <span>✉</span>
-            <a href="mailto:info@agftutoring.co.uk">info@agftutoring.co.uk</a>
-          </div>
-          <div class="contact-detail">
-            <span>💬</span>
-            <a href="https://wa.me/message/agftutoring" target="_blank">Message on WhatsApp</a>
-          </div>
-          <div class="contact-detail">
-            <span>🌐</span>
-            <a href="https://agftutoring.co.uk" target="_blank">agftutoring.co.uk</a>
-          </div>
-          <div class="contact-detail" style="margin-top:8px;">
-            <span>📍</span>
-            <span style="color:var(--text-dim)">London, United Kingdom</span>
-          </div>
-
-          <p style="margin-top:24px; font-size:12px; color:var(--text-dim); font-style:italic;">All enquiries receive a personal response within 48 hours.</p>
-        </div>
-
-        <form class="contact-form" id="contact-form" action="https://formspree.io/f/xdapenya" method="POST">
-          <div class="form-row">
-            <div class="form-field">
-              <label>First name</label>
-              <input type="text" name="first_name" required>
-            </div>
-            <div class="form-field">
-              <label>Last name</label>
-              <input type="text" name="last_name" required>
-            </div>
-          </div>
-          <div class="form-field">
-            <label>Email address</label>
-            <input type="email" name="email" required>
-          </div>
-          <div class="form-field">
-            <label>Subject or examination</label>
-            <select name="subject">
-              <option value="">Select a subject…</option>
-              <option>A-Level Mathematics</option>
-              <option>A-Level Chemistry</option>
-              <option>A-Level Physics</option>
-              <option>IB Mathematics</option>
-              <option>IB Chemistry</option>
-              <option>IB Physics</option>
-              <option>SAT / ACT / AP</option>
-              <option>GRE / GMAT</option>
-              <option>LNAT / IELTS / TOEFL</option>
-              <option>University Application Support</option>
-              <option>Scholarship Preparation</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label>Tell me about the student</label>
-            <textarea name="message" placeholder="Year group, school, current challenges, goals..."></textarea>
-          </div>
-          <input type="hidden" name="_subject" value="New enquiry from AGF Tutoring website">
-          <button type="submit" class="btn-primary" id="submit-btn" style="align-self:flex-start;">Send Enquiry →</button>
-          <div id="form-status" style="display:none; margin-top:14px; padding:14px 18px; border-radius:8px; font-size:13px;"></div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ═══ FOOTER ═══ -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="#" class="nav-logo" style="gap:8px;">
-            <div class="nav-logo-bars">
-              <span style="height:8px"></span>
-              <span style="height:16px"></span>
-              <span style="height:12px"></span>
-              <span style="height:20px"></span>
-            </div>
-            <div class="nav-logo-text">
-              AGF
-              <span>Tutoring</span>
-            </div>
+        <div class="contact-detail">
+          <a href="mailto:info@agftutoring.co.uk">
+            <span>✉</span> info@agftutoring.co.uk
           </a>
-          <p>A premier boutique tutoring service.<br>30 years · 60,000+ hours · London</p>
+          <a href="https://agftutoring.co.uk/login">
+            <span>🔐</span> Client login — existing students
+          </a>
         </div>
-        <div class="footer-col">
-          <h4>Navigation</h4>
-          <a href="#method">Method</a>
-          <a href="#companion">AI Companion</a>
-          <a href="#subjects">Subjects</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#about">About</a>
+
+        <a href="https://wa.me/447546121944" class="whatsapp-btn" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Message on WhatsApp
+        </a>
+      </div>
+
+      <!-- Enquiry form -->
+      <form action="https://formspree.io/f/xdapenya" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" placeholder="Full name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="you@email.com" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="service">I am enquiring about</label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Select a service...</option>
+            <option>A-Level / IAL Chemistry, Physics or Mathematics tutoring</option>
+            <option>Undergraduate university admissions</option>
+            <option>Postgraduate admissions (MBA, LLM, Masters)</option>
+            <option>GMAT or GRE preparation</option>
+            <option>LNAT or UCAT preparation</option>
+            <option>SAT or ACT preparation</option>
+            <option>IELTS or TOEFL preparation</option>
+            <option>Scholarship application support</option>
+            <option>Education consultancy</option>
+            <option>AGF Study Companion</option>
+            <option>Something else</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Tell me about your situation</label>
+          <textarea id="message" name="message" placeholder="Current level, target university or exam, timeline, any specific challenges..."></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Send enquiry →</button>
+        <p class="form-note">I respond to all enquiries within 24 hours.</p>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom: 12px;">
+          <div class="nav-logo-bars">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div>
+            <span class="nav-logo-text">AGF Tutoring</span>
+            <span class="nav-logo-sub">Test Prep &amp; Consulting</span>
+          </div>
+        </div>
+        <p>Exclusive, bespoke expert tutoring and consulting for the very best universities. Est. 2019. Registered Company No. 12247821.</p>
+      </div>
+
+      <div>
+        <div style="font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px;">Services</div>
+        <div class="footer-links">
+          <a href="#services">A-Level &amp; IAL Sciences</a>
+          <a href="#services">University Admissions</a>
+          <a href="#services">GMAT &amp; GRE</a>
+          <a href="#services">LNAT &amp; UCAT</a>
+          <a href="#services">Scholarships</a>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px;">AGF</div>
+        <div class="footer-links">
+          <a href="#about">About Alastair</a>
+          <a href="#companion">AI Study Companion</a>
           <a href="#contact">Contact</a>
-        </div>
-        <div class="footer-col">
-          <h4>Resources</h4>
-          <a href="https://agftutoring.github.io/Chemistry-Unit-1" target="_blank">Chemistry Unit 1</a>
-          <a href="https://agftutoring.github.io/Physics-UNIT-1" target="_blank">Physics Unit 1</a>
-          <a href="https://agf-companion.vercel.app" target="_blank">AI Companion</a>
-          <a href="https://github.com/AGFTutoring/agf-companion" target="_blank">GitHub</a>
-        </div>
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <a href="#terms">Terms of Service</a>
-          <a href="#privacy">Privacy Policy</a>
-          <a href="#safeguarding">Safeguarding & GDPR</a>
+          <a href="https://agftutoring.co.uk/login">Client Login</a>
+          <a href="mailto:info@agftutoring.co.uk">info@agftutoring.co.uk</a>
         </div>
       </div>
-      <div class="footer-bottom">
-        <span>AGF Tutoring UK Limited · Registered in England & Wales · Company No. 12247821 · © 2026 Alastair Fisher</span>
-        <a href="mailto:info@agftutoring.co.uk">info@agftutoring.co.uk</a>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 AGF Tutoring UK Limited · Registered in Scotland</span>
+      <div style="display: flex; gap: 24px;">
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
       </div>
     </div>
-  </footer>
-
-
-  <!-- ═══ LEGAL MODALS ═══ -->
-  <!-- Terms -->
-  <div class="legal-overlay" id="terms">
-    <div class="legal-content">
-      <h1>Terms of Service</h1>
-      <p style="font-size:12px; color:var(--text-dim);">Last updated: March 2026 · AGF Tutoring UK Limited · Company No. 12247821</p>
-
-      <h3>1. Introduction</h3>
-      <p>These Terms of Service govern your use of the website, tutoring services, and AI Study Companion provided by AGF Tutoring UK Limited. By accessing our website or using any of our services, you agree to be bound by these Terms.</p>
-
-      <h3>2. Services</h3>
-      <p>AGF Tutoring provides private one-to-one tutoring, educational consultancy, university application guidance, and an AI-powered Study Companion. All tutoring sessions are conducted online. The AI Study Companion is a supplementary educational tool designed to support — not replace — professional tutoring.</p>
-
-      <h3>3. Pricing & Payment</h3>
-      <p>An introductory one-to-one tutoring session is available at a fixed fee of £200 for one hour. All subsequent tutoring rates are bespoke. The AI Study Companion is available at £29 per month. A limited number of free interactions are available before subscription is required. Payments are processed securely via Stripe. Subscriptions may be cancelled at any time.</p>
-
-      <h3>4. Cancellation & Refunds</h3>
-      <p>Tutoring sessions may be rescheduled or cancelled with 24 hours' notice without charge. Sessions cancelled with less than 24 hours' notice will be charged in full. AI Companion subscriptions may be cancelled at any time. Under the Consumer Contracts Regulations 2013, you have a 14-day cooling-off period from the date of subscription.</p>
-
-      <h3>5. Intellectual Property</h3>
-      <p>All content on this website is the intellectual property of AGF Tutoring UK Limited and is protected by copyright law. Students may use materials for their own personal educational purposes only.</p>
-
-      <h3>6. Limitation of Liability</h3>
-      <p>AGF Tutoring does not guarantee specific examination results, university admissions, or scholarship outcomes. The AI Study Companion is provided as-is. To the fullest extent permitted by law, AGF Tutoring's total liability shall not exceed the total fees paid in the preceding 12 months.</p>
-
-      <h3>7. Acceptable Use</h3>
-      <p>You agree not to misuse our services, including sharing login credentials, attempting to circumvent usage limits, or using the AI Companion to generate work for submission as your own.</p>
-
-      <h3>8. Governing Law</h3>
-      <p>These Terms are governed by the laws of England and Wales.</p>
-
-      <a href="#" class="legal-close">Close</a>
-    </div>
   </div>
-
-  <!-- Privacy -->
-  <div class="legal-overlay" id="privacy">
-    <div class="legal-content">
-      <h1>Privacy Policy</h1>
-      <p style="font-size:12px; color:var(--text-dim);">Last updated: March 2026 · AGF Tutoring UK Limited · Company No. 12247821</p>
-
-      <h3>1. Data Controller</h3>
-      <p>AGF Tutoring UK Limited is the data controller responsible for your personal data. Contact: info@agftutoring.co.uk.</p>
-
-      <h3>2. Information We Collect</h3>
-      <p>Information you provide directly (name, email, student details, payment information via Stripe), information collected through the AI Companion (questions asked, quiz responses), and technical information (IP address, browser type, cookies).</p>
-
-      <h3>3. Legal Basis for Processing</h3>
-      <p>We process your data under UK GDPR on the basis of: contract (providing services), legitimate interest (improving services), and consent (marketing communications).</p>
-
-      <h3>4. Data Sharing</h3>
-      <p>We do not sell your personal data. We may share data with Stripe (payment processing) and hosting providers. Where data is transferred outside the UK, appropriate safeguards are in place.</p>
-
-      <h3>5. Data Retention</h3>
-      <p>Tutoring records: 6 years. AI Companion data: 2 years. Contact form submissions: 3 years. You may request earlier deletion at any time.</p>
-
-      <h3>6. Your Rights</h3>
-      <p>You have the right to access, rectify, erase, restrict, or port your data. Contact info@agftutoring.co.uk. You may also lodge a complaint with the ICO at ico.org.uk.</p>
-
-      <h3>7. Children's Data</h3>
-      <p>For students under 16, we require parental or guardian consent. We take additional care to ensure data relating to minors is handled securely and only for educational purposes.</p>
-
-      <a href="#" class="legal-close">Close</a>
-    </div>
-  </div>
-
-  <!-- Safeguarding -->
-  <div class="legal-overlay" id="safeguarding">
-    <div class="legal-content">
-      <h1>Safeguarding & GDPR</h1>
-      <p style="font-size:12px; color:var(--text-dim);">Last updated: March 2026 · AGF Tutoring UK Limited · Company No. 12247821</p>
-
-      <h3>1. Our Commitment</h3>
-      <p>AGF Tutoring is committed to safeguarding and promoting the welfare of all students, including children and young people. This policy applies to all services including online tutoring and the AI Study Companion.</p>
-
-      <h3>2. Statutory Framework</h3>
-      <p>This policy complies with the Children Act 1989/2004, Working Together to Safeguard Children (2023), Keeping Children Safe in Education (2023), UK GDPR, the Data Protection Act 2018, and the ICO's Age Appropriate Design Code.</p>
-
-      <h3>3. Designated Safeguarding Lead</h3>
-      <p>Alastair Fisher, founder and director. Contact: info@agftutoring.co.uk. In urgent cases, contact your local authority children's services or the police.</p>
-
-      <h3>4. Online Tutoring Safeguards</h3>
-      <p>Alastair Fisher holds an enhanced DBS certificate and international criminal record clearance. Sessions are professional and educational. Parents may observe any session. Private social media contact with students is not permitted.</p>
-
-      <h3>5. AI Companion Safeguards</h3>
-      <p>The AI is restricted to educational topics within its curated knowledge base. Students under 16 must have parental consent. Privacy settings default to the highest level of protection. No profiling is conducted on users under 18 for commercial purposes.</p>
-
-      <h3>6. Reporting Concerns</h3>
-      <p>If you have any safeguarding concern, contact info@agftutoring.co.uk immediately. Where AGF Tutoring has reasonable cause to believe a child is at risk of significant harm, we are obliged to report to the relevant authorities.</p>
-
-      <a href="#" class="legal-close">Close</a>
-    </div>
-  </div>
-
-
-  <!-- ═══ SCROLL ANIMATION ═══ -->
-  <script>
-    // Fade-up on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    // Close mobile nav on link click
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.querySelector('.nav-links').classList.remove('open');
-      });
-    });
-
-    // Contact form AJAX submission
-    const form = document.getElementById('contact-form');
-    const btn = document.getElementById('submit-btn');
-    const status = document.getElementById('form-status');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      btn.textContent = 'Sending...';
-      btn.disabled = true;
-      status.style.display = 'none';
-
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (res.ok) {
-          status.style.display = 'block';
-          status.style.background = 'rgba(77,148,96,0.12)';
-          status.style.border = '1px solid rgba(77,148,96,0.3)';
-          status.style.color = '#4d9460';
-          status.textContent = 'Thank you — your enquiry has been sent. Alastair will respond within 48 hours.';
-          form.reset();
-          btn.textContent = 'Sent ✓';
-        } else {
-          throw new Error('Form submission failed');
-        }
-      } catch (err) {
-        status.style.display = 'block';
-        status.style.background = 'rgba(224,96,96,0.08)';
-        status.style.border = '1px solid rgba(224,96,96,0.15)';
-        status.style.color = '#e06060';
-        status.textContent = 'Something went wrong. Please email info@agftutoring.co.uk directly.';
-        btn.textContent = 'Send Enquiry →';
-        btn.disabled = false;
-      }
-    });
-  </script>
+</footer>
 
 </body>
 </html>
