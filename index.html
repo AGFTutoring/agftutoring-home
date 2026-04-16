@@ -156,19 +156,11 @@
     overflow: hidden;
   }
 
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 55%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(77,148,96,0.04) 0%, transparent 60%);
-    pointer-events: none;
-  }
+  .hero::before { display: none; }
 
   .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 300px;
+    grid-template-columns: 1fr 260px;
     gap: 80px;
     align-items: center;
   }
@@ -273,32 +265,32 @@
   }
   .hero-portrait-img {
     width: 100%;
-    aspect-ratio: 4/5;
+    aspect-ratio: 1/1;
     object-fit: cover;
     border-radius: 16px;
     display: block;
   }
   .hero-portrait-badge {
     position: absolute;
-    bottom: -20px;
-    left: -20px;
-    background: var(--charcoal-2);
-    border: 1px solid var(--border-hover);
-    border-radius: 12px;
-    padding: 16px 20px;
-    min-width: 200px;
+    bottom: 12px;
+    left: 12px;
+    background: rgba(28,28,28,0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 10px 14px;
   }
   .hero-portrait-badge .badge-num {
-    font-family: 'DM Serif Display', Georgia, serif;
-    font-size: 36px;
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
     color: var(--cream);
     line-height: 1;
   }
   .hero-portrait-badge .badge-label {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--muted);
-    margin-top: 4px;
-    font-weight: 300;
+    margin-top: 2px;
+    line-height: 1.3;
   }
 
   /* ── SECTION HEADERS ── */
@@ -579,7 +571,7 @@
   /* ── COMPANION ── */
   .companion-grid {
     display: grid;
-    grid-template-columns: 1fr 300px;
+    grid-template-columns: 1fr 260px;
     gap: 80px;
     align-items: center;
     margin-top: 48px;
