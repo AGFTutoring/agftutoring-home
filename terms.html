@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — AGF Tutoring</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #1a1a1a;
+      color: #e8e5de;
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(26,26,26,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 20px;
+    }
+    .nav-bars span {
+      display: block;
+      width: 4px;
+      background: #4d9460;
+      border-radius: 2px;
+    }
+    .nav-bars span:nth-child(1) { height: 10px; }
+    .nav-bars span:nth-child(2) { height: 18px; }
+    .nav-bars span:nth-child(3) { height: 14px; }
+    .nav-bars span:nth-child(4) { height: 20px; }
+    .nav-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    .nav-wordmark .agf {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: #e8e5de;
+      letter-spacing: 0.05em;
+    }
+    .nav-wordmark .tutoring {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      font-size: 9px;
+      color: #9a9690;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .nav-back {
+      font-size: 13px;
+      color: #9a9690;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: #e8e5de; }
+
+    /* ── LAYOUT ── */
+    .page-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 72px 40px 120px;
+    }
+
+    /* ── HEADER ── */
+    .page-header {
+      margin-bottom: 56px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .page-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #4d9460;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 400;
+      line-height: 1.1;
+      color: #e8e5de;
+      margin-bottom: 20px;
+    }
+    h1 em {
+      font-style: italic;
+      color: #9a9690;
+    }
+    .page-meta {
+      font-size: 13px;
+      color: #706b65;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      margin-bottom: 48px;
+    }
+    h2 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: #e8e5de;
+      margin-bottom: 16px;
+      padding-top: 8px;
+    }
+    p {
+      font-size: 15px;
+      color: #9a9690;
+      margin-bottom: 14px;
+    }
+    p strong {
+      color: #e8e5de;
+      font-weight: 500;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+    }
+    ul li {
+      font-size: 15px;
+      color: #9a9690;
+      padding: 5px 0 5px 20px;
+      position: relative;
+    }
+    ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: #4d9460;
+      font-weight: 500;
+    }
+    a {
+      color: #4d9460;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a:hover { color: #5ba86d; }
+
+    /* ── CALLOUT ── */
+    .callout {
+      background: #2a2a2a;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left: 3px solid #4d9460;
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin-bottom: 14px;
+    }
+    .callout p {
+      margin: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 40px;
+      text-align: center;
+    }
+    footer p {
+      font-size: 13px;
+      color: #706b65;
+      margin: 0;
+    }
+    footer a { color: #9a9690; }
+    footer a:hover { color: #e8e5de; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <div class="nav-bars">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div class="nav-wordmark">
+        <span class="agf">AGF</span>
+        <span class="tutoring">Tutoring</span>
+      </div>
+    </a>
+    <a class="nav-back" href="index.html">← Back to site</a>
+  </nav>
+
+  <div class="page-wrap">
+
+    <div class="page-header">
+      <p class="page-label">Legal</p>
+      <h1>Terms of <em>Service</em></h1>
+      <p class="page-meta">Last updated: 13 May 2026 · AGF Tutoring UK Limited</p>
+    </div>
+
+    <div class="callout">
+      <p>By using AGF Tutoring services or the AGF Study Companion, you agree to these terms. Please read them carefully. If you have any questions, contact us at <a href="mailto:info@agftutoring.co.uk">info@agftutoring.co.uk</a> before proceeding.</p>
+    </div>
+
+    <section>
+      <h2>1. Who we are</h2>
+      <p><strong>AGF Tutoring UK Limited</strong> (Company No. 12247821, registered in England) provides private tutoring, university admissions consultancy, and the AGF Study Companion — an AI-powered exam preparation tool available at <a href="https://companion.agftutoring.co.uk">companion.agftutoring.co.uk</a>.</p>
+      <p>These Terms of Service govern your use of all AGF Tutoring services, including the Study Companion subscription and any direct tutoring or consultancy engagement.</p>
+    </section>
+
+    <section>
+      <h2>2. The AGF Study Companion</h2>
+      <p>The Study Companion is an AI-powered tutoring tool. By using it, you acknowledge that:</p>
+      <ul>
+        <li>Responses are generated by AI (Claude, by Anthropic) and are intended as educational support, not as a substitute for qualified professional advice</li>
+        <li>Content is grounded in AGF's teaching materials, Open Educational Resources (OpenStax, LibreTexts), and published exam specifications — but AI responses may occasionally contain errors</li>
+        <li>You are responsible for verifying information against your official exam board materials</li>
+        <li>The Companion is intended for students preparing for exams and their parents or guardians — it is not intended for children under 13 without parental supervision</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Free tier and subscriptions</h2>
+      <p>The Study Companion offers a free tier with limited usage (3 practice quizzes and 20 AI messages per day). Full access requires a monthly subscription at <strong>£29 per month</strong>.</p>
+      <ul>
+        <li>Subscriptions are billed monthly and renew automatically until cancelled</li>
+        <li>Payment is processed securely by Stripe — AGF Tutoring does not store your card details</li>
+        <li>You may cancel your subscription at any time via the Companion; cancellation takes effect at the end of the current billing period</li>
+        <li>AGF Tutoring reserves the right to change subscription pricing with 30 days' notice to active subscribers</li>
+        <li>Free tier limits may be adjusted at any time</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Refunds</h2>
+      <p>Because the Study Companion provides immediate access to digital educational content, we do not offer refunds on monthly subscription charges once the billing period has begun, except where required by law.</p>
+      <p>If you believe you have been charged in error, contact us at <a href="mailto:info@agftutoring.co.uk">info@agftutoring.co.uk</a> within 14 days and we will investigate promptly.</p>
+      <p>For direct tutoring sessions: cancellations made with less than 24 hours' notice may be charged at the full session rate. We will always try to reschedule where possible.</p>
+    </section>
+
+    <section>
+      <h2>5. Direct tutoring and consultancy</h2>
+      <p>For direct tutoring sessions and university admissions consultancy, the following applies:</p>
+      <ul>
+        <li>All sessions are conducted by Alastair Fisher, founder of AGF Tutoring UK Limited</li>
+        <li>Session times, rates, and programmes are agreed individually and confirmed in writing by email</li>
+        <li>Payment is due in advance of each session block via bank transfer (Wise) or as otherwise agreed</li>
+        <li>AGF Tutoring provides educational support and expert guidance — we cannot guarantee specific academic outcomes, university offers, or exam results</li>
+        <li>All session materials provided by AGF Tutoring remain the intellectual property of AGF Tutoring UK Limited</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>6. Acceptable use</h2>
+      <p>You agree not to use AGF Tutoring services or the Study Companion to:</p>
+      <ul>
+        <li>Submit AI-generated responses as your own work in assessments where this is prohibited by your institution or exam board</li>
+        <li>Attempt to extract, copy, or reproduce the underlying system prompts, content, or intellectual property of the Companion</li>
+        <li>Use automated tools, bots, or scripts to access the Companion</li>
+        <li>Share your account credentials or subscription access with others</li>
+        <li>Use the service for any unlawful purpose</li>
+      </ul>
+      <p>AGF Tutoring reserves the right to suspend or terminate access to the Companion for violations of these terms without refund.</p>
+    </section>
+
+    <section>
+      <h2>7. Intellectual property</h2>
+      <p>All content on the AGF Tutoring website, marketing materials, and Study Companion — including system prompts, question banks, teaching notes, and design — is the intellectual property of AGF Tutoring UK Limited, unless otherwise stated.</p>
+      <p>The Study Companion draws on Open Educational Resources from OpenStax and LibreTexts, published under Creative Commons licences. These sources are acknowledged in our <a href="privacy.html">Privacy Policy</a>. AGF Tutoring's use of these materials complies with their respective licence terms.</p>
+      <p>You may use Companion responses for your own personal study. You may not reproduce, distribute, or commercially exploit them.</p>
+    </section>
+
+    <section>
+      <h2>8. Limitation of liability</h2>
+      <p>AGF Tutoring UK Limited provides its services with reasonable care and skill. However, to the fullest extent permitted by law:</p>
+      <ul>
+        <li>We do not guarantee that the Study Companion will be available at all times or free from errors</li>
+        <li>AI-generated content may contain inaccuracies — always verify against official sources</li>
+        <li>We are not liable for any indirect or consequential loss arising from use of our services, including exam results or university admissions outcomes</li>
+        <li>Our total liability to you in connection with any service shall not exceed the amount you have paid us in the 3 months preceding the claim</li>
+      </ul>
+      <p>Nothing in these terms limits our liability for death or personal injury caused by negligence, fraud, or any other liability that cannot be excluded by law.</p>
+    </section>
+
+    <section>
+      <h2>9. Governing law</h2>
+      <p>These terms are governed by the laws of England and Wales. Any disputes arising from these terms or your use of AGF Tutoring services shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+    </section>
+
+    <section>
+      <h2>10. Changes to these terms</h2>
+      <p>We may update these terms from time to time. The date at the top of this page shows when they were last revised. If you have an active Companion subscription, we will notify you of significant changes by email at least 14 days before they take effect. Continued use of the service after that date constitutes acceptance of the revised terms.</p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>For any questions about these terms, contact:</p>
+      <p>
+        <strong>AGF Tutoring UK Limited</strong><br>
+        <a href="mailto:info@agftutoring.co.uk">info@agftutoring.co.uk</a><br>
+        Company No. 12247821 · Registered in England
+      </p>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>© 2026 AGF Tutoring UK Limited · Registered in England · Co. No. 12247821 &nbsp;·&nbsp; <a href="index.html">Back to site</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy Policy</a></p>
+  </footer>
+
+</body>
+</html>
