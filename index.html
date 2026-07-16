@@ -3,8 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AGF Tutoring — Expert Tutoring & University Admissions with Alastair Fisher</title>
-<meta name="description" content="Expert one-to-one tutoring in Chemistry, Physics and Mathematics by Alastair Fisher. University admissions consulting, test preparation (GMAT, GRE, LNAT, UCAT, SAT, ACT) and the AGF AI Study Companion.">
+<title>AGF Study Companion — Diagnostic Maths, Physics & Chemistry Tutoring</title>
+<meta name="description" content="Find the gaps costing you marks with diagnostic quizzes and step-by-step explanations in Mathematics, Physics and Chemistry across major exam boards.">
+<meta property="og:title" content="AGF Study Companion — Find the gaps costing you marks">
+<meta property="og:description" content="Exam-specific explanations and diagnostic practice grounded in curated AGF notes. Start free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://agftutoring.github.io/agftutoring-home/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -897,6 +901,108 @@
     background: var(--border);
   }
 
+  .hero-trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    margin-top: 20px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .hero-trust span { white-space: nowrap; }
+
+  .diagnostic-section { padding-top: 72px; padding-bottom: 84px; }
+  .diagnostic-intro { max-width: 720px; }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 42px;
+  }
+  .step-card {
+    padding: 28px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--charcoal-2);
+  }
+  .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 22px;
+    border: 1px solid var(--green-border);
+    border-radius: 50%;
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .step-card h3 { color: var(--cream); font-size: 20px; margin-bottom: 10px; }
+  .step-card p { color: var(--muted); font-size: 14px; line-height: 1.75; font-weight: 300; }
+  .diagnostic-cta { margin-top: 30px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .diagnostic-cta small { color: var(--muted); }
+
+  .faq-list { max-width: 820px; margin-top: 38px; }
+  .faq-item { padding: 24px 0; border-top: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: 1px solid var(--border); }
+  .faq-item h3 { color: var(--cream); font-size: 18px; margin-bottom: 9px; }
+  .faq-item p { color: var(--muted); line-height: 1.75; font-size: 14px; font-weight: 300; }
+
+
+  .hero-product { display: grid; gap: 14px; }
+  .about-grid { grid-template-columns: 1fr; max-width: 860px; }
+  .about-photo { display: none; }
+  .video-placeholder { min-height: 210px; position: relative; display: flex; flex-direction: column; justify-content: flex-end; padding: 24px; overflow: hidden; border: 1px solid var(--green-border); border-radius: 16px; background: radial-gradient(circle at 72% 25%, rgba(77,148,96,.24), transparent 34%), linear-gradient(145deg, #252b27, #171917); }
+  .video-placeholder::after { content: ''; position: absolute; inset: 0; background: linear-gradient(transparent 40%, rgba(0,0,0,.58)); pointer-events: none; }
+  .video-kicker { position: absolute; top: 18px; left: 18px; z-index: 1; padding: 6px 10px; border: 1px solid var(--green-border); border-radius: 999px; color: var(--green-light); background: rgba(0,0,0,.25); font-size: 10px; text-transform: uppercase; letter-spacing: .1em; }
+  .play-button { position: absolute; inset: 50% auto auto 50%; z-index: 2; width: 54px; height: 54px; transform: translate(-50%,-50%); border: 1px solid rgba(255,255,255,.35); border-radius: 50%; background: rgba(255,255,255,.12); color: #fff; font-size: 18px; cursor: default; }
+  .video-copy { position: relative; z-index: 1; display: grid; gap: 4px; }
+  .video-copy strong { color: var(--cream); font-family: 'DM Serif Display',serif; font-size: 19px; font-weight: 400; }
+  .video-copy span { color: var(--muted); font-size: 12px; }
+  .diagnostic-preview { padding: 20px; border: 1px solid var(--border); border-radius: 16px; background: var(--charcoal-2); box-shadow: 0 18px 60px rgba(0,0,0,.24); }
+  .preview-top { display: flex; justify-content: space-between; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+  .preview-live { color: var(--green-light); }
+  .subject-pills { display: flex; gap: 6px; margin: 16px 0; flex-wrap: wrap; }
+  .subject-pills span { padding: 6px 9px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 10px; }
+  .subject-pills .active { border-color: var(--green-border); color: var(--green-light); background: rgba(77,148,96,.1); }
+  .preview-question { display: grid; gap: 7px; padding: 16px; border-radius: 10px; background: rgba(255,255,255,.025); }
+  .preview-question small { color: var(--green); }
+  .preview-question strong { color: var(--cream-2); font-size: 14px; line-height: 1.5; }
+  .preview-insight { margin-top: 10px; padding: 14px 16px; border-left: 2px solid var(--green); background: rgba(77,148,96,.07); }
+  .preview-insight span { color: var(--green-light); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+  .preview-insight p { margin-top: 5px; color: var(--muted); font-size: 11px; line-height: 1.55; }
+  .subject-band { padding: 42px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: rgba(255,255,255,.012); }
+  .subject-band-copy { display: grid; gap: 5px; margin-bottom: 26px; }
+  .subject-band-copy span { color: var(--green); font-size: 11px; text-transform: uppercase; letter-spacing: .12em; }
+  .subject-band-copy strong { color: var(--cream); font-family: 'DM Serif Display',serif; font-size: 22px; font-weight: 400; }
+  .subject-band-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+  .subject-band-grid article { display: flex; gap: 14px; padding: 18px; border: 1px solid var(--border); border-radius: 10px; }
+  .subject-symbol { color: var(--green-light); font-family: 'DM Serif Display',serif; font-size: 24px; }
+  .subject-band-grid h3 { color: var(--cream); font-size: 15px; margin-bottom: 4px; }
+  .subject-band-grid p { color: var(--muted); font-size: 11px; line-height: 1.5; }
+  .boards-line { margin-top: 18px; color: var(--muted); font-size: 11px; letter-spacing: .03em; }
+  .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 40px; }
+  .comparison-card { position: relative; padding: 30px; border: 1px solid var(--border); border-radius: 14px; }
+  .comparison-card h3 { color: var(--cream); font-size: 22px; margin-bottom: 18px; }
+  .comparison-card ul, .price-card ul { list-style: none; display: grid; gap: 12px; }
+  .comparison-card li, .price-card li { position: relative; padding-left: 22px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+  .comparison-card li::before, .price-card li::before { content: '✓'; position: absolute; left: 0; color: var(--green); }
+  .muted-card { opacity: .72; }
+  .agf-card { border-color: var(--green-border); background: rgba(77,148,96,.055); }
+  .recommended, .founding-badge { display: inline-block; margin-bottom: 14px; padding: 5px 9px; border-radius: 999px; background: rgba(77,148,96,.14); color: var(--green-light); font-size: 10px; text-transform: uppercase; letter-spacing: .09em; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 42px; align-items: stretch; }
+  .price-card { display: flex; flex-direction: column; padding: 28px; border: 1px solid var(--border); border-radius: 14px; background: var(--charcoal-2); }
+  .featured-price { border-color: var(--green); box-shadow: 0 20px 60px rgba(0,0,0,.24); transform: translateY(-8px); }
+  .price-label { color: var(--cream); font-weight: 500; font-size: 14px; }
+  .price-value { margin: 14px 0 10px; color: var(--cream); font-family: 'DM Serif Display',serif; font-size: 40px; }
+  .price-value small { margin-left: 4px; color: var(--muted); font-family: 'Outfit',sans-serif; font-size: 12px; }
+  .price-card > p { min-height: 48px; margin-bottom: 20px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+  .price-card ul { margin-bottom: 26px; flex: 1; }
+  .price-card .btn-primary, .price-card .btn-secondary { justify-content: center; text-align: center; }
+  .future-price { display: block; margin-top: 10px; color: var(--muted); text-align: center; font-size: 10px; }
+  .pricing-note { margin-top: 20px; color: var(--muted); font-size: 11px; text-align: center; }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .hero-grid,
@@ -905,6 +1011,9 @@
     .contact-grid,
     .paths-grid { grid-template-columns: 1fr; gap: 48px; }
     .services-grid { grid-template-columns: 1fr 1fr; }
+    .subject-band-grid, .pricing-grid, .comparison-grid { grid-template-columns: 1fr; }
+    .featured-price { transform: none; }
+    .steps-grid { grid-template-columns: 1fr; }
     .hero-portrait { display: none; }
     nav { padding: 0 20px; }
     .nav-links { gap: 16px; }
@@ -936,11 +1045,11 @@
   </a>
 
   <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#companion">AI Companion</a></li>
+    <li><a href="#subjects">Subjects</a></li>
+    <li><a href="#method">Method</a></li>
+    <li><a href="#pricing">Pricing</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="https://companion.agftutoring.co.uk" target="_blank" class="nav-companion-btn">Try Free</a></li>
+    <li><a href="https://companion.agftutoring.co.uk" target="_blank" rel="noopener" class="nav-companion-btn">Try Free</a></li>
     <li><a href="https://agftutoring.co.uk/login" class="nav-client-login">Login</a></li>
   </ul>
 </nav>
@@ -952,36 +1061,31 @@
       <div>
         <div class="hero-label">Alastair Fisher · AGF Tutoring</div>
 
-        <h1>30 years.<br>60,000 hours.<br><em>Distilled.</em></h1>
+        <h1>Find the gaps<br>that are costing<br><em>you marks.</em></h1>
 
-        <p class="hero-argument">
-          Three decades of diagnostic teaching and mentoring across <strong>Chemistry, Physics, Mathematics, GMAT, GRE, SAT, ACT, LNAT, UCAT, IELTS, TOEFL</strong> and university admissions — now distilled into an AI study companion available to every student, at any hour, at a fraction of the cost of a live session.
-        </p>
+        <p class="hero-argument">Get <strong>exam-board-specific explanations, diagnostic quizzes and worked feedback</strong> in Chemistry, Physics and Mathematics. The AGF Study Companion turns three decades of tutoring experience into focused help you can use whenever you are stuck.</p>
 
-        <div class="hero-sigma">
-          Benjamin Bloom’s landmark 1984 research suggested that one-to-one tutoring could move the average student roughly two standard deviations above conventional classroom teaching. AGF Tutoring is built around that insight: precise diagnosis, targeted explanation, and continuous feedback.
-        </div>
+        <div class="hero-sigma"><strong>Start with a question or free quiz.</strong> The companion helps reveal the misconception behind an error, rebuild the idea step by step, and test whether it now holds.</div>
 
         <div class="hero-ctas">
-          <a href="https://companion.agftutoring.co.uk" target="_blank" class="btn-primary">Try the AI Companion free →</a>
+          <a href="https://companion.agftutoring.co.uk" target="_blank" rel="noopener" class="btn-primary">Start a free diagnostic quiz →</a>
           <a href="#contact" class="btn-secondary">Work directly with Alastair</a>
         </div>
 
-        <p style="font-size: 12px; color: var(--muted); margin-top: 18px; max-width: 620px; line-height: 1.7;">
-          Specialist preparation for Edexcel IAL, A-Level, IB, AP, SAT, ACT, GMAT, GRE, LNAT, UCAT, IELTS, TOEFL, and university admissions.
-        </p>
+        <div class="hero-trust"><span>✓ No account required</span><span>✓ 3 free quizzes</span><span>✓ Grounded in curated notes</span></div>
       </div>
 
-      <div class="hero-portrait">
-        <img
-          src="alastair.jpg"
-          alt="Alastair Fisher — AGF Tutoring"
-          class="hero-portrait-img"
-          onerror="this.style.display='none'"
-        >
-        <div class="hero-portrait-badge">
-          <div class="badge-num">30+</div>
-          <div class="badge-label">Countries reached &amp;<br>students supported</div>
+      <div class="hero-product">
+        <div class="video-placeholder" aria-label="Founder introduction video placeholder">
+          <div class="video-kicker">Coming next</div>
+          <button class="play-button" type="button" aria-label="Introduction video coming soon">▶</button>
+          <div class="video-copy"><strong>Why I built the AGF Study Companion</strong><span>A 40-second introduction from Alastair will appear here.</span></div>
+        </div>
+        <div class="diagnostic-preview">
+          <div class="preview-top"><span>Free diagnostic preview</span><span class="preview-live">● Ready</span></div>
+          <div class="subject-pills"><span>Mathematics</span><span>Physics</span><span class="active">Chemistry</span></div>
+          <div class="preview-question"><small>Edexcel IAL · Bonding</small><strong>Why is the bond angle in H₂O smaller than in NH₃?</strong></div>
+          <div class="preview-insight"><span>AGF diagnosis</span><p>Before using VSEPR, compare the number of lone pairs. The missing idea is that lone pair–lone pair repulsion is stronger than lone pair–bond pair repulsion.</p></div>
         </div>
       </div>
     </div>
@@ -989,10 +1093,40 @@
 </section>
 
 <!-- ══════════ TWO PATHS ══════════ -->
+
+
+<section class="subject-band" id="subjects">
+  <div class="container">
+    <div class="subject-band-copy"><span>One companion. Three subjects.</span><strong>Shared fundamentals, adapted to your qualification and exam board.</strong></div>
+    <div class="subject-band-grid">
+      <article><span class="subject-symbol">∑</span><div><h3>Mathematics</h3><p>Algebra, calculus, statistics, mechanics and problem-solving.</p></div></article>
+      <article><span class="subject-symbol">F</span><div><h3>Physics</h3><p>Conceptual understanding, calculations, units and exam technique.</p></div></article>
+      <article><span class="subject-symbol">⚗</span><div><h3>Chemistry</h3><p>Physical, inorganic and organic chemistry with worked reasoning.</p></div></article>
+    </div>
+    <p class="boards-line">Edexcel · AQA · OCR · Cambridge · IB · AP · GCSE · IGCSE · International A Level</p>
+  </div>
+</section>
+
+<section class="section diagnostic-section" id="method">
+  <div class="container">
+    <div class="diagnostic-intro">
+      <div class="section-label-line"><span>How the companion helps</span></div>
+      <h2 class="section-title">Do not just see the answer.<br><em>Find out why you missed it.</em></h2>
+      <p class="section-subtitle">Generic AI can produce an answer. AGF is designed to diagnose the missing definition, weak step or misconception underneath it, then check that the understanding lasts.</p>
+    </div>
+    <div class="steps-grid">
+      <article class="step-card"><span class="step-number">1</span><h3>Ask or take a quiz</h3><p>Choose your subject and exam board, ask about a difficult idea, or begin with exam-style questions.</p></article>
+      <article class="step-card"><span class="step-number">2</span><h3>Understand the error</h3><p>Get targeted feedback, worked reasoning and explanations grounded in curated AGF subject notes.</p></article>
+      <article class="step-card"><span class="step-number">3</span><h3>Test it again</h3><p>Use another question to check whether the misconception has genuinely been corrected—not merely memorised.</p></article>
+    </div>
+    <div class="diagnostic-cta"><a href="https://companion.agftutoring.co.uk" target="_blank" rel="noopener" class="btn-primary">Try your first quiz free →</a><small>No account required · three free quizzes</small></div>
+  </div>
+</section>
+
 <section class="section">
   <div class="container">
     <div class="section-label-line"><span>Two ways to work with AGF</span></div>
-    <h2 class="section-title">Choose your<br><em>level of support</em></h2>
+    <h2 class="section-title">Continue with<br><em>the support you need</em></h2>
 
     <div class="paths-grid">
 
@@ -1014,19 +1148,19 @@
       <!-- Companion -->
       <div class="path-card featured">
         <span class="path-tag">AI Study Companion</span>
-        <h3>AGF teaching, available 24/7</h3>
+        <h3>Exam-specific help, available 24/7</h3>
         <p>An AI study companion built around AGF’s curriculum, explanations, and diagnostic method. Students receive instant explanations, exam-style quizzes, and targeted revision support — at a fraction of the cost of live tuition.</p>
         <ul class="path-features">
-          <li>A-level/IB/AP Chemistry, Physics &amp; Maths</li>
-          <li>SAT, ACT, GMAT, GRE, LNAT, UCAT, IELTS, TOEFL</li>
+          <li>Mathematics, Physics &amp; Chemistry across major boards</li>
+          <li>GCSE, IGCSE, A-Level, IAL, IB and AP pathways</li>
           <li>Unlimited Ask mode<sup>*</sup> · exam-style quizzes</li>
           <li>Diagnostic feedback on every quiz answer</li>
         </ul>
         <div style="font-size: 11px; color: var(--muted); margin-top: -20px; margin-bottom: 10px;">Free Ask mode: up to 20 questions per day</div>
         <div style="font-size: 11px; color: var(--muted); margin-bottom: 24px;">3 free quizzes to start</div>
-        <div class="path-price">£29</div>
-        <div class="path-price-sub">per month thereafter</div>
-        <a href="https://companion.agftutoring.co.uk" target="_blank" class="btn-primary">Try free →</a>
+        <div class="path-price">£8.99</div>
+        <div class="path-price-sub">founding monthly price</div>
+        <a href="https://companion.agftutoring.co.uk" target="_blank" rel="noopener" class="btn-primary">Try free →</a>
       </div>
 
     </div>
@@ -1034,122 +1168,6 @@
 </section>
 
 <!-- ══════════ SERVICES ══════════ -->
-<section class="section" id="services">
-  <div class="container">
-    <div class="section-label-line"><span>Services</span></div>
-    <h2 class="section-title">Every stage of<br>the <em>academic journey</em></h2>
-    <p class="section-subtitle">From A-Level revision to MBA admissions, AGF Tutoring provides expert, diagnostic guidance across the full academic journey — from subject mastery to university strategy.</p>
-
-    <div class="services-grid">
-
-      <div class="service-card">
-        <div class="service-icon">⚗</div>
-        <h4>A-Level &amp; IAL Sciences</h4>
-        <p>Expert teaching in Edexcel IAL Chemistry, Physics and Mathematics. Diagnostic method that identifies gaps and rebuilds understanding from the ground up.</p>
-        <div class="service-tags">
-          <span class="service-tag">WCH11–16</span>
-          <span class="service-tag">WPH11–16</span>
-          <span class="service-tag">P1–P4 · S1 · S2 · M1 · M2</span>
-          <span class="service-tag">FP1 · FP2 · FP3</span>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">🎓</div>
-        <h4>Undergraduate Admissions</h4>
-        <p>End-to-end guidance for UK, US and European university applications. UCAS, Common App, personal statements, and interview preparation.</p>
-        <div class="service-tags">
-          <span class="service-tag">UCAS</span>
-          <span class="service-tag">Common App</span>
-          <span class="service-tag">Personal statement</span>
-          <span class="service-tag">Interviews</span>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">📋</div>
-        <h4>Postgraduate Admissions</h4>
-        <p>MBA, LLM, and Masters applications at top global institutions. Strategy, essays, and test preparation for the most competitive programmes.</p>
-        <div class="service-tags">
-          <span class="service-tag">MBA</span>
-          <span class="service-tag">LLM</span>
-          <span class="service-tag">Masters</span>
-          <span class="service-tag">LBS · Stanford · INSEAD</span>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">⚖</div>
-        <h4>LNAT &amp; UCAT</h4>
-        <p>Specialist preparation for Law and Medicine entry examinations. Structured approach to critical reasoning, argument analysis and time pressure.</p>
-        <div class="service-tags">
-          <span class="service-tag">LNAT Section A &amp; B</span>
-          <span class="service-tag">UCAT all subtests</span>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">📊</div>
-        <h4>GMAT &amp; GRE</h4>
-        <p>Comprehensive preparation for graduate admissions tests. Quant, Verbal, Data Insights and AWA — from fundamentals to test-day strategy.</p>
-        <div class="service-tags">
-          <span class="service-tag">GMAT Focus</span>
-          <span class="service-tag">GRE General</span>
-          <span class="service-tag">Data Insights</span>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">🌍</div>
-        <h4>SAT, ACT &amp; Language Tests</h4>
-        <p>Preparation for US university admissions tests and English language proficiency examinations for international applicants.</p>
-        <div class="service-tags">
-          <span class="service-tag">SAT</span>
-          <span class="service-tag">ACT</span>
-          <span class="service-tag">IELTS</span>
-          <span class="service-tag">TOEFL</span>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">🏆</div>
-        <h4>Scholarship Applications</h4>
-        <p>Strategy and application support for academic, athletic and music scholarships at UK, US and international universities.</p>
-        <div class="service-tags">
-          <span class="service-tag">Academic</span>
-          <span class="service-tag">Athletic</span>
-          <span class="service-tag">Music</span>
-          <span class="service-tag">Need-based</span>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">✉</div>
-        <h4>English for Universities</h4>
-        <p>Academic English preparation for students whose first language is not English. Writing, comprehension and language proficiency support.</p>
-        <div class="service-tags">
-          <span class="service-tag">Academic writing</span>
-          <span class="service-tag">Comprehension</span>
-          <span class="service-tag">IELTS · TOEFL</span>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">💡</div>
-        <h4>Education Consultancy</h4>
-        <p>Strategic advice on school selection, curriculum choice, examination board decisions, and long-term academic planning for families.</p>
-        <div class="service-tags">
-          <span class="service-tag">School selection</span>
-          <span class="service-tag">Curriculum planning</span>
-          <span class="service-tag">Homeschooling</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ ABOUT ══════════ -->
 <section class="section" id="about">
   <div class="container">
     <div class="section-label-line"><span>About Alastair Fisher</span></div>
@@ -1209,7 +1227,7 @@
           <li>Postgraduate applications — MBA (LBS, Harvard, INSEAD), LLM, specialist Masters</li>
         </ul>
 
-        <a href="https://companion.agftutoring.co.uk" target="_blank" class="btn-primary">Try AI Companion free →</a>
+        <a href="https://companion.agftutoring.co.uk" target="_blank" rel="noopener" class="btn-primary">Try AI Companion free →</a>
       </div>
 
     </div>
@@ -1220,19 +1238,19 @@
 <section class="section" id="companion">
   <div class="container">
     <div class="section-label-line"><span>AI Study Companion</span></div>
-    <h2 class="section-title">The <em>digital tutor,</em><br>powered by AGF</h2>
-    <p class="section-subtitle">An AI companion built around Alastair’s curriculum, diagnostic method, and three decades of subject knowledge. Available 24/7. Starts free.</p>
+    <h2 class="section-title">Built for <em>understanding,</em><br>not answer-copying</h2>
+    <p class="section-subtitle">A patient study companion grounded in curated AGF notes and shaped around specific qualifications. Ask, practise, receive feedback, and return to the exact idea that needs work.</p>
 
     <div class="companion-grid">
 
       <div class="companion-features">
         <div class="companion-feature">
           <h4>Grounded in AGF's curriculum</h4>
-          <p>Answers drawn from curated subject notes — not the open internet. Chemistry, Physics, Maths (Edexcel IAL complete), plus SAT, ACT, GMAT, GRE, LNAT, UCAT, IELTS and TOEFL.</p>
+          <p>Answers drawn from curated subject notes — not the open internet. Mathematics, Physics and Chemistry, organised around major UK and international qualifications.</p>
         </div>
         <div class="companion-feature">
           <h4>Diagnostic quizzes &amp; exam practice</h4>
-          <p>Exam-style questions with instant feedback, model answers and worked explanations. Identifies weak topics so you know exactly what to revise.</p>
+          <p>Exam-style questions with instant feedback, model answers and worked explanations. Reveals weak topics so you can decide exactly what to revise next.</p>
         </div>
         <div class="companion-feature">
           <h4>Available at 11pm before an exam</h4>
@@ -1244,8 +1262,8 @@
         </div>
 
         <div>
-          <a href="https://companion.agftutoring.co.uk" target="_blank" class="btn-primary">Try free — 3 quizzes, no account needed →</a>
-          <div style="margin-top: 10px; font-size: 12px; color: var(--muted);">£29/month after your free quizzes</div>
+          <a href="https://companion.agftutoring.co.uk" target="_blank" rel="noopener" class="btn-primary">Try free — 3 quizzes, no account needed →</a>
+          <div style="margin-top: 10px; font-size: 12px; color: var(--muted);">Founding access £8.99/month · planned standard price £12.99</div>
         </div>
       </div>
 
@@ -1275,6 +1293,46 @@
 </section>
 
 <!-- ══════════ CONTACT ══════════ -->
+
+
+<section class="section comparison-section" id="difference">
+  <div class="container">
+    <div class="section-label-line"><span>Why AGF instead of generic AI?</span></div>
+    <h2 class="section-title">Built around the course.<br><em>Not the open-ended chat.</em></h2>
+    <div class="comparison-grid">
+      <div class="comparison-card muted-card"><h3>Generic AI chatbot</h3><ul><li>Starts from a blank conversation</li><li>May use terminology outside your specification</li><li>Optimised to answer almost anything</li><li>No exam-board learning path</li></ul></div>
+      <div class="comparison-card agf-card"><span class="recommended">AGF approach</span><h3>Study Companion</h3><ul><li>Starts with your subject, board and paper</li><li>Grounded in curated AGF teaching notes</li><li>Designed to explain the mistake, not just answer</li><li>Quizzes, worked feedback and retesting in one place</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="section pricing-section" id="pricing">
+  <div class="container">
+    <div class="section-label-line"><span>Simple student pricing</span></div>
+    <h2 class="section-title">Start free.<br><em>Upgrade when it helps.</em></h2>
+    <p class="section-subtitle">No payment details are needed to try the companion. Founding pricing is intended for early students who help improve the product.</p>
+    <div class="pricing-grid">
+      <article class="price-card"><span class="price-label">Free</span><div class="price-value">£0</div><p>See whether AGF suits the way you learn.</p><ul><li>One diagnostic starting point</li><li>Limited Ask mode</li><li>Worked feedback</li><li>No card required</li></ul><a href="https://companion.agftutoring.co.uk" target="_blank" rel="noopener" class="btn-secondary">Start free</a></article>
+      <article class="price-card featured-price"><span class="founding-badge">Founding offer</span><span class="price-label">Student</span><div class="price-value">£8.99<small>/month</small></div><p>For regular independent study in all three subjects.</p><ul><li>Mathematics, Physics and Chemistry</li><li>Ask, quizzes and revision notes</li><li>All supported boards</li><li>Cancel anytime</li></ul><a href="https://companion.agftutoring.co.uk" target="_blank" rel="noopener" class="btn-primary">Try before subscribing</a><small class="future-price">Planned standard price: £12.99/month</small></article>
+      <article class="price-card"><span class="price-label">Exam Season</span><div class="price-value">£39.99<small>/4 months</small></div><p>One payment for a focused revision period.</p><ul><li>Everything in Student</li><li>No monthly renewal during the pass</li><li>Built for the exam run-in</li><li>Best for short-term revision</li></ul><a href="https://companion.agftutoring.co.uk" target="_blank" rel="noopener" class="btn-secondary">Start with the free version</a></article>
+    </div>
+    <p class="pricing-note">Launch pricing shown for product testing. Subscription checkout must be updated before this offer is published.</p>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-label-line"><span>Questions students and parents ask</span></div>
+    <h2 class="section-title">Before you<br><em>try the companion</em></h2>
+    <div class="faq-list">
+      <div class="faq-item"><h3>How is this different from a general chatbot?</h3><p>The companion is organised around named qualifications, exam boards and curated AGF subject notes. Its purpose is teaching and exam practice—not general conversation.</p></div>
+      <div class="faq-item"><h3>Will it simply give students the answer?</h3><p>AGF is designed to explain the reasoning, identify likely misconceptions and test understanding again. Students should still show their own working and follow their school’s rules on AI use.</p></div>
+      <div class="faq-item"><h3>What can I try without paying?</h3><p>You can explore Ask mode and complete three free quizzes without creating an account. The current limits and subscription price are shown before payment.</p></div>
+      <div class="faq-item"><h3>Can the companion replace a teacher or tutor?</h3><p>No. It provides immediate practice and explanation between lessons. For deeper diagnosis, accountability or complex individual needs, students can work directly with Alastair.</p></div>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="contact">
   <div class="container">
     <div class="section-label-line"><span>Get in touch</span></div>
@@ -1297,7 +1355,7 @@
           </a>
         </div>
 
-        <a href="https://wa.me/447546121944" class="whatsapp-btn" target="_blank">
+        <a href="https://wa.me/447546121944" class="whatsapp-btn" target="_blank" rel="noopener">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Message on WhatsApp
         </a>
@@ -1367,11 +1425,11 @@
       <div>
         <div style="font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px;">Services</div>
         <div class="footer-links">
-          <a href="#services">A-Level &amp; IAL Sciences</a>
-          <a href="#services">University Admissions</a>
-          <a href="#services">GMAT &amp; GRE</a>
-          <a href="#services">LNAT &amp; UCAT</a>
-          <a href="#services">Scholarships</a>
+          <a href="#subjects">Mathematics</a>
+          <a href="#subjects">Physics</a>
+          <a href="#subjects">Chemistry</a>
+          <a href="#difference">Why AGF</a>
+          <a href="#pricing">Pricing</a>
         </div>
       </div>
 
@@ -1390,9 +1448,9 @@
     <div class="footer-bottom">
       <span>© 2026 AGF Tutoring UK Limited · Registered in England · Co. No. 12247821</span>
       <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">
-        <a href="https://www.facebook.com/agftutoring" target="_blank">Facebook</a>
-        <a href="https://x.com/AGFTutoring" target="_blank">X</a>
-        <a href="https://www.linkedin.com/company/agf-tutoring/" target="_blank">LinkedIn</a>
+        <a href="https://www.facebook.com/agftutoring" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://x.com/AGFTutoring" target="_blank" rel="noopener">X</a>
+        <a href="https://www.linkedin.com/company/agf-tutoring/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="terms.html">Terms of Service</a>
         <a href="privacy.html">Privacy Policy</a>
       </div>
