@@ -953,7 +953,8 @@
   .hero-product { display: grid; gap: 14px; }
   .about-grid { grid-template-columns: 1fr; max-width: 860px; }
   .about-photo { display: none; }
-  .video-placeholder { min-height: 210px; position: relative; display: flex; flex-direction: column; justify-content: flex-end; padding: 24px; overflow: hidden; border: 1px solid var(--green-border); border-radius: 16px; background: radial-gradient(circle at 72% 25%, rgba(77,148,96,.24), transparent 34%), linear-gradient(145deg, #252b27, #171917); }
+  .video-placeholder { min-height: 210px; position: relative; overflow: hidden; border: 1px solid var(--green-border); border-radius: 16px; background: #111; aspect-ratio: 16/9; }
+  .video-placeholder iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
   .video-placeholder::after { content: ''; position: absolute; inset: 0; background: linear-gradient(transparent 40%, rgba(0,0,0,.58)); pointer-events: none; }
   .video-kicker { position: absolute; top: 18px; left: 18px; z-index: 1; padding: 6px 10px; border: 1px solid var(--green-border); border-radius: 999px; color: var(--green-light); background: rgba(0,0,0,.25); font-size: 10px; text-transform: uppercase; letter-spacing: .1em; }
   .play-button { position: absolute; inset: 50% auto auto 50%; z-index: 2; width: 54px; height: 54px; transform: translate(-50%,-50%); border: 1px solid rgba(255,255,255,.35); border-radius: 50%; background: rgba(255,255,255,.12); color: #fff; font-size: 18px; cursor: default; }
@@ -962,15 +963,15 @@
   .video-copy span { color: var(--muted); font-size: 12px; }
   .diagnostic-preview { padding: 20px; border: 1px solid var(--border); border-radius: 16px; background: var(--charcoal-2); box-shadow: 0 18px 60px rgba(0,0,0,.24); }
   .preview-top { display: flex; justify-content: space-between; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
-  .preview-live { color: var(--green-light); }
+  .preview-live { color: #8de2a2; font-weight: 700; }
   .subject-pills { display: flex; gap: 6px; margin: 16px 0; flex-wrap: wrap; }
   .subject-pills span { padding: 6px 9px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 10px; }
-  .subject-pills .active { border-color: var(--green-border); color: var(--green-light); background: rgba(77,148,96,.1); }
+  .subject-pills .active { border-color: #579f69; color: #e6f6ea; background: rgba(77,148,96,.24); font-weight: 600; }
   .preview-question { display: grid; gap: 7px; padding: 16px; border-radius: 10px; background: rgba(255,255,255,.025); }
-  .preview-question small { color: var(--green); }
+  .preview-question small { color: #79d08f; font-weight: 600; }
   .preview-question strong { color: var(--cream-2); font-size: 14px; line-height: 1.5; }
-  .preview-insight { margin-top: 10px; padding: 14px 16px; border-left: 2px solid var(--green); background: rgba(77,148,96,.07); }
-  .preview-insight span { color: var(--green-light); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+  .preview-insight { margin-top: 10px; padding: 14px 16px; border-left: 3px solid #62bd78; background: rgba(77,148,96,.13); }
+  .preview-insight span { color: #8de2a2; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
   .preview-insight p { margin-top: 5px; color: var(--muted); font-size: 11px; line-height: 1.55; }
   .subject-band { padding: 42px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: rgba(255,255,255,.012); }
   .subject-band-copy { display: grid; gap: 5px; margin-bottom: 26px; }
@@ -990,7 +991,8 @@
   .comparison-card li::before, .price-card li::before { content: '✓'; position: absolute; left: 0; color: var(--green); }
   .muted-card { opacity: .72; }
   .agf-card { border-color: var(--green-border); background: rgba(77,148,96,.055); }
-  .recommended, .founding-badge { display: inline-block; margin-bottom: 14px; padding: 5px 9px; border-radius: 999px; background: rgba(77,148,96,.14); color: var(--green-light); font-size: 10px; text-transform: uppercase; letter-spacing: .09em; }
+  .recommended, .founding-badge { display: inline-block; margin-bottom: 14px; padding: 6px 11px; border-radius: 999px; background: rgba(77,148,96,.22); color: #dff5e5; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; }
+  .founding-badge { background: var(--green); color: #fff; box-shadow: 0 0 0 1px rgba(255,255,255,.08) inset; }
   .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 42px; align-items: stretch; }
   .price-card { display: flex; flex-direction: column; padding: 28px; border: 1px solid var(--border); border-radius: 14px; background: var(--charcoal-2); }
   .featured-price { border-color: var(--green); box-shadow: 0 20px 60px rgba(0,0,0,.24); transform: translateY(-8px); }
@@ -1040,17 +1042,17 @@
     </div>
     <div>
       <span class="nav-logo-text">AGF Tutoring</span>
-      <span class="nav-logo-sub">Test Prep &amp; Consulting</span>
+      <span class="nav-logo-sub">AI Study Companion</span>
     </div>
   </a>
 
   <ul class="nav-links">
-    <li><a href="#subjects">Subjects</a></li>
-    <li><a href="#method">Method</a></li>
+    <li><a href="#companion">Study Companion</a></li>
+    <li><a href="#method">How it works</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="https://companion.agftutoring.co.uk" target="_blank" rel="noopener" class="nav-companion-btn">Try Free</a></li>
-    <li><a href="https://agftutoring.co.uk/login" class="nav-client-login">Login</a></li>
+    <li><a href="https://companion.agftutoring.co.uk" class="nav-client-login">Login</a></li>
   </ul>
 </nav>
 
@@ -1069,17 +1071,16 @@
 
         <div class="hero-ctas">
           <a href="https://companion.agftutoring.co.uk" target="_blank" rel="noopener" class="btn-primary">Start a free diagnostic quiz →</a>
-          <a href="#contact" class="btn-secondary">Work directly with Alastair</a>
+          <a href="#method" class="btn-secondary">See how it works</a>
         </div>
 
         <div class="hero-trust"><span>✓ No account required</span><span>✓ 3 free quizzes</span><span>✓ Grounded in curated notes</span></div>
+        <a href="https://companion.agftutoring.co.uk" target="_blank" rel="noopener" class="btn-secondary" style="display:inline-flex;margin-top:18px">Open AGF App →</a>
       </div>
 
       <div class="hero-product">
-        <div class="video-placeholder" aria-label="Founder introduction video placeholder">
-          <div class="video-kicker">Coming next</div>
-          <button class="play-button" type="button" aria-label="Introduction video coming soon">▶</button>
-          <div class="video-copy"><strong>Why I built the AGF Study Companion</strong><span>A 40-second introduction from Alastair will appear here.</span></div>
+        <div class="video-placeholder" aria-label="A short introduction to AGF Tutoring from Alastair Fisher">
+          <iframe src="https://www.youtube-nocookie.com/embed/pkIVYl1Jry0" title="Welcome to AGF Tutoring — Maths, Physics and Chemistry" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <div class="diagnostic-preview">
           <div class="preview-top"><span>Free diagnostic preview</span><span class="preview-live">● Ready</span></div>
@@ -1123,55 +1124,11 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <div class="section-label-line"><span>Two ways to work with AGF</span></div>
-    <h2 class="section-title">Continue with<br><em>the support you need</em></h2>
-
-    <div class="paths-grid">
-
-      <!-- One-to-one -->
-      <div class="path-card">
-        <span class="path-tag">One-to-one tutoring</span>
-        <h3>Collaborate directly with Alastair</h3>
-        <p>Live sessions on AGF Tutoring’s own secure platform. A diagnostic teaching method, refined over three decades, identifies precisely where understanding breaks down — and rebuilds from that point.</p>
-        <ul class="path-features">
-          <li>A-level/IB Chemistry, Physics &amp; Mathematics</li>
-          <li>University application &amp; personal statement consultancy</li>
-          <li>GMAT, GRE, LNAT, UCAT, SAT &amp; ACT preparation</li>
-          <li>Scholarship strategy &amp; application support</li>
-        </ul>
-        <div class="path-price-sub">Contact for rates</div>
-        <a href="#contact" class="btn-secondary">Enquire now</a>
-      </div>
-
-      <!-- Companion -->
-      <div class="path-card featured">
-        <span class="path-tag">AI Study Companion</span>
-        <h3>Exam-specific help, available 24/7</h3>
-        <p>An AI study companion built around AGF’s curriculum, explanations, and diagnostic method. Students receive instant explanations, exam-style quizzes, and targeted revision support — at a fraction of the cost of live tuition.</p>
-        <ul class="path-features">
-          <li>Mathematics, Physics &amp; Chemistry across major boards</li>
-          <li>GCSE, IGCSE, A-Level, IAL, IB and AP pathways</li>
-          <li>Unlimited Ask mode<sup>*</sup> · exam-style quizzes</li>
-          <li>Diagnostic feedback on every quiz answer</li>
-        </ul>
-        <div style="font-size: 11px; color: var(--muted); margin-top: -20px; margin-bottom: 10px;">Free Ask mode: up to 20 questions per day</div>
-        <div style="font-size: 11px; color: var(--muted); margin-bottom: 24px;">3 free quizzes to start</div>
-        <div class="path-price">£8.99</div>
-        <div class="path-price-sub">founding monthly price</div>
-        <a href="https://companion.agftutoring.co.uk" target="_blank" rel="noopener" class="btn-primary">Try free →</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <!-- ══════════ SERVICES ══════════ -->
 <section class="section" id="about">
   <div class="container">
     <div class="section-label-line"><span>About Alastair Fisher</span></div>
-    <h2 class="section-title">The tutor behind<br><em>AGF Tutoring</em></h2>
+    <h2 class="section-title">The educator behind<br><em>the Companion</em></h2>
 
     <div class="about-grid">
 
@@ -1185,7 +1142,7 @@
 
       <div class="about-content">
         <p>
-          AGF Tutoring was founded on a simple conviction: that students deserve teaching which does not merely cover content, but uncovers the precise reason misunderstanding has taken root. For over three decades, I have put that conviction into practice through diagnostic tutoring, mentoring, and admissions guidance.
+          The AGF Study Companion is built on a simple conviction: students need help that does not merely cover content, but uncovers the precise reason misunderstanding has taken root. It turns more than three decades of diagnostic teaching experience into focused support that students can access whenever they are stuck.
         </p>
 
         <div class="stat-row">
@@ -1209,7 +1166,7 @@
         </p>
 
         <p>
-          Every student receives a bespoke programme of study. There is no standard curriculum, no one-size-fits-all approach. The plan changes as the student changes — I diagnose continuously, not just at the start.
+          The Companion applies that same principle digitally: begin with the student’s course and question, identify the weak step, explain it clearly, then test the idea again.
         </p>
 
         <h3>Why I built the AI Companion</h3>
@@ -1217,14 +1174,12 @@
           Bloom’s 1984 research remains one of the most powerful arguments ever made for personal tutoring: students improve most when feedback is immediate, individual, and precisely targeted. The problem is access. High-quality tutoring is expensive, limited by time, and unavailable at the moment when many students most need help. I built the AGF Study Companion to extend AGF’s diagnostic approach beyond the live session — available at any hour, and at a fraction of the cost of one-to-one tuition.
         </p>
 
-        <h3>Specialist expertise</h3>
+        <h3>Academic foundation</h3>
         <ul class="credentials-list">
           <li>A-level/IB/AP Chemistry, Physics and Mathematics</li>
-          <li>University admissions consulting — UK (UCAS), US (Common App and specific portals), European universities</li>
-          <li>Graduate admissions — GMAT Focus Edition, GRE General Test, LNAT</li>
-          <li>Professional test preparation — LNAT, UCAT, SAT, ACT, IELTS, TOEFL</li>
-          <li>Scholarship strategy — academic, athletic and music awards at global institutions</li>
-          <li>Postgraduate applications — MBA (LBS, Harvard, INSEAD), LLM, specialist Masters</li>
+          <li>More than 30 years of curated explanations, questions and teaching notes</li>
+          <li>Major UK and international examination pathways</li>
+          <li>Diagnostic feedback designed to reveal misconceptions</li>
         </ul>
 
         <a href="https://companion.agftutoring.co.uk" target="_blank" rel="noopener" class="btn-primary">Try AI Companion free →</a>
@@ -1328,7 +1283,7 @@
       <div class="faq-item"><h3>How is this different from a general chatbot?</h3><p>The companion is organised around named qualifications, exam boards and curated AGF subject notes. Its purpose is teaching and exam practice—not general conversation.</p></div>
       <div class="faq-item"><h3>Will it simply give students the answer?</h3><p>AGF is designed to explain the reasoning, identify likely misconceptions and test understanding again. Students should still show their own working and follow their school’s rules on AI use.</p></div>
       <div class="faq-item"><h3>What can I try without paying?</h3><p>You can explore Ask mode and complete three free quizzes without creating an account. The current limits and subscription price are shown before payment.</p></div>
-      <div class="faq-item"><h3>Can the companion replace a teacher or tutor?</h3><p>No. It provides immediate practice and explanation between lessons. For deeper diagnosis, accountability or complex individual needs, students can work directly with Alastair.</p></div>
+      <div class="faq-item"><h3>Can the companion replace a teacher or tutor?</h3><p>No. It is an independent study tool for explanation, practice and revision. Students should continue to follow their school course and seek appropriate help from their teacher when needed.</p></div>
     </div>
   </div>
 </section>
@@ -1336,28 +1291,28 @@
 <section class="section" id="contact">
   <div class="container">
     <div class="section-label-line"><span>Get in touch</span></div>
-    <h2 class="section-title">Start your<br><em>introductory consultation</em></h2>
+    <h2 class="section-title">Questions about<br><em>the Study Companion?</em></h2>
 
     <div class="contact-grid">
 
       <div class="contact-info">
-        <h3>Book with Alastair directly</h3>
+        <h3>Contact AGF</h3>
         <p>
-          Every engagement begins with a one-hour introductory consultation. We discuss the student’s goals, assess the present position, and design a bespoke programme of study. There is no commitment beyond that first meeting.
+          Ask about supported qualifications, content coverage, subscriptions or using the Companion. Product feedback from students, parents and teachers is particularly welcome.
         </p>
 
         <div class="contact-detail">
           <a href="mailto:info@agftutoring.co.uk">
             <span>✉</span> info@agftutoring.co.uk
           </a>
-          <a href="https://agftutoring.co.uk/login">
-            <span>🔐</span> Client login — existing students
+          <a href="https://companion.agftutoring.co.uk">
+            <span>🔐</span> Open the Study Companion
           </a>
         </div>
 
         <a href="https://wa.me/447546121944" class="whatsapp-btn" target="_blank" rel="noopener">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Message on WhatsApp
+          Ask a Companion question on WhatsApp
         </a>
       </div>
 
@@ -1375,30 +1330,25 @@
         </div>
 
         <div class="form-group">
-          <label for="service">I am enquiring about</label>
-          <select id="service" name="service" required>
-            <option value="" disabled selected>Select a service...</option>
-            <option>A-Level / IAL / IB Chemistry, Physics or Mathematics tutoring</option>
-            <option>Undergraduate university admissions</option>
-            <option>Postgraduate admissions (MBA, LLM, Masters)</option>
-            <option>GMAT or GRE preparation</option>
-            <option>LNAT or UCAT preparation</option>
-            <option>SAT or ACT preparation</option>
-            <option>IELTS or TOEFL preparation</option>
-            <option>Scholarship application support</option>
-            <option>Education consultancy</option>
-            <option>AGF Study Companion</option>
+            <label for="service">How can we help?</label>
+            <select id="service" name="service" required>
+            <option value="" disabled selected>Select a topic...</option>
+            <option>Supported subject, exam or board</option>
+            <option>Account or subscription</option>
+            <option>Question or content feedback</option>
+            <option>School or teacher enquiry</option>
+            <option>Technical problem</option>
             <option>Something else</option>
           </select>
         </div>
 
         <div class="form-group">
           <label for="message">Tell me about your situation</label>
-          <textarea id="message" name="message" placeholder="Current level, target university or exam, timeline, any specific challenges..."></textarea>
+          <textarea id="message" name="message" placeholder="Tell us the subject, qualification and what you need help with..."></textarea>
         </div>
 
         <button type="submit" class="form-submit">Send enquiry →</button>
-        <p class="form-note">I endeavour to respond to all enquiries within 24 hours.</p>
+        <p class="form-note">AGF aims to respond to enquiries within 24 hours.</p>
       </form>
 
     </div>
@@ -1416,14 +1366,14 @@
           </div>
           <div>
             <span class="nav-logo-text">AGF Tutoring</span>
-            <span class="nav-logo-sub">Test Prep &amp; Consulting</span>
+            <span class="nav-logo-sub">AI Study Companion</span>
           </div>
         </div>
-        <p>Bespoke tutoring, mentoring, and admissions consultancy for ambitious students applying to leading schools and universities worldwide. AGF Tutoring UK Limited, incorporated 2019. Registered Company No. 12247821.</p>
+        <p>Diagnostic explanations, quizzes and revision support in Mathematics, Physics and Chemistry, grounded in more than 30 years of curated AGF teaching material. AGF Tutoring UK Limited, incorporated 2019. Registered Company No. 12247821.</p>
       </div>
 
       <div>
-        <div style="font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px;">Services</div>
+        <div style="font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px;">Study Companion</div>
         <div class="footer-links">
           <a href="#subjects">Mathematics</a>
           <a href="#subjects">Physics</a>
@@ -1439,7 +1389,7 @@
           <a href="#about">About Alastair</a>
           <a href="#companion">AI Study Companion</a>
           <a href="#contact">Contact</a>
-          <a href="https://agftutoring.co.uk/login">Client Login</a>
+          <a href="https://companion.agftutoring.co.uk">Companion Login</a>
           <a href="mailto:info@agftutoring.co.uk">info@agftutoring.co.uk</a>
         </div>
       </div>
