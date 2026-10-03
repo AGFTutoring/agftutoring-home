@@ -1,190 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGF Tutoring — Private Tuition, Mentorship & University Admissions</title>
+<meta name="description" content="Bespoke private tutoring, academic mentorship, university admissions strategy and exam preparation with Alastair Fisher and AGF Tutoring.">
+<meta property="og:title" content="AGF Tutoring — Private Tuition, Mentorship & University Admissions">
+<meta property="og:description" content="More than three decades of diagnostic teaching, academic mentorship and admissions support for ambitious students worldwide.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://agftutoring.github.io/agftutoring-home/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --charcoal:#1c1c1c;--charcoal-2:#242424;--charcoal-3:#2e2e2e;
+  --green:#4d9460;--green-light:rgba(77,148,96,.12);--green-border:rgba(77,148,96,.32);
+  --cream:#e8e5de;--cream-2:#c5c1b8;--muted:#98938b;
+  --border:rgba(255,255,255,.08);--border-hover:rgba(255,255,255,.16)
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',system-ui,sans-serif;background:var(--charcoal);color:var(--cream);font-size:16px;line-height:1.7;font-weight:300;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'DM Serif Display',Georgia,serif;font-weight:400;line-height:1.12}
+em{font-style:italic;color:var(--green)}
+a{color:inherit}
+.container{max-width:1120px;margin:0 auto;padding:0 32px}
+.section{padding:96px 0;border-top:1px solid var(--border)}
+.section-label{font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--green);display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.section-label:before{content:'';width:28px;height:1px;background:var(--green)}
+.section-title{font-size:clamp(36px,5vw,54px);letter-spacing:-.01em;color:var(--cream)}
+.section-copy{font-size:18px;line-height:1.85;color:var(--cream-2);max-width:720px;margin-top:22px}
+.btn-primary,.btn-secondary{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:7px;padding:12px 18px;font-size:13px;font-weight:500;transition:.2s}
+.btn-primary{background:var(--green);color:#fff;border:1px solid var(--green)}
+.btn-primary:hover{background:#5aa86d}
+.btn-secondary{border:1px solid var(--border-hover);color:var(--cream-2);background:rgba(255,255,255,.02)}
+.btn-secondary:hover{border-color:rgba(255,255,255,.28);color:var(--cream)}
 
-AGF Tutoring
-Alastair Fisher · Private Tuition & Admissions
-Services
-About Alastair
-Method
-Subjects
-AI Companion
-Enquire
-Alastair Fisher · AGF Tutoring
-Sixty thousand hours of tutoring, distilled.
-Private tutoring, academic mentorship and university admissions strategy for ambitious students and families worldwide. More than three decades of teaching have shaped an approach that is diagnostic, exacting and intensely personal.
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;padding:0 40px;background:rgba(28,28,28,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-bars{display:flex;align-items:flex-end;gap:2.5px;height:22px}
+.nav-logo-bars span{width:3px;border-radius:2px;background:var(--green)}
+.nav-logo-bars span:nth-child(1){height:10px}.nav-logo-bars span:nth-child(2){height:16px}.nav-logo-bars span:nth-child(3){height:22px}.nav-logo-bars span:nth-child(4){height:14px}.nav-logo-bars span:nth-child(5){height:8px}
+.nav-logo-text{font-family:'DM Serif Display',Georgia,serif;font-size:18px}
+.nav-logo-sub{display:block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:-2px}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{text-decoration:none;font-size:13px;font-weight:400;color:var(--cream-2);transition:.2s}
+.nav-links a:hover{color:var(--cream)}
+.nav-links .nav-cta{color:var(--green);border:1px solid var(--green-border);padding:7px 14px;border-radius:6px}
 
-Enquire about working with me →
-Explore services
-30+ years teaching
-60,000+ tutoring hours
-UK · US · Europe · Worldwide
-Alastair Fisher — founder of AGF Tutoring
-Alastair Fisher
-Founder, AGF Tutoring
-30+
-Years teaching
-60k+
-Hours of tutoring
-Global
-Students & families
-What I offer
-Serious academic support,
-built around the individual.
-AGF is deliberately boutique. I work with a limited number of students and families, combining subject teaching with academic judgement, long-term strategy and admissions experience.
+.hero{padding:140px 0 96px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:68px;align-items:center}
+.hero-label{font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.hero-label:before{content:'';width:28px;height:1px;background:var(--green)}
+.hero h1{font-size:clamp(46px,6vw,70px);letter-spacing:-.02em;margin-bottom:28px}
+.hero-argument{font-size:19px;line-height:1.8;color:var(--cream-2);max-width:680px}
+.hero-argument strong{color:var(--cream);font-weight:500}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.hero-trust{display:flex;flex-wrap:wrap;gap:20px;margin-top:30px;padding-top:24px;border-top:1px solid var(--border);font-size:12px;color:var(--muted)}
+.hero-photo{position:relative}
+.hero-photo-card{
+  position:relative;
+  padding:18px 18px 12px;
+  border:1px solid var(--border);
+  border-radius:22px;
+  background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+  overflow:hidden;
+}
+.hero-photo-frame{
+  position:relative;
+  border-radius:18px;
+  overflow:hidden;
+  background:#201f1c;
+}
+.hero-photo-frame img{
+  width:100%;
+  display:block;
+  border-radius:18px;
+  filter:saturate(.94) contrast(1.01);
+}
+.hero-photo-frame:before{
+  content:'';
+  position:absolute;
+  inset:-2px;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 58%, rgba(28,28,28,.08) 72%, rgba(28,28,28,.18) 86%, rgba(28,28,28,.30) 100%);
+  mix-blend-mode:multiply;
+}
+.hero-photo-frame:after{
+  content:'';
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.08),
+    inset 0 0 28px rgba(0,0,0,.08),
+    inset 0 0 70px rgba(0,0,0,.22);
+}
+.hero-caption{
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.hero-caption-name{
+  font-family:'DM Serif Display', Georgia, serif;
+  font-size:23px;
+  line-height:1.1;
+  color:var(--cream);
+  margin-bottom:4px;
+}
+.hero-caption-role{
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:46px}
+.metric{padding:24px;border:1px solid var(--border);border-radius:12px;background:var(--charcoal-2)}
+.metric strong{display:block;font-family:'DM Serif Display',Georgia,serif;font-size:36px;font-weight:400;line-height:1;color:var(--cream)}
+.metric span{display:block;margin-top:7px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 
-01 · Core service
-Private Tutoring
-One-to-one online tutoring with a strong emphasis on diagnosis: identifying exactly where understanding breaks down, rebuilding from first principles, and converting clarity into performance.
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:46px}
+.service-card{background:var(--charcoal-2);border:1px solid var(--border);border-radius:14px;padding:30px;transition:.2s}
+.service-card:hover{border-color:var(--border-hover);transform:translateY(-2px)}
+.service-kicker{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:12px}
+.service-card h3{font-size:26px;margin-bottom:12px}
+.service-card p{font-size:14px;color:var(--cream-2);line-height:1.8}
+.service-list{list-style:none;margin-top:18px;display:grid;gap:8px}
+.service-list li{font-size:13px;color:var(--muted);display:flex;gap:9px}
+.service-list li:before{content:'—';color:var(--green)}
 
-Mathematics, Physics and Chemistry
-A-Level, IAL, IB, AP, GCSE and IGCSE
-Exam technique, revision and resit strategy
-Long-term academic mentoring
-02 · Admissions
-University Applications
-End-to-end strategic support for applications to leading universities in the United Kingdom, United States and Europe, with each application shaped around the student's academic profile and ambitions.
+.pathways{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.pathway{padding:28px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.025)}
+.pathway span{font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--green)}
+.pathway h3{font-size:23px;margin:15px 0 10px}
+.pathway p{font-size:14px;line-height:1.75;color:var(--cream-2)}
 
-University and course selection
-UCAS, US and European applications
-Personal statements and essays
-Interviews and application strategy
-03 · Competitive preparation
-Admissions Tests & Standardised Exams
-Focused preparation for demanding tests, combining content knowledge with reasoning, timing, written precision and the ability to perform under pressure.
+.about-grid{display:block;max-width:820px;margin-top:44px}
+.about-copy p{font-size:16px;line-height:1.9;color:var(--cream-2);margin-bottom:20px}
+.about-copy h3{font-size:28px;margin:34px 0 14px}
+.credentials{list-style:none;display:grid;gap:10px;margin:20px 0 30px}
+.credentials li{font-size:14px;color:var(--cream-2);display:flex;gap:12px}
+.credentials li:before{content:'✦';color:var(--green);font-size:10px;margin-top:4px}
 
-SAT and ACT
-LNAT, UCAT and other admissions tests
-GRE and GMAT
-IELTS and TOEFL
-04 · Strategy
-Scholarships & Academic Consultancy
-Broader educational strategy for families who need help making difficult choices: scholarships, academic positioning, curriculum planning and longer-term pathways.
+.method-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:44px}
+.method-card{padding:24px 20px;border:1px solid var(--border);border-radius:12px;background:var(--charcoal-2)}
+.method-number{font-size:11px;letter-spacing:.14em;color:var(--green)}
+.method-card h3{font-size:21px;margin:12px 0 9px}
+.method-card p{font-size:13px;line-height:1.7;color:var(--muted)}
 
-Scholarship positioning
-Academic planning and course choices
-School and family consultancy
-Bespoke support for unusual pathways
-For Parents
-Judgement as well as tuition.
-A clear view of where a student stands, what needs to change, and how to plan intelligently rather than reactively.
+.subjects-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+.subject-card{padding:26px;border:1px solid var(--border);border-radius:13px;background:var(--charcoal-2)}
+.subject-card h3{font-size:22px;margin-bottom:10px}
+.subject-card p{font-size:13px;color:var(--muted);line-height:1.7}
 
-For Students
-Clarity, discipline and confidence.
-Difficult material explained properly, followed by the practice needed to make understanding durable under pressure.
+.companion-grid{display:grid;grid-template-columns:1fr .85fr;gap:44px;align-items:start;margin-top:44px}
+.companion-copy{padding:32px;border:1px solid var(--green-border);border-radius:14px;background:var(--green-light)}
+.companion-copy h3{font-size:30px;margin-bottom:14px}
+.companion-copy p{font-size:15px;color:var(--cream-2);line-height:1.85}
+.companion-list{list-style:none;margin:22px 0;display:grid;gap:10px}
+.companion-list li{font-size:13px;color:var(--cream-2);display:flex;gap:10px}
+.companion-list li:before{content:'✓';color:var(--green)}
+.companion-demo{padding:28px;border:1px solid var(--border);border-radius:14px;background:#171717}
+.demo-label{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:14px}
+.demo-bubble{padding:14px 16px;border-radius:10px;background:var(--charcoal-2);font-size:13px;color:var(--cream-2);margin-bottom:10px;line-height:1.7}
+.demo-bubble.answer{border-left:2px solid var(--green)}
 
-For Applicants
-A coherent admissions strategy.
-Course selection, essays, testing, interviews and positioning brought together as one process rather than a series of disconnected tasks.
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;margin-top:44px}
+.contact-info h3{font-size:28px;margin-bottom:14px}
+.contact-info p{font-size:15px;color:var(--cream-2);line-height:1.8;margin-bottom:24px}
+.contact-detail{display:grid;gap:10px;margin-bottom:18px}
+.contact-detail a{text-decoration:none;color:var(--cream-2);font-size:14px}
+.whatsapp-btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;border:1px solid var(--border-hover);border-radius:7px;padding:11px 14px;font-size:13px;color:var(--cream-2)}
 
-About Alastair Fisher
-The educator behind
-AGF Tutoring.
-My work over the past thirty years has centred on a single question: how students come to understand difficult ideas clearly, and how that clarity translates into performance under examination conditions.
+form{padding:30px;border:1px solid var(--border);border-radius:14px;background:var(--charcoal-2)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-group{margin-bottom:16px}
+label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:7px}
+input,select,textarea{width:100%;background:var(--charcoal);border:1px solid var(--border);border-radius:7px;color:var(--cream);padding:12px 13px;font:inherit;font-size:14px}
+textarea{min-height:130px;resize:vertical}
+.form-submit{background:var(--green);border:0;border-radius:7px;color:#fff;padding:12px 18px;font:inherit;font-size:13px;font-weight:500;cursor:pointer}
+.form-note{font-size:11px;color:var(--muted);margin-top:10px}
 
-My academic background combines the sciences with a longstanding interest in language, cognition and the way people learn. That combination has shaped a method that is both analytical and diagnostic: I am interested not merely in what a student gets wrong, but in where understanding first begins to slip.
+footer{border-top:1px solid var(--border);padding:54px 0 28px}
+.footer-grid{display:grid;grid-template-columns:1.3fr .7fr .7fr;gap:50px}
+.footer-brand p{font-size:12px;color:var(--muted);line-height:1.8;max-width:460px;margin-top:14px}
+.footer-title{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:12px}
+.footer-links{display:grid;gap:8px}
+.footer-links a{text-decoration:none;font-size:12px;color:var(--cream-2)}
+.footer-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:22px;margin-top:40px;font-size:11px;color:var(--muted)}
 
-Most academic difficulty does not arise from lack of ability. It arises from confusion left unresolved — often small at first, but increasingly costly under pressure. My work is to identify those points of divergence, rebuild understanding from first principles, and translate that understanding into precise, confident performance.
+@media(max-width:900px){
+ nav{padding:0 20px}.nav-links li:not(:last-child){display:none}.container{padding:0 20px}
+ .hero-grid,.contact-grid,.companion-grid{grid-template-columns:1fr;gap:42px}
+ .hero-photo{max-width:420px}
+ .hero-photo-card{padding:14px 14px 10px}
+ .services-grid,.pathways,.subjects-grid{grid-template-columns:1fr 1fr}
+ .method-grid{grid-template-columns:1fr 1fr}
+ .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+ .hero{padding-top:110px}.metrics,.services-grid,.pathways,.subjects-grid,.method-grid,.form-row,.footer-grid{grid-template-columns:1fr}
+ .section{padding:68px 0}.hero h1{font-size:46px}.hero-argument{font-size:17px}
+}
+</style>
+</head>
+<body>
 
-Beyond the lesson
-The aim is not simply higher grades, though grades matter. It is the development of a more stable and exact way of thinking. That is why my work frequently extends beyond a single subject into academic mentoring, university choices, applications and longer-term educational strategy.
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-bars"><span></span><span></span><span></span><span></span><span></span></div>
+    <div><span class="nav-logo-text">AGF Tutoring</span><span class="nav-logo-sub">Alastair Fisher · Private Tuition & Admissions</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About Alastair</a></li>
+    <li><a href="#method">Method</a></li>
+    <li><a href="#subjects">Subjects</a></li>
+    <li><a href="#companion">AI Companion</a></li>
+    <li><a href="#contact" class="nav-cta">Enquire</a></li>
+  </ul>
+</nav>
 
-More than 30 years of private tutoring and academic mentoring
-Extensive experience with UK, US and European university pathways
-Mathematics, Physics and Chemistry across major international qualifications
-Admissions tests, applications, interviews and scholarship strategy
-Discuss your situation →
-The AGF Method
-Teaching as a
-diagnostic process.
-The method is simple in outline but exacting in practice. The visible mistake is often only the last link in a much longer chain.
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-label">Alastair Fisher · AGF Tutoring</div>
+        <h1>Sixty thousand hours of tutoring, <em>distilled.</em></h1>
+        <p class="hero-argument"><strong>Private tutoring, academic mentorship and university admissions strategy</strong> for ambitious students and families worldwide. More than three decades of teaching have shaped an approach that is diagnostic, exacting and intensely personal.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn-primary">Enquire about working with me →</a>
+          <a href="#services" class="btn-secondary">Explore services</a>
+        </div>
+        <div class="hero-trust"><span>30+ years teaching</span><span>60,000+ tutoring hours</span><span>UK · US · Europe · Worldwide</span></div>
+      </div>
+      <div class="hero-photo">
+        <div class="hero-photo-card">
+          <div class="hero-photo-frame">
+            <img src="alastair.jpg" alt="Alastair Fisher — founder of AGF Tutoring">
+          </div>
+          <div class="hero-caption">
+            <div class="hero-caption-name">Alastair Fisher</div>
+            <div class="hero-caption-role">Founder, AGF Tutoring</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><strong>30+</strong><span>Years teaching</span></div>
+      <div class="metric"><strong>60k+</strong><span>Hours of tutoring</span></div>
+      <div class="metric"><strong>Global</strong><span>Students & families</span></div>
+    </div>
+  </div>
+</section>
 
-01
-Diagnose
-Find where understanding first breaks down, not simply where the final answer goes wrong.
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-label">What I offer</div>
+    <h2 class="section-title">Serious academic support,<br><em>built around the individual.</em></h2>
+    <p class="section-copy">AGF is deliberately boutique. I work with a limited number of students and families, combining subject teaching with academic judgement, long-term strategy and admissions experience.</p>
 
-02
-Rebuild
-Restore the concept from first principles, using intuition before procedure.
+    <div class="services-grid">
+      <article class="service-card">
+        <div class="service-kicker">01 · Core service</div>
+        <h3>Private Tutoring</h3>
+        <p>One-to-one online tutoring with a strong emphasis on diagnosis: identifying exactly where understanding breaks down, rebuilding from first principles, and converting clarity into performance.</p>
+        <ul class="service-list"><li>Mathematics, Physics and Chemistry</li><li>A-Level, IAL, IB, AP, GCSE and IGCSE</li><li>Exam technique, revision and resit strategy</li><li>Long-term academic mentoring</li></ul>
+      </article>
 
-03
-Clarify
-Introduce exact language, formal structure and disciplined written expression.
+      <article class="service-card">
+        <div class="service-kicker">02 · Admissions</div>
+        <h3>University Applications</h3>
+        <p>End-to-end strategic support for applications to leading universities in the United Kingdom, United States and Europe, with each application shaped around the student's academic profile and ambitions.</p>
+        <ul class="service-list"><li>University and course selection</li><li>UCAS, US and European applications</li><li>Personal statements and essays</li><li>Interviews and application strategy</li></ul>
+      </article>
 
-04
-Test
-Use carefully chosen questions to establish whether the idea is genuinely secure.
+      <article class="service-card">
+        <div class="service-kicker">03 · Competitive preparation</div>
+        <h3>Admissions Tests & Standardised Exams</h3>
+        <p>Focused preparation for demanding tests, combining content knowledge with reasoning, timing, written precision and the ability to perform under pressure.</p>
+        <ul class="service-list"><li>SAT and ACT</li><li>LNAT, UCAT and other admissions tests</li><li>GRE and GMAT</li><li>IELTS and TOEFL</li></ul>
+      </article>
 
-05
-Extend
-Move from competence to mastery, particularly with unfamiliar questions and pressure.
+      <article class="service-card">
+        <div class="service-kicker">04 · Strategy</div>
+        <h3>Scholarships & Academic Consultancy</h3>
+        <p>Broader educational strategy for families who need help making difficult choices: scholarships, academic positioning, curriculum planning and longer-term pathways.</p>
+        <ul class="service-list"><li>Scholarship positioning</li><li>Academic planning and course choices</li><li>School and family consultancy</li><li>Bespoke support for unusual pathways</li></ul>
+      </article>
+    </div>
 
-Subjects & preparation
-Breadth where useful.
-Depth where it matters.
-Mathematics
-A-Level, IAL, IB, GCSE, IGCSE, AP Calculus, SAT and ACT mathematics.
+    <div class="pathways">
+      <div class="pathway"><span>For Parents</span><h3>Judgement as well as tuition.</h3><p>A clear view of where a student stands, what needs to change, and how to plan intelligently rather than reactively.</p></div>
+      <div class="pathway"><span>For Students</span><h3>Clarity, discipline and confidence.</h3><p>Difficult material explained properly, followed by the practice needed to make understanding durable under pressure.</p></div>
+      <div class="pathway"><span>For Applicants</span><h3>A coherent admissions strategy.</h3><p>Course selection, essays, testing, interviews and positioning brought together as one process rather than a series of disconnected tasks.</p></div>
+    </div>
+  </div>
+</section>
 
-Physics
-A-Level, IAL, IB, GCSE, IGCSE and AP Physics, with emphasis on reasoning and exam precision.
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-label">About Alastair Fisher</div>
+    <h2 class="section-title">The educator behind<br><em>AGF Tutoring.</em></h2>
+    <div class="about-grid">
+      <div class="about-copy">
+        <p>My work over the past thirty years has centred on a single question: how students come to understand difficult ideas clearly, and how that clarity translates into performance under examination conditions.</p>
+        <p>My academic background combines the sciences with a longstanding interest in language, cognition and the way people learn. That combination has shaped a method that is both analytical and diagnostic: I am interested not merely in what a student gets wrong, but in where understanding first begins to slip.</p>
+        <p>Most academic difficulty does not arise from lack of ability. It arises from confusion left unresolved — often small at first, but increasingly costly under pressure. My work is to identify those points of divergence, rebuild understanding from first principles, and translate that understanding into precise, confident performance.</p>
+        <h3>Beyond the lesson</h3>
+        <p>The aim is not simply higher grades, though grades matter. It is the development of a more stable and exact way of thinking. That is why my work frequently extends beyond a single subject into academic mentoring, university choices, applications and longer-term educational strategy.</p>
+        <ul class="credentials">
+          <li>More than 30 years of private tutoring and academic mentoring</li>
+          <li>Extensive experience with UK, US and European university pathways</li>
+          <li>Mathematics, Physics and Chemistry across major international qualifications</li>
+          <li>Admissions tests, applications, interviews and scholarship strategy</li>
+        </ul>
+        <a href="#contact" class="btn-primary">Discuss your situation →</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-Chemistry
-A-Level, IAL, IB, GCSE, IGCSE and AP Chemistry, from fundamentals to advanced exam practice.
+<section class="section" id="method">
+  <div class="container">
+    <div class="section-label">The AGF Method</div>
+    <h2 class="section-title">Teaching as a<br><em>diagnostic process.</em></h2>
+    <p class="section-copy">The method is simple in outline but exacting in practice. The visible mistake is often only the last link in a much longer chain.</p>
+    <div class="method-grid">
+      <article class="method-card"><div class="method-number">01</div><h3>Diagnose</h3><p>Find where understanding first breaks down, not simply where the final answer goes wrong.</p></article>
+      <article class="method-card"><div class="method-number">02</div><h3>Rebuild</h3><p>Restore the concept from first principles, using intuition before procedure.</p></article>
+      <article class="method-card"><div class="method-number">03</div><h3>Clarify</h3><p>Introduce exact language, formal structure and disciplined written expression.</p></article>
+      <article class="method-card"><div class="method-number">04</div><h3>Test</h3><p>Use carefully chosen questions to establish whether the idea is genuinely secure.</p></article>
+      <article class="method-card"><div class="method-number">05</div><h3>Extend</h3><p>Move from competence to mastery, particularly with unfamiliar questions and pressure.</p></article>
+    </div>
+  </div>
+</section>
 
-Admissions & Tests
-SAT, ACT, LNAT, UCAT, GRE, GMAT, IELTS, TOEFL and interview preparation.
+<section class="section" id="subjects">
+  <div class="container">
+    <div class="section-label">Subjects & preparation</div>
+    <h2 class="section-title">Breadth where useful.<br><em>Depth where it matters.</em></h2>
+    <div class="subjects-grid">
+      <div class="subject-card"><h3>Mathematics</h3><p>A-Level, IAL, IB, GCSE, IGCSE, AP Calculus, SAT and ACT mathematics.</p></div>
+      <div class="subject-card"><h3>Physics</h3><p>A-Level, IAL, IB, GCSE, IGCSE and AP Physics, with emphasis on reasoning and exam precision.</p></div>
+      <div class="subject-card"><h3>Chemistry</h3><p>A-Level, IAL, IB, GCSE, IGCSE and AP Chemistry, from fundamentals to advanced exam practice.</p></div>
+      <div class="subject-card"><h3>Admissions & Tests</h3><p>SAT, ACT, LNAT, UCAT, GRE, GMAT, IELTS, TOEFL and interview preparation.</p></div>
+    </div>
+  </div>
+</section>
 
-AGF Study Companion
-A digital extension of the method —
-not the centre of it.
-The AI Study Companion remains part of AGF, but as a supporting tool: something students can use between live sessions for explanations, quizzes and revision grounded in AGF material. It is free for up to three enquiries, and available without charge to all students who work directly with Alastair.
+<section class="section" id="companion">
+  <div class="container">
+    <div class="section-label">AGF Study Companion</div>
+    <h2 class="section-title">A digital extension of the method —<br><em>not the centre of it.</em></h2>
+    <p class="section-copy">The AI Study Companion remains part of AGF, but as a supporting tool: something students can use between live sessions for explanations, quizzes and revision grounded in AGF material. It is free for up to three enquiries, and available without charge to all students who work directly with Alastair.</p>
+    <div class="companion-grid">
+      <div class="companion-copy">
+        <h3>Support between lessons.</h3>
+        <p>The companion is designed to extend the same diagnostic approach beyond the live session. It can help a student clarify a concept, practise exam-style questions, identify a weak step and return to the relevant notes. All students who work directly with Alastair have full access at no additional charge.</p>
+        <ul class="companion-list">
+          <li>Exam-board-specific explanations and questions</li>
+          <li>Diagnostic quizzes and targeted feedback</li>
+          <li>Mathematics, Physics and Chemistry</li>
+          <li>Free for up to three enquiries</li>
+        </ul>
+        <a href="https://app.agftutoring.com" target="_blank" rel="noopener" class="btn-primary">Open the Study Companion →</a>
+      </div>
+      <div class="companion-demo">
+        <div class="demo-label">Example · Chemistry</div>
+        <div class="demo-bubble">Why is the bond angle in H₂O smaller than in NH₃?</div>
+        <div class="demo-bubble answer">Before applying VSEPR mechanically, compare the number of lone pairs. The key missing idea is that lone pair–lone pair repulsion is stronger than lone pair–bond pair repulsion. That additional repulsion compresses the H–O–H bond angle more strongly.</div>
+        <div class="demo-bubble">Next question: can you now predict the relative bond angle in CH₄ and explain why?</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-Support between lessons.
-The companion is designed to extend the same diagnostic approach beyond the live session. It can help a student clarify a concept, practise exam-style questions, identify a weak step and return to the relevant notes. All students who work directly with Alastair have full access at no additional charge.
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-label">Get in touch</div>
+    <h2 class="section-title">Begin with a<br><em>conversation.</em></h2>
+    <p class="section-copy">Tell me where the student is now, what they are trying to achieve, and where you think the difficulty lies. I can then advise whether AGF is the right fit and what form of support would make sense.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Contact AGF</h3>
+        <p>Private tutoring and admissions work are deliberately limited in capacity. An introductory conversation is the best place to start.</p>
+        <div class="contact-detail">
+          <a href="mailto:info@agftutoring.co.uk">✉ info@agftutoring.co.uk</a>
+          <a href="https://app.agftutoring.com" target="_blank" rel="noopener">Open the AGF Study Companion</a>
+        </div>
+        <a href="https://wa.me/447546121944" class="whatsapp-btn" target="_blank" rel="noopener">Message AGF on WhatsApp</a>
+      </div>
 
-Exam-board-specific explanations and questions
-Diagnostic quizzes and targeted feedback
-Mathematics, Physics and Chemistry
-Free for up to three enquiries
-Open the Study Companion →
-Example · Chemistry
-Why is the bond angle in H₂O smaller than in NH₃?
-Before applying VSEPR mechanically, compare the number of lone pairs. The key missing idea is that lone pair–lone pair repulsion is stronger than lone pair–bond pair repulsion. That additional repulsion compresses the H–O–H bond angle more strongly.
-Next question: can you now predict the relative bond angle in CH₄ and explain why?
-Get in touch
-Begin with a
-conversation.
-Tell me where the student is now, what they are trying to achieve, and where you think the difficulty lies. I can then advise whether AGF is the right fit and what form of support would make sense.
+      <form action="https://formspree.io/f/xdapenya" method="POST">
+        <div class="form-row">
+          <div class="form-group"><label for="name">Your name</label><input type="text" id="name" name="name" placeholder="Full name" required></div>
+          <div class="form-group"><label for="email">Email address</label><input type="email" id="email" name="email" placeholder="you@email.com" required></div>
+        </div>
+        <div class="form-group">
+          <label for="service">How can I help?</label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Select a service...</option>
+            <option>Private tutoring</option>
+            <option>University applications</option>
+            <option>Admissions test preparation</option>
+            <option>Scholarship strategy</option>
+            <option>Academic consultancy</option>
+            <option>AGF Study Companion</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="form-group"><label for="message">Tell me about the student and what you need</label><textarea id="message" name="message" placeholder="Age/year group, subjects, current situation, goals and any deadlines..."></textarea></div>
+        <button type="submit" class="form-submit">Send enquiry →</button>
+        <p class="form-note">AGF aims to respond to enquiries within 24 hours.</p>
+      </form>
+    </div>
+  </div>
+</section>
 
-Contact AGF
-Private tutoring and admissions work are deliberately limited in capacity. An introductory conversation is the best place to start.
-
-✉ info@agftutoring.co.uk
-Open the AGF Study Companion
-Message AGF on WhatsApp
-Your name
-Full name
-Email address
-you@email.com
-How can I help?
-
-Select a service...
-Tell me about the student and what you need
-Age/year group, subjects, current situation, goals and any deadlines...
-
-Send enquiry →
-AGF aims to respond to enquiries within 24 hours.
-
-AGF Tutoring
-Alastair Fisher · Private Tuition & Admissions
-Bespoke private tutoring, academic mentorship, university admissions strategy and exam preparation. AGF Tutoring UK Limited, incorporated 2019. Registered Company No. 12247821.
-
-Services
-Private Tutoring
-University Applications
-Test Preparation
-Academic Consultancy
-AGF
-About Alastair
-AI Study Companion
-Contact
-info@agftutoring.co.uk
-© 2026 AGF Tutoring UK Limited · Registered in England · Co. No. 12247821
-Terms · Privacy · LinkedIn · Facebook
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">
+          <div class="nav-logo-bars"><span></span><span></span><span></span><span></span><span></span></div>
+          <div><span class="nav-logo-text">AGF Tutoring</span><span class="nav-logo-sub">Alastair Fisher · Private Tuition & Admissions</span></div>
+        </a>
+        <p>Bespoke private tutoring, academic mentorship, university admissions strategy and exam preparation. AGF Tutoring UK Limited, incorporated 2019. Registered Company No. 12247821.</p>
+      </div>
+      <div><div class="footer-title">Services</div><div class="footer-links"><a href="#services">Private Tutoring</a><a href="#services">University Applications</a><a href="#services">Test Preparation</a><a href="#services">Academic Consultancy</a></div></div>
+      <div><div class="footer-title">AGF</div><div class="footer-links"><a href="#about">About Alastair</a><a href="#companion">AI Study Companion</a><a href="#contact">Contact</a><a href="mailto:info@agftutoring.co.uk">info@agftutoring.co.uk</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AGF Tutoring UK Limited · Registered in England · Co. No. 12247821</span>
+      <span><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="https://www.linkedin.com/company/agf-tutoring/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.facebook.com/agftutoring" target="_blank" rel="noopener">Facebook</a></span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
